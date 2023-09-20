@@ -22,6 +22,7 @@ public class Vocabulary {
         this.synonymous = synonymous;
         this.antonyms = antonyms;
     }
+
     /*
     get
      */
@@ -36,12 +37,15 @@ public class Vocabulary {
     public String getVietnameseVocabulary() {
         return vietnameseVocabulary;
     }
+
     public String getSpellTranscribePhonetically() {
         return spellTranscribePhonetically;
     }
+
     public String getAntonyms() {
         return antonyms;
     }
+
     public String getSynonymous() {
         return synonymous;
     }
@@ -52,9 +56,11 @@ public class Vocabulary {
     public void setId(int id) {
         this.id = id;
     }
+
     public void setEnglishVocabulary(String englishVocabulary) {
         this.englishVocabulary = englishVocabulary;
     }
+
     public void setVietnameseVocabulary(String vietnameseVocabulary) {
         this.vietnameseVocabulary = vietnameseVocabulary;
     }
@@ -67,6 +73,7 @@ public class Vocabulary {
     public void setSynonymous(String synonymous) {
         this.synonymous = synonymous;
     }
+
     public void setAntonyms(String antonyms) {
         this.antonyms = antonyms;
     }
