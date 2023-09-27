@@ -44,8 +44,8 @@ public class DictionaryManagement {
     /**
      * chuc nang sua tu.
      */
-    public void dictionaryEdit(String word) {
-
+    public void dictionaryEdit(String word_target, String word_explain) {
+        Dictionary.set(word_target, word_explain);
     }
 
     /**
@@ -54,6 +54,11 @@ public class DictionaryManagement {
      * @return true khi xoa thanh cong
      */
     public boolean dictionaryErase(String word) {
-        return true;
+        if (Dictionary.delete(word) == true) {
+            System.out.println("Done");
+            return true;
+        }
+        System.out.println("Error");
+        return false;
     }
 }
