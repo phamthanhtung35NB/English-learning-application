@@ -47,7 +47,7 @@ public class Dictionary extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader();
         //FileInputStream fis = new FileInputStream(FXML_FILE_PATH);
         //AnchorPane root = fxmlLoader.load(fis);
-        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
+        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("resources/com.example.baitaplon/main-view.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Dictionary Demonstration");
