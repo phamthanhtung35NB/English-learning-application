@@ -20,9 +20,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.AnchorPane;
+//import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.control.Tab;
+import javafx.scene.control.Label;
+
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+
+import javafx.scene.Parent;
+
+
 
 import java.io.*;
 import java.util.*;
@@ -30,25 +39,41 @@ import java.util.*;
 public class Dictionary extends Application {
     private static TreeMap<String, Word> data = new TreeMap<>();
     private static final String DATA_FILE_PATH = "data/E_V.txt";
-    //private static final String FXML_FILE_PATH = "./src/main/resources/com/example/dictionary/dictionary-view.fxml";
     private static final String SPLITTING_CHARACTERS = "<html>";
 //    private Map<String, Word> data = new HashMap<>();
 
     @FXML
     private ListView<String> listView;
     @FXML
-    private WebView definitionView;
+    private WebView explainView;
 //    public void setWordMap(TreeMap<String, Word> wordMap) {
 //        this.wordMap = wordMap;
 //    }
 
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         //FileInputStream fis = new FileInputStream(FXML_FILE_PATH);
         //AnchorPane root = fxmlLoader.load(fis);
-        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("resources/com.example.baitaplon/main-view.fxml"));
-        Scene scene = new Scene(root);
+        TabPane tabPaneRoot = new TabPane();
+//        TabPane.getTaps().add(root);
+//        root.setContent(FXMLLoader.load(this.getClass().getResource("main.fxml")));
+
+//        Tab root = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
+//        Tab root = fxmlLoader.load(getClass().getResourceAsStream("E:/Data_Lap_Trinh/OOP/oasis/baiTapLon/src/main/resources/com/example/baitaplon/main-view.fxml"));
+//        Tab root = fxmlLoader.load(getClass().getResourceAsStream("src/main/resources/com/example/baitaplon/main-view.fxml"));
+
+
+        tabPaneRoot = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
+        Tab homeTab = tabPaneRoot.getTabs().get(0); // home la bat dau ow vi tri 0
+
+
+
+
+
+        VBox vBox = new VBox(tabPaneRoot);
+        Scene scene = new Scene(vBox);
         stage.setScene(scene);
         stage.setTitle("Dictionary Demonstration");
         stage.show();
@@ -64,14 +89,15 @@ public class Dictionary extends Application {
     }
 
     public void initComponents(Scene scene) {
-        this.definitionView = (WebView) scene.lookup("#definitionView");
+        this.explainView = (WebView) scene.lookup("#explainView");
         this.listView = (ListView<String>) scene.lookup("#listView");
         Dictionary context = this;
+
         this.listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     Word selectedWord = data.get(newValue.trim());
                     String definition = selectedWord.getDef();
-                    context.definitionView.getEngine().loadContent(definition, "text/html");
+                    context.explainView.getEngine().loadContent(definition, "text/html");
                 }
         );
     }
