@@ -6,79 +6,77 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<TabPane cache="true" side="RIGHT" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="com.example.baitaplon.Controller">
+<TabPane cache="true" tabClosingPolicy="ALL_TABS" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.Controller">
     <tabs>
         <Tab closable="false" text="Home">
             <content>
-                <StackPane alignment="TOP_LEFT">
+                <StackPane alignment="TOP_CENTER" prefHeight="467.0" prefWidth="600.0">
                     <children>
-                        <AnchorPane prefHeight="400.0" prefWidth="600.0" StackPane.alignment="BOTTOM_LEFT">
+                        <AnchorPane prefHeight="412.0" prefWidth="600.0" StackPane.alignment="BOTTOM_RIGHT">
                             <children>
-                                <HBox layoutX="75.0" layoutY="26.0" prefHeight="29.0" prefWidth="570.0"
-                                      AnchorPane.bottomAnchor="13.800000000000011" AnchorPane.leftAnchor="11.0"
-                                      AnchorPane.rightAnchor="19.0" AnchorPane.topAnchor="26.0">
+                                <VBox layoutY="14.0" prefHeight="400.0" prefWidth="602.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.8000000000000682" AnchorPane.topAnchor="0.4000000000000341">
                                     <children>
-                                        <TextField prefHeight="26.0" prefWidth="170.0" HBox.hgrow="ALWAYS"/>
-                                        <Pane prefHeight="200.0" prefWidth="200.0"/>
-                                        <Button mnemonicParsing="false" text="Check">
+                                        <Pane prefHeight="26.0" prefWidth="602.0" />
+                                        <HBox prefHeight="28.0" prefWidth="570.0">
+                                            <children>
+                                                <Pane prefHeight="28.0" prefWidth="36.0" />
+                                                <TextField prefHeight="26.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
+                                                <Pane prefHeight="28.0" prefWidth="36.0" />
+                                                <Button mnemonicParsing="false" text="Check">
 
-                                        </Button>
+                                                </Button>
 
+                                            </children>
+                                        </HBox>
+                              <Pane prefHeight="36.0" prefWidth="599.0" />
+                                        <HBox prefHeight="303.0" prefWidth="570.0" VBox.vgrow="ALWAYS">
+                                            <children>
+                                                <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                                                <WebView fx:id="explainView" prefHeight="303.0" prefWidth="370.0" HBox.hgrow="ALWAYS" />
+                                            </children>
+                                        </HBox>
+                                        <Pane prefHeight="30.0" prefWidth="602.0" />
                                     </children>
-                                </HBox>
-                                <HBox layoutX="11.0" layoutY="83.0" prefHeight="303.0" prefWidth="570.0"
-                                      AnchorPane.bottomAnchor="13.800000000000011" AnchorPane.leftAnchor="11.0"
-                                      AnchorPane.rightAnchor="18.600000000000023" AnchorPane.topAnchor="83.0">
-                                    <children>
-                                        <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0"
-                                                  HBox.hgrow="ALWAYS"/>
-                                        <WebView fx:id="explainView" prefHeight="303.0" prefWidth="370.0"
-                                                 HBox.hgrow="ALWAYS"/>
-                                    </children>
-                                </HBox>
+                                </VBox>
                             </children>
                             <StackPane.margin>
-                                <Insets/>
+                                <Insets />
                             </StackPane.margin>
                         </AnchorPane>
                     </children>
+                    <padding>
+                        <Insets bottom="1.0" />
+                    </padding>
                 </StackPane>
-            </content>
+            </content>  
         </Tab>
         <Tab closable="false" text="ADD">
             <content>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <AnchorPane prefHeight="335.0" prefWidth="506.0">
                     <children>
-                        <HBox layoutY="42.0" prefHeight="29.0" prefWidth="600.0">
-                            <children>
-                                <TextField prefHeight="26.0" prefWidth="251.0"/>
-                                <Pane prefHeight="30.0" prefWidth="96.0"/>
-                                <TextField prefHeight="26.0" prefWidth="256.0"/>
-                            </children>
-                        </HBox>
                         <HBox layoutX="270.0" layoutY="150.0" prefHeight="50.0" prefWidth="138.0">
                             <children>
-                                <Button mnemonicParsing="false" text="ADD"/>
+                                <Button mnemonicParsing="false" text="ADD" />
+                            </children>
+                        </HBox>
+                        <HBox layoutY="42.0" prefHeight="29.0" prefWidth="600.0">
+                            <children>
+                                <TextField prefHeight="26.0" prefWidth="251.0" />
+                                <Pane prefHeight="30.0" prefWidth="96.0" />
+                                <TextField prefHeight="26.0" prefWidth="256.0" />
                             </children>
                         </HBox>
                     </children>
                 </AnchorPane>
             </content>
         </Tab>
-        <Tab closable="false" text="Game">
-            <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
-            </content>
-        </Tab>
+        <Tab closable="false" text="Game" />
     </tabs>
 </TabPane>
