@@ -40,4 +40,6 @@ public class Vocabulary extends Word {
     public void setAntonyms(String antonyms) {
         this.antonyms = antonyms;
     }
+
+
 }

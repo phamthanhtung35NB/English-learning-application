@@ -20,7 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
-//import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.control.Tab;
@@ -30,7 +30,6 @@ import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import javafx.scene.Parent;
-
 
 
 import java.io.*;
@@ -55,25 +54,20 @@ public class Dictionary extends Application {
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
         //FileInputStream fis = new FileInputStream(FXML_FILE_PATH);
-        //AnchorPane root = fxmlLoader.load(fis);
-        TabPane tabPaneRoot = new TabPane();
+        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
+//        TabPane tabPaneRoot = new TabPane();
 //        TabPane.getTaps().add(root);
 //        root.setContent(FXMLLoader.load(this.getClass().getResource("main.fxml")));
 
-//        Tab root = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
+//        root = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
 //        Tab root = fxmlLoader.load(getClass().getResourceAsStream("E:/Data_Lap_Trinh/OOP/oasis/baiTapLon/src/main/resources/com/example/baitaplon/main-view.fxml"));
 //        Tab root = fxmlLoader.load(getClass().getResourceAsStream("src/main/resources/com/example/baitaplon/main-view.fxml"));
 
+//        tabPaneRoot = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
+//        Tab homeTab = tabPaneRoot.getTabs().get(0); // home la bat dau ow vi tri 0
 
-        tabPaneRoot = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
-        Tab homeTab = tabPaneRoot.getTabs().get(0); // home la bat dau ow vi tri 0
-
-
-
-
-
-        VBox vBox = new VBox(tabPaneRoot);
-        Scene scene = new Scene(vBox);
+//        VBox vBox = new VBox(root);
+        Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Dictionary Demonstration");
         stage.show();
@@ -92,7 +86,6 @@ public class Dictionary extends Application {
         this.explainView = (WebView) scene.lookup("#explainView");
         this.listView = (ListView<String>) scene.lookup("#listView");
         Dictionary context = this;
-
         this.listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     Word selectedWord = data.get(newValue.trim());
