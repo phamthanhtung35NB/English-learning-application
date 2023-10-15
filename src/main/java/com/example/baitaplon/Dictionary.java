@@ -36,15 +36,13 @@ import java.io.*;
 import java.util.*;
 
 public class Dictionary extends Application {
-    private static TreeMap<String, Word> data = new TreeMap<>();
-    private static final String DATA_FILE_PATH = "data/E_V.txt";
-    private static final String SPLITTING_CHARACTERS = "<html>";
+
 //    private Map<String, Word> data = new HashMap<>();
 
-    @FXML
-    private ListView<String> listView;
-    @FXML
-    private WebView explainView;
+//    @FXML
+//    private ListView<String> listView;
+//    @FXML
+//    private WebView explainView;
 //    public void setWordMap(TreeMap<String, Word> wordMap) {
 //        this.wordMap = wordMap;
 //    }
@@ -73,44 +71,13 @@ public class Dictionary extends Application {
         stage.show();
 
         // init components
-        initComponents(scene);
-
         // read word list from E_V.txt
-        readData();
-
         // load word list to the ListView
-        loadWordList();
+        Controller controller = new Controller();
+        controller.initComponents(scene);
+        controller.readData();
     }
 
-    public void initComponents(Scene scene) {
-        this.explainView = (WebView) scene.lookup("#explainView");
-        this.listView = (ListView<String>) scene.lookup("#listView");
-        Dictionary context = this;
-        this.listView.getSelectionModel().selectedItemProperty().addListener(
-                (observable, oldValue, newValue) -> {
-                    Word selectedWord = data.get(newValue.trim());
-                    String definition = selectedWord.getDef();
-                    context.explainView.getEngine().loadContent(definition, "text/html");
-                }
-        );
-    }
-
-    public void loadWordList() {
-        this.listView.getItems().addAll(data.keySet());
-    }
-
-    public void readData() throws IOException {
-        FileReader fis = new FileReader(DATA_FILE_PATH);
-        BufferedReader br = new BufferedReader(fis);
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] parts = line.split(SPLITTING_CHARACTERS);
-            String word = parts[0];
-            String definition = SPLITTING_CHARACTERS + parts[1];
-            Word wordObj = new Word(word, definition);
-            data.put(word, wordObj);
-        }
-    }
 
     public static void main(String[] args) {
         launch();
