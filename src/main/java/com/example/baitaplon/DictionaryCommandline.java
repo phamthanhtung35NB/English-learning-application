@@ -11,8 +11,7 @@ public class DictionaryCommandline {
 
     /**
      * có chức năng gọi hàm insertFromCommandline() và
-     * showAllWords().
-     */
+     * showAllWords().    */
     public void dictionaryBasic(){
 
     }

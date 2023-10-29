@@ -30,6 +30,27 @@
             <artifactId>javafx-web</artifactId>
             <version>20.0.2</version>
         </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>junit</groupId>-->
+<!--            <artifactId>junit</artifactId>-->
+<!--            <version>4.11</version>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+
+        <!-- Firebase SDK -->
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>9.2.0</version>
+        </dependency>
+        <!-- Google Cloud Libraries -->
+        <dependency>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>appengine-maven-plugin</artifactId>
+            <version>2.4.4</version>
+        </dependency>
+        <!-- Add other Google Cloud dependencies as needed -->
         <dependency>
             <groupId>com.dlsc.formsfx</groupId>
             <artifactId>formsfx-core</artifactId>

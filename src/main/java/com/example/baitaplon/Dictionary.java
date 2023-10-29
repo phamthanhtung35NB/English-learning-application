@@ -51,20 +51,7 @@ public class Dictionary extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        //FileInputStream fis = new FileInputStream(FXML_FILE_PATH);
-        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
-//        TabPane tabPaneRoot = new TabPane();
-//        TabPane.getTaps().add(root);
-//        root.setContent(FXMLLoader.load(this.getClass().getResource("main.fxml")));
-
-//        root = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
-//        Tab root = fxmlLoader.load(getClass().getResourceAsStream("E:/Data_Lap_Trinh/OOP/oasis/baiTapLon/src/main/resources/com/example/baitaplon/main-view.fxml"));
-//        Tab root = fxmlLoader.load(getClass().getResourceAsStream("src/main/resources/com/example/baitaplon/main-view.fxml"));
-
-//        tabPaneRoot = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
-//        Tab homeTab = tabPaneRoot.getTabs().get(0); // home la bat dau ow vi tri 0
-
-//        VBox vBox = new VBox(root);
+        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("mainView.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Dictionary Demonstration");

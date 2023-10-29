@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.Controller">
+   <children>
+      <VBox layoutY="14.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.8000000000000682" AnchorPane.topAnchor="0.4000000000000341">
+         <children>
+            <Pane prefHeight="26.0" prefWidth="602.0" VBox.vgrow="NEVER" />
+            <HBox prefHeight="28.0" prefWidth="570.0" VBox.vgrow="NEVER">
+               <children>
+                  <Pane prefHeight="28.0" prefWidth="36.0" />
+                  <TextField fx:id="TextIn" prefHeight="26.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
+                  <Pane prefHeight="28.0" prefWidth="36.0" />
+                  <Button mnemonicParsing="false" onAction="#clickCheck" text="Check" />
+               </children>
+            </HBox>
+            <Pane prefHeight="36.0" prefWidth="599.0" VBox.vgrow="NEVER" />
+            <HBox VBox.vgrow="ALWAYS">
+               <children>
+                  <ListView fx:id="listView" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </ListView>
+                  <WebView fx:id="explainView" prefHeight="-1.0" prefWidth="370.0" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

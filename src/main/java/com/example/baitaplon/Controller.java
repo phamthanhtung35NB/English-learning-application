@@ -31,7 +31,6 @@ public class Controller {
     private static final String SPLITTING_CHARACTERS = "<html>";
 
 
-
     public void readData() throws IOException {
         FileReader fis = new FileReader(DATA_FILE_PATH);
         BufferedReader br = new BufferedReader(fis);
@@ -45,12 +44,14 @@ public class Controller {
         }
         loadWordList();
     }
+
     public void loadWordList() {
         this.listView.getItems().addAll(data.keySet());
 
     }
+
     public void initComponents(Scene scene) {
-        this.explainView = (WebView) scene.lookup("#explainView");
+        this.explainView = (WebView) scene.lookup("#eexplainView");
         this.listView = (ListView<String>) scene.lookup("#listView");
 //        Controller controller = new Controller();
 //        Dictionary context = this;
@@ -68,6 +69,7 @@ public class Controller {
     protected void clickCheck() {
         welcomeText.setText("Welcome to JavaFX");
     }
+
     public static void add(String word_target, String word_explain) {
         Word words = new Word(word_target, word_explain);
         data.put(words.getWord_target(), words);
