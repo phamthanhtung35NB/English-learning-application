@@ -25,6 +25,30 @@ public class ControllerTestCuaTung {
             alert.show();
         }
     }
+    @FXML
+    protected void buttonHome() {
+        System.out.println("Home");
+    }
+    @FXML
+    protected void buttonSearch() {
+        System.out.println("Search");
+    }
+    @FXML
+    protected void buttonOnlineSearch(){
+        System.out.println("O Search");
+    }
+    @FXML
+    protected void buttonGame(){
+        System.out.println("Game");
+    }
+    @FXML
+    protected void buttonFeedback(){
+        System.out.println("Feed Back");
+    }
+    @FXML
+    protected void buttonButton(){
+        System.out.println("Feed Back");
+    }
 
 
 //    @FXML
