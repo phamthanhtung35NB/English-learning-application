@@ -52,7 +52,7 @@ public class Controller {
         }
 
         public void initComponents (Scene scene){
-            this.explainView = (WebView) scene.lookup("#eexplainView");
+            this.explainView = (WebView) scene.lookup("#explainView");
             this.listView = (ListView<String>) scene.lookup("#listView");
 //        Controller controller = new Controller();
 //        Dictionary context = this;

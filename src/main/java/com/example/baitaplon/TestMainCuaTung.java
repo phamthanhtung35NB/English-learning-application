@@ -22,14 +22,14 @@ public class TestMainCuaTung extends Application {
     public void start(Stage stage) throws IOException {
         Parent fxml = FXMLLoader.load(getClass().getResource("Home.fxml"));
         Scene scene = new Scene(fxml);
-        scene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("Home.css").toExternalForm());
         stage.setTitle("Home!");
 
         Parent fxml2 = FXMLLoader.load(getClass().getResource("Login.fxml"));
         Scene scene2 = new Scene(fxml2);
         scene2.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
         stage.setTitle("login!");
-        stage.setScene(scene2);
+        stage.setScene(scene);
 
         stage.show();
     }
