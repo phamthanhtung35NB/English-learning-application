@@ -9,6 +9,9 @@ module com.example.baitaplon {
 //    requires com.google.api.core;
     requires com.google.api.apicommon;
     requires com.google.common;
+    requires java.desktop;
+
+
 
     opens com.example.baitaplon to javafx.fxml;
     exports com.example.baitaplon;

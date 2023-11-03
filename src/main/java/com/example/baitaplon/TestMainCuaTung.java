@@ -23,8 +23,14 @@ public class TestMainCuaTung extends Application {
         Parent fxml = FXMLLoader.load(getClass().getResource("Home.fxml"));
         Scene scene = new Scene(fxml);
         scene.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
+        stage.setTitle("Home!");
+
+        Parent fxml2 = FXMLLoader.load(getClass().getResource("Login.fxml"));
+        Scene scene2 = new Scene(fxml2);
+        scene2.getStylesheets().add(getClass().getResource("Login.css").toExternalForm());
+        stage.setTitle("login!");
+        stage.setScene(scene2);
+
         stage.show();
     }
     public static void main(String[] args) {
