@@ -43,6 +43,7 @@ public class ComboBoxController implements Initializable {
             selectedOutPut = comboBoxOutPut.getValue();
         });
     }
+
     public String maNgonNgu(String string) {
         if (string.equals("Anh")) {
             return "en";

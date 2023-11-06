@@ -27,7 +27,6 @@ public class APIgoogle{
                 "&target=" + langTo +
                 "&source=" + langFrom;
         URL url = new URL(urlStr);
-//        System.out.println(urlStr);
         StringBuilder response = new StringBuilder();
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestProperty("User-Agent", "Mozilla/5.0");

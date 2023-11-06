@@ -28,8 +28,10 @@ public class HomeController  {
         System.out.println("Home");
     }
     @FXML
-    protected void buttonSearch() {
+    protected void buttonSearch() throws IOException{
         System.out.println("Search");
+        AnchorPane view = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        centerBorderPane.setCenter(view);
     }
     @FXML
     protected void buttonOnlineSearch() throws IOException{
@@ -48,23 +50,6 @@ public class HomeController  {
     @FXML
     protected void buttonButton() throws IOException {
         System.out.println("buttonButton");
-        AnchorPane view = FXMLLoader.load(getClass().getResource("mainView.fxml"));
-//        ControllerSearchByFile controller = new ControllerSearchByFile();
-//        initComponents();
-//        controller.readData(data);
 
-        centerBorderPane.setCenter(view);
-//        Scene scene = new Scene(view);
-//        ControllerSearchByFile controller = new ControllerSearchByFile();
-//        controller.initComponents();
-//        Controller controller = new Controller();
-//        controller.initComponents(scene);
-//        controller.readData();
     }
-
-
-//    @Override
-//    public void initialize(URL url, ResourceBundle resourceBundle) {
-//
-//    }
 }
