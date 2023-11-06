@@ -2,7 +2,6 @@ package com.example.baitaplon;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.web.WebView;
 
@@ -13,8 +12,8 @@ import java.util.TreeMap;
 
 public class Controller {
 
-    @FXML
-    private Label welcomeText;
+//    @FXML
+//    private Label welcomeText;
 
     @FXML
     private ListView<String> listView;
@@ -23,7 +22,16 @@ public class Controller {
     private WebView explainView;
 
 
-
+//    public void check() {
+//        String input = inputTextApiGoogle.getText();
+//        try {
+//            String translatedText = APIgoogle.translate(maNgonNgu(selectedInPut), maNgonNgu(selectedOutPut), input);
+//            outputLabelApiGoogle.setText("  " + translatedText);
+//        } catch (Exception e) {
+//            outputLabelApiGoogle.setText("Translation failed. Please try again.");
+//            e.printStackTrace();
+//        }
+//    }
 
 
 
@@ -52,8 +60,8 @@ public class Controller {
         }
 
         public void initComponents (Scene scene){
-            this.explainView = (WebView) scene.lookup("#explainView");
-            this.listView = (ListView<String>) scene.lookup("#listView");
+//            this.explainView = (WebView) scene.lookup("#explainView");
+//            this.listView = (ListView<String>) scene.lookup("#listView");
 //        Controller controller = new Controller();
 //        Dictionary context = this;
             Controller context = this;
@@ -68,26 +76,27 @@ public class Controller {
 
         @FXML
         protected void clickCheck () {
-            welcomeText.setText("Welcome to JavaFX");
+//            welcomeText.setText("Welcome to JavaFX");
+            System.out.println("tesss");
         }
-
-        public static void add (String word_target, String word_explain){
-            Word words = new Word(word_target, word_explain);
-            data.put(words.getWord_target(), words);
-        }
-
-        public static boolean delete (String word_target){
-            if (data.containsKey(word_target)) {
-                data.remove(word_target);
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        public static void set (String word_target, String word_explain){
-            Word updatedWord = new Word(word_target, word_explain);
-            data.put(word_target, updatedWord);
-
-        }
+//
+//        public static void add (String word_target, String word_explain){
+//            Word words = new Word(word_target, word_explain);
+//            data.put(words.getWord_target(), words);
+//        }
+//
+//        public static boolean delete (String word_target){
+//            if (data.containsKey(word_target)) {
+//                data.remove(word_target);
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        }
+//
+//        public static void set (String word_target, String word_explain){
+//            Word updatedWord = new Word(word_target, word_explain);
+//            data.put(word_target, updatedWord);
+//
+//        }
     }

@@ -1,62 +1,75 @@
 package com.example.baitaplon;
-//import android.content.Context;
-//import android.util.Log;
-//
-//import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.auth.FirebaseUser;
-//
+
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.io.FileInputStream;
+
+public class FirebaseAuth {
+    public static void main(String[] args) {
+        // Đường dẫn đến tệp cấu hình của bạn
+        try {
+            String pathToServiceAccountKey = "E:/Data_Lap_Trinh/OOP/oasis/baiTapLon/src/main/java/com/example/baitaplon/dataloginapp3t.json";
+
+            FirebaseOptions options = new FirebaseOptions.Builder()
+                    .setCredentials(GoogleCredentials.fromStream(new FileInputStream(pathToServiceAccountKey)))
+                    .setDatabaseUrl("https://data-login-app-3t-default-rtdb.firebaseio.com/") // Thay đổi thành URL của bạn
+                    .build();
+
+            FirebaseApp.initializeApp(options);
+
+            // Bây giờ bạn đã khởi tạo Firebase SDK và có thể sử dụng nó cho các hoạt động với Firebase.
+        } catch (Exception e) {
+            System.out.println("Lỗi: " + e.getMessage());
+        }
+
+        // Tạo đường dẫn đến node "test" (chú ý, đừng có thêm "/test" vào đường dẫn URL)
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("test");
+
+        // Thêm dữ liệu vào node "test"
+        DatabaseReference newUserRef = databaseReference.push(); // Tạo một node con mới
+//        newUserRef.child("name").setValue("John");
+//        newUserRef.child("email").setValue("john@example.com");
+    }
+}
+
 //public class FirebaseAuth {
+//    public static void main(String[] args) {
+//        try {
+//            // Initialize Firebase Admin SDK with your service account credentials JSON file
+//            FileInputStream serviceAccount = new FileInputStream("data/data-login-app-3t-firebase-adminsdk-dut9u-4914318df0.json");
+//            FirebaseOptions options = new FirebaseOptions.Builder()
+//                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+//                    .setDatabaseUrl("https://data-login-app-3t-default-rtdb.firebaseio.com/")
+//                    .build();
 //
-//    private static final String TAG = "FirebaseAuthHelper";
+//            FirebaseApp.initializeApp(options);
 //
-//    private FirebaseAuth mAuth;
+//            // Get a reference to the Realtime Database
+//            DatabaseReference database = FirebaseDatabase.getInstance().getReference();
 //
-//    public FirebaseAuthHelper(Context context) {
-//        mAuth = FirebaseAuth.getInstance();
-//    }
+//            // Set data in the database
+//            Map<String, Object> data = new HashMap<>();
+//            data.put("key", "value");
 //
-//    public boolean checkCredentials(String email, String password) {
-//        FirebaseUser user = mAuth.getCurrentUser();
-//        if (user == null) {
-//            // Người dùng chưa đăng nhập
-//            return false;
-//        }
-//
-//        // Kiểm tra email và mật khẩu
-//        if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-//
-//    public void signInWithCredentials(String email, String password) {
-//        mAuth.signInWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(task -> {
-//                    if (task.isSuccessful()) {
-//                        // Đăng nhập thành công
-//                        Log.d(TAG, "Đăng nhập thành công");
+//            // Specify the database path where you want to set the data
+//            DatabaseReference ref = database.child("/");
+//            ref.setValue(data, new DatabaseReference.CompletionListener() {
+//                @Override
+//                public void onComplete(DatabaseError error, DatabaseReference ref) {
+//                    if (error == null) {
+//                        System.out.println("Data was successfully written to the database.");
 //                    } else {
-//                        // Đăng nhập thất bại
-//                        Log.d(TAG, "Đăng nhập thất bại");
+//                        System.err.println("Data could not be written to the database: " + error.getMessage());
 //                    }
-//                });
+//                }
+//            });
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
 //    }
 //}
 
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.FirebaseApp;
-
-public class FirebaseAuth {
-    FirebaseDatabase.getInstance().getReference().push().setValue(<object_cua_ban>);
-
-    //    FirebaseDatabase.getInstance().getReference().child("ABC").push().setValue(<object_cua_ban>);
-// Lấy ra keyID
-    String keyID = FirebaseDatabase.getInstance().getReference().push().getKey();
-
-// set key vao object
-<object_cua_ban>.setKey(keyID); // lưu lại để sau này dùng chẳng hạn
-
-// set data
-FirebaseDatabase.getInstance().getReference().child(keyID).setValue(<object_cua_ban>);
-}

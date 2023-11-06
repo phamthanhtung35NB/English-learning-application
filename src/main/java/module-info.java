@@ -15,6 +15,6 @@ module com.example.baitaplon {
 
     opens com.example.baitaplon to javafx.fxml;
     exports com.example.baitaplon;
-    exports com.example.baitaplon.testLogin;
-    opens com.example.baitaplon.testLogin to javafx.fxml;
+//    exports com.example.baitaplon.testLogin;
+//    opens com.example.baitaplon.testLogin to javafx.fxml;
 }

@@ -22,6 +22,10 @@
     /*-fx-background-image: url("hover-background.png");*/
     -fx-text-fill: black;
 }
+.buttonOk-rotate-ver-right {
+    -webkit-animation: slide-rotate-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-rotate-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 .buttonNew {
     -fx-pref-height: 30;
     -fx-pref-width: 130;
@@ -52,8 +56,13 @@
     -fx-font-size: 15px;
     -fx-padding: 5 5 5 5;
     -fx-background-color: #8695ac;
+    -webkit-animation: slide-rotate-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-rotate-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-
+.focus-in-expand {
+    -webkit-animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
 .textBox:focused {
     -fx-font-size: 15px;
     -fx-background-color: #697486;

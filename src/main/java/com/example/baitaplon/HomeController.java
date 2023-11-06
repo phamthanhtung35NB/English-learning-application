@@ -1,0 +1,70 @@
+package com.example.baitaplon;
+
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+
+import java.io.IOException;
+
+public class HomeController  {
+
+
+//    @FXML
+//    private Field tesst;
+
+    @FXML
+    private BorderPane centerBorderPane;
+    @FXML
+    private TextField textName;
+    @FXML
+    private PasswordField textPass;
+
+    @FXML
+    protected void buttonHome() {
+        System.out.println("Home");
+    }
+    @FXML
+    protected void buttonSearch() {
+        System.out.println("Search");
+    }
+    @FXML
+    protected void buttonOnlineSearch() throws IOException{
+        System.out.println("O Search");
+        Pane view = FXMLLoader.load(getClass().getResource("APIgg.fxml"));
+        centerBorderPane.setCenter(view);
+    }
+    @FXML
+    protected void buttonGame(){
+        System.out.println("Game");
+    }
+    @FXML
+    protected void buttonFeedback(){
+        System.out.println("Feed Back");
+    }
+    @FXML
+    protected void buttonButton() throws IOException {
+        System.out.println("buttonButton");
+        AnchorPane view = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+//        ControllerSearchByFile controller = new ControllerSearchByFile();
+//        initComponents();
+//        controller.readData(data);
+
+        centerBorderPane.setCenter(view);
+//        Scene scene = new Scene(view);
+//        ControllerSearchByFile controller = new ControllerSearchByFile();
+//        controller.initComponents();
+//        Controller controller = new Controller();
+//        controller.initComponents(scene);
+//        controller.readData();
+    }
+
+
+//    @Override
+//    public void initialize(URL url, ResourceBundle resourceBundle) {
+//
+//    }
+}
