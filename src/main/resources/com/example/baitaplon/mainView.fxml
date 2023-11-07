@@ -18,7 +18,7 @@
             <HBox prefHeight="28.0" prefWidth="570.0" VBox.vgrow="NEVER">
                <children>
                   <Pane prefHeight="28.0" prefWidth="36.0" />
-                  <TextField prefHeight="26.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
+                  <TextField fx:id="search" prefHeight="26.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
                   <Pane prefHeight="28.0" prefWidth="36.0" />
                   <Button mnemonicParsing="false" onAction="#clickCheck" styleClass="comboBox" stylesheets="@Home.css" text="Check" />
                   <Pane prefHeight="28.0" prefWidth="61.0" />

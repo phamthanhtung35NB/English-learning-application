@@ -2,6 +2,7 @@ package com.example.baitaplon;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.web.WebView;
 
 import java.io.BufferedReader;
@@ -16,6 +17,9 @@ public class ControllerSearchByFile {
     @FXML
     private WebView explainView;
 
+    @FXML
+    private TextField search;
+
     //    private static Map<String, Word> data = new HashMap<>();
     private static TreeMap<String, Word> data = new TreeMap<>();
 
@@ -24,12 +28,12 @@ public class ControllerSearchByFile {
 
 
     public void initComponents() {
-        ControllerSearchByFile context = this;
+//        ControllerSearchByFile context = this;
         this.listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     Word selectedWord = data.get(newValue.trim());
                     String definition = selectedWord.getWord_explain();
-                    context.explainView.getEngine().loadContent(definition, "text/html");
+                    this.explainView.getEngine().loadContent(definition, "text/html");
                 }
         );
     }
@@ -48,11 +52,11 @@ public class ControllerSearchByFile {
     }
 
     @FXML
-    protected void clickCheck() throws IOException {
-        System.out.println("tesss");
-        initComponents();
-        readData();
-        loadWordList();
+    protected void clickCheck() {
+//        ControllerSearchByFile context = this;
+        Word selectedWord = data.get(search.getText());
+        String definition = selectedWord.getWord_explain();
+        this.explainView.getEngine().loadContent(definition, "text/html");
     }
 
     @FXML
