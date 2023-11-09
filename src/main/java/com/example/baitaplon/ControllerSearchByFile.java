@@ -53,10 +53,15 @@ public class ControllerSearchByFile {
 
     @FXML
     protected void clickCheck() {
-//        ControllerSearchByFile context = this;
-        Word selectedWord = data.get(search.getText());
-        String definition = selectedWord.getWord_explain();
-        this.explainView.getEngine().loadContent(definition, "text/html");
+        try {
+            Word selectedWord = data.get(search.getText().toLowerCase());
+            String definition = selectedWord.getWord_explain();
+            System.out.println(definition);
+            this.explainView.getEngine().loadContent(definition, "text/html");
+        } catch (Exception e) {
+            System.out.println("WARNING");
+            this.explainView.getEngine().loadContent("WARNING", "text/html");
+        }
     }
 
     @FXML

@@ -48,7 +48,7 @@ public class DataBase {
         // MySQL database URL
         System.out.println(getConnection());
         Statement stmt = getConnection().createStatement();
-        ResultSet rs = stmt.executeQuery("select * from student");
+        ResultSet rs = stmt.executeQuery("select * from dictionary");
         // show data
         while (rs.next()) {
             System.out.println(rs.getInt(1) + "  " + rs.getString(2)
