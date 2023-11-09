@@ -1,39 +1,12 @@
 package com.example.baitaplon;
 
-//import javafx.fxml.FXMLLoader;
-//import javafx.scene.Scene;
-//import javafx.stage.Stage;
-//
-//import java.io.BufferedReader;
-//import java.io.FileReader;
-//import java.io.IOException;
-//import java.util.*;
-////import java.util.HashMap;
-//import java.util.Map;
-////import java.util.Set;
-
-
 import javafx.application.Application;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.TabPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.Tab;
-import javafx.scene.control.Label;
-
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+//import java.util.Set;
 
-import javafx.scene.Parent;
-
-
-import java.io.*;
-import java.util.*;
 
 public class Dictionary extends Application {
 
@@ -43,6 +16,8 @@ public class Dictionary extends Application {
 //    private ListView<String> listView;
 //    @FXML
 //    private WebView explainView;
+//    private TreeMap<String, Word> wordMap;
+//
 //    public void setWordMap(TreeMap<String, Word> wordMap) {
 //        this.wordMap = wordMap;
 //    }
@@ -51,20 +26,8 @@ public class Dictionary extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
-        //FileInputStream fis = new FileInputStream(FXML_FILE_PATH);
-        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
-//        TabPane tabPaneRoot = new TabPane();
-//        TabPane.getTaps().add(root);
-//        root.setContent(FXMLLoader.load(this.getClass().getResource("main.fxml")));
-
-//        root = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
-//        Tab root = fxmlLoader.load(getClass().getResourceAsStream("E:/Data_Lap_Trinh/OOP/oasis/baiTapLon/src/main/resources/com/example/baitaplon/main-view.fxml"));
-//        Tab root = fxmlLoader.load(getClass().getResourceAsStream("src/main/resources/com/example/baitaplon/main-view.fxml"));
-
-//        tabPaneRoot = fxmlLoader.load(getClass().getResourceAsStream("main-view.fxml"));
-//        Tab homeTab = tabPaneRoot.getTabs().get(0); // home la bat dau ow vi tri 0
-
-//        VBox vBox = new VBox(root);
+//        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("mainView.fxml"));
+        AnchorPane root = fxmlLoader.load(getClass().getResource("mainView.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Dictionary Demonstration");
@@ -82,6 +45,7 @@ public class Dictionary extends Application {
     public static void main(String[] args) {
         launch();
     }
+}
 //
 //    public static void add(String word_target, String word_explain) {
 //        Word words = new Word(word_target, word_explain);
@@ -118,4 +82,4 @@ public class Dictionary extends Application {
 //        }
 //        return searchWord.getWord_explain();// nghia
 //    }
-}
+//}
