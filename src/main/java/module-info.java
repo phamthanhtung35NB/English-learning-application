@@ -10,7 +10,8 @@ module com.example.baitaplon {
     requires com.google.api.apicommon;
     requires com.google.common;
     requires java.desktop;
-
+    requires java.sql;
+    requires mysql.connector.java;
 
 
     opens com.example.baitaplon to javafx.fxml;
