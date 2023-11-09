@@ -1,5 +1,11 @@
 package com.example.baitaplon;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
 public class DictionaryManagement {
     /**
      * Nhập vào bàn phím số lượng từ vựng (Word).
@@ -61,4 +67,36 @@ public class DictionaryManagement {
 //        System.out.println("Error");
 //        return false;
 //    }
+
+    /**
+     * Search Word in database.
+     */
+    public void dictionarySearcherinDB() {
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Tim tu: ");
+        String input = scan.nextLine();
+        String searchWord = input.toLowerCase();
+        MySQLConnector mySQLConnection = new MySQLConnector();
+        Connection connection = mySQLConnection.getConnection();
+
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT definition FROM dictionary_db.dictionary where target like '" + searchWord + "'";
+            ResultSet resultSet = statement.executeQuery(query);
+
+            while (resultSet.next()) {
+                String detail = resultSet.getString("definition");
+
+                System.out.println("detail: " + detail);
+                System.out.println("-------------------------");
+            }
+
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        mySQLConnection.closeConnection();
+    }
 }
