@@ -60,7 +60,7 @@ public class ControllerSearchByFile {
             this.explainView.getEngine().loadContent(definition, "text/html");
         } catch (Exception e) {
             System.out.println("WARNING");
-            this.explainView.getEngine().loadContent("WARNING", "text/html");
+            this.explainView.getEngine().loadContent("\n\n Not in the dictionary", "text/html");
         }
     }
 

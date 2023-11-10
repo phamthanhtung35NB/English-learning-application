@@ -25,8 +25,9 @@ public class DataBase {
         return connection;
     }
 
-    public static String login(String username, String password) throws SQLException {
+    public static String addDataLogin(String username,String password) throws SQLException {
         //cau lech khong co tham so
+
         Statement query = null;
         ResultSet ketQuaTruyVan = null;
         Connection connection = getConnectionToDataBase();
@@ -36,8 +37,9 @@ public class DataBase {
             ketQuaTruyVan = query.executeQuery("select user_name,password,studying_array from account");
             //check tk mk
             while (ketQuaTruyVan.next()) {
-                if (username.equals(ketQuaTruyVan.getString(1)) && password.equals(ketQuaTruyVan.getString(2))) {
-                    return ketQuaTruyVan.getString(3);
+                System.out.printf(ketQuaTruyVan.getString("user_name") + " " + ketQuaTruyVan.getString("password") + "\n");
+                if (username.equals(ketQuaTruyVan.getString("user_name")) && password.equals(ketQuaTruyVan.getString("password"))) {
+                    return ketQuaTruyVan.getString("studying_array");
                 }
             }
         } catch (SQLException e) {
@@ -95,7 +97,7 @@ public class DataBase {
 
     public static Set<Integer> takeData(String string) throws SQLException {
         String[] numberStrings = string.split(",");
-            Set<Integer> numberSetKetQua = new TreeSet<>();
+        Set<Integer> numberSetKetQua = new TreeSet<>();
 
         for (String numberString : numberStrings) {
             try {
@@ -111,10 +113,10 @@ public class DataBase {
 
     public static void main(String[] args) throws SQLException {
 //        System.out.println(newAccount("admin3", "admin3"));
-        Set<Integer> tam = takeData(login("admin2", "admin2"));
-        for (Integer i : tam) {
-            System.out.println(i);
-        }
+//        Set<Integer> tam = takeData(login("admin2", "admin2"));
+//        for (Integer i : tam) {
+//            System.out.println(i);
+//        }
 
 
     }
