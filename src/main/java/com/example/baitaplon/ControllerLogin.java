@@ -7,9 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -21,14 +19,90 @@ public class ControllerLogin {
     @FXML
     private PasswordField textPass;
     @FXML
+    private TextField textNameNew;
+    @FXML
+    private PasswordField textPassNew;
+    @FXML
+    private PasswordField textRepeatPassNew;
+    @FXML
+    private Label labelShowPass;
+    @FXML
+    private Label labelShowPassNewAccount;
+    @FXML
+    private Label labelShowPassNewAccountRepeat;
+    @FXML
+    private CheckBox trueShow;
+    @FXML
+    private CheckBox trueShowNewAccount;
+    @FXML
+    private CheckBox trueShowNewAccountRepeat;
+//    @FXML
+//    protected void buttonCancelLogin(ActionEvent event) {
+//        Node source = (Node) event.getSource();
+//        Stage currentStage = (Stage) source.getScene().getWindow();
+//        currentStage.close();
+//    }
+    @FXML
+    protected void checkBoxShowPass(ActionEvent event) {
+        if (trueShow.isSelected()) {
+            // If selected, display the password
+            labelShowPass.setText(textPass.getText());
+            System.out.println(labelShowPass.getText());
+        } else {
+            // If not selected, hide the password
+            labelShowPass.setText("");
+        }
+    }
+    @FXML
+    protected void checkBoxShowPassNewAccount(ActionEvent event) {
+        if (trueShowNewAccount.isSelected()) {
+            // If selected, display the password
+            labelShowPassNewAccount.setText(textPassNew.getText());
+        } else {
+            // If not selected, hide the password
+            labelShowPassNewAccount.setText("");
+        }
+    }
+    @FXML
+    protected void checkBoxShowPassNewAccountRepeat(ActionEvent event) {
+        if (trueShowNewAccountRepeat.isSelected()) {
+            // If selected, display the password
+            labelShowPassNewAccountRepeat.setText(textRepeatPassNew.getText());
+//            System.out.println(labelShowPass.getText());
+        } else {
+            // If not selected, hide the password
+            labelShowPassNewAccountRepeat.setText("");
+        }
+    }
+    @FXML
+    protected void buttonNewAccount(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("LoginNewAccount.fxml"));
+        Parent sampleParent = loader.load();
+        Scene scene = new Scene(sampleParent);
+        stage.setScene(scene);
+    }
+    @FXML
+    protected void buttonCancelNewAccount(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Login.fxml"));
+        Parent sampleParent = loader.load();
+        Scene scene = new Scene(sampleParent);
+        stage.setScene(scene);
+    }
+    @FXML
     protected void buttonOkLogin(ActionEvent event) throws SQLException {
 
         String name = textName.getText();
         String pass = textPass.getText();
         System.out.println(name + " " + pass);
         String studying_array = "";
-        studying_array = DataBase.addDataLogin(name, pass);
+        studying_array = DataBase.checkDataLogin(name, pass);
+        System.out.println(studying_array);
         if ((name.equals("test") && pass.equals("test"))||!(studying_array.equals("-1"))) {
+            System.out.println("Đăng nhập thành công");
             viewLoginToHome(event);
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -36,6 +110,56 @@ public class ControllerLogin {
             alert.setContentText("Account information or password is incorrect");
             alert.show();
         }
+    }
+    @FXML
+    protected void buttonOkNewAccount(ActionEvent event) throws IOException, SQLException {
+        if (textPassNew.getText().equals(textRepeatPassNew.getText())&&!textPassNew.getText().equals("")&&!textNameNew.getText().equals("")) {
+            String name = textNameNew.getText();
+            String pass = textPassNew.getText();
+            //Tài khoản đã tồn tại
+            if (DataBase.checkDataUsernameLogin(name)) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARNING");
+                System.out.println("Tài khoản đã tồn tại");
+                alert.setContentText("Account already exists");
+                alert.show();
+            } else {
+                //Tạo tài khoản mới
+                System.out.println(name + " " + pass);
+                if (DataBase.newAccount(name, pass)){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("WARNING");
+                    System.out.println("Tạo tài khoản mới thành công");
+                    alert.setContentText("Create account successfully\nYour account and password respectively: \nAccount[" + name + "]\nPassword[" + pass+"]}");
+                    alert.show();
+
+                    Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("Login.fxml"));
+                    Parent sampleParent = loader.load();
+                    Scene scene = new Scene(sampleParent);
+                    stage.setScene(scene);
+                }
+                //Tạo tài khoản mới thất bại
+                else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("WARNING");
+                    System.out.println("Tạo tài khoản mới thất bại");
+                    alert.setContentText("Create account failed");
+                    alert.show();
+
+                }
+            }
+//            Tên tài khoản và Mật khẩu không được để trống, mật khẩu và mật khẩu lặp lại phải giống nhau
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("WARNING");
+            System.out.println("Tên tài khoản và Mật khẩu không được để trống, mật khẩu và mật khẩu lặp lại phải giống nhau");
+            alert.setContentText("Account name and Password cannot be blank, password and repeated password need to be the same");
+            alert.show();
+        }
+
+
 
     }
     public void viewLoginToHome(ActionEvent event) {

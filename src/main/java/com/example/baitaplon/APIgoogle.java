@@ -11,7 +11,7 @@ import java.net.URLEncoder;
 public class APIgoogle{
 //    @Override
 //    public void start(Stage primaryStage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("ViewGoogleApi.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("GoogleApi.fxml"));
 //        primaryStage.setTitle("Translate App");
 //        primaryStage.setScene(new Scene(root, 800, 600));
 //        primaryStage.show();

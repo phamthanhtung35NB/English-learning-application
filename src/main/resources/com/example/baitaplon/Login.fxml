@@ -25,13 +25,17 @@
             <Image url="@Image/authenticationIconLogin.png" />
          </image>
       </ImageView>
-      <CheckBox layoutX="556.0" layoutY="281.0" mnemonicParsing="false" styleClass="textBox" stylesheets="@Login.css" text="Show" />
-      <Label layoutX="251.0" layoutY="209.0" prefHeight="35.0" prefWidth="93.0" styleClass="focus-in-expand" stylesheets="@Login.css" text="Account" />
+      <CheckBox fx:id="trueShow" layoutX="556.0" layoutY="281.0" mnemonicParsing="false" onAction="#checkBoxShowPass" styleClass="textBox" stylesheets="@Login.css" text="Show" />
+      <Label layoutX="251.0" layoutY="209.0" prefHeight="35.0" prefWidth="93.0" styleClass="focus-in-expand" stylesheets="@Login.css" text="User Name" />
       <Label layoutX="251.0" layoutY="281.0" prefHeight="27.0" prefWidth="74.0" stylesheets="@Login.css" text="Password" />
-      <Button layoutX="521.0" layoutY="356.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="136.0" styleClass="buttonNew" stylesheets="@Login.css" text="New Account">
+      <Button layoutX="521.0" layoutY="356.0" mnemonicParsing="false" onAction="#buttonNewAccount" prefHeight="50.0" prefWidth="136.0" styleClass="buttonNew" stylesheets="@Login.css" text="New Account">
          <font>
             <Font size="7.0" />
          </font>
       </Button>
+      <Label fx:id="labelShowPass" layoutX="333.0" layoutY="273.0">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
    </children>
 </Pane>
