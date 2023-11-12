@@ -11,6 +11,8 @@ public class ControllerTestCuaTung {
     private TextField textName;
     @FXML
     private PasswordField textPass;
+    @FXML
+    private PasswordField textRepeatPass1;
 
     @FXML
     protected void buttonOkLogin() {

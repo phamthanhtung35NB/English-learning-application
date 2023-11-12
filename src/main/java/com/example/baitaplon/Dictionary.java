@@ -26,8 +26,8 @@ public class Dictionary extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         FXMLLoader fxmlLoader = new FXMLLoader();
-//        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("mainView.fxml"));
-        AnchorPane root = fxmlLoader.load(getClass().getResource("mainView.fxml"));
+//        AnchorPane root = fxmlLoader.load(getClass().getResourceAsStream("ViewFileTxt.fxml"));
+        AnchorPane root = fxmlLoader.load(getClass().getResource("ViewFileTxt.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.setTitle("Dictionary Demonstration");

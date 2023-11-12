@@ -30,13 +30,13 @@ public class HomeController  {
     @FXML
     protected void buttonSearch() throws IOException{
         System.out.println("Search");
-        AnchorPane view = FXMLLoader.load(getClass().getResource("mainView.fxml"));
+        AnchorPane view = FXMLLoader.load(getClass().getResource("ViewFileTxt.fxml"));
         centerBorderPane.setCenter(view);
     }
     @FXML
     protected void buttonOnlineSearch() throws IOException{
         System.out.println("O Search");
-        Pane view = FXMLLoader.load(getClass().getResource("APIgg.fxml"));
+        Pane view = FXMLLoader.load(getClass().getResource("ViewGoogleApi.fxml"));
         centerBorderPane.setCenter(view);
     }
     @FXML

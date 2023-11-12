@@ -8,6 +8,7 @@ public class Word {
     public Word(String word_target, String word_explain) {
         this.word_target = word_target;
         this.word_explain = word_explain;
+//        .toLowerCase();
     }
 
     public String getWord_target() {

@@ -27,11 +27,13 @@ public class ControllerSearchByFile {
     private static final String SPLITTING_CHARACTERS = "<html>";
 
 
+    private String text;
     public void initComponents() {
 //        ControllerSearchByFile context = this;
         this.listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                    Word selectedWord = data.get(newValue.trim());
+                    text = newValue.trim();
+                    Word selectedWord = data.get(text);
                     String definition = selectedWord.getWord_explain();
                     this.explainView.getEngine().loadContent(definition, "text/html");
                 }
@@ -53,10 +55,20 @@ public class ControllerSearchByFile {
 
     @FXML
     protected void clickCheck() {
-//        ControllerSearchByFile context = this;
-        Word selectedWord = data.get(search.getText());
-        String definition = selectedWord.getWord_explain();
-        this.explainView.getEngine().loadContent(definition, "text/html");
+        try {
+            text = search.getText().toLowerCase();
+            Word selectedWord = data.get(text);
+            String definition = selectedWord.getWord_explain();
+            System.out.println(text);
+            this.explainView.getEngine().loadContent(definition, "text/html");
+        } catch (Exception e) {
+            System.out.println("WARNING");
+            this.explainView.getEngine().loadContent("\n\n Not in the dictionary", "text/html");
+        }
+    }
+    @FXML
+    protected void clickSpeech() {
+        new TextToSpeech(text);
     }
 
     @FXML
