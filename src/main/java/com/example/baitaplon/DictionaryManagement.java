@@ -1,14 +1,10 @@
 package com.example.baitaplon;
 
-import java.io.BufferedReader;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.*;
+import java.sql.*;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
-import java.io.FileWriter;
-import java.io.BufferedWriter;
-import java.io.IOException;
 
 public class DictionaryManagement {
     Scanner scan = new Scanner(System.in);
@@ -105,6 +101,10 @@ public class DictionaryManagement {
         mySQLConnection.closeConnection();
     }
 
+    /**
+     * Add Word.
+     * Search text in database + add to Add_Word_Dictionary.txt if word not in data
+     */
     public void addWordInDB() {
         //Input
         System.out.print("Add word: ");
@@ -159,5 +159,44 @@ public class DictionaryManagement {
             //Note
             System.out.println("Tu da ton tai");
         }
+    }
+
+    public void dropWord() {
+        //Input
+        System.out.print("Xoa tu: ");
+        String input = scan.nextLine();
+        String wordDrop = input.toLowerCase();
+
+        //Slove
+            //Check tu trong text
+                //Doc file tuan tu luu vao mot mang / map
+        try {
+            String filePath = "data/Add_Word_Dictionary.txt";
+            FileInputStream fileInputStream = new FileInputStream(filePath);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            HashMap<String, String> mapofWord = new HashMap<>();
+
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                String [] arrayofWord = line.split("\t", 2);
+                String word = arrayofWord[0];
+                String definition = arrayofWord[1].trim();
+                mapofWord.put(word, definition);
+            }
+
+            //Close buff, file,...
+            bufferedReader.close();
+            inputStreamReader.close();
+            fileInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //Duyet mang va check
+            //Neu co thi xoa trong text
+            //Khong co check trong DB
+            //Co thi xoa trong DB
+            //Khong co nua thi bao loi
+        //Output
     }
 }

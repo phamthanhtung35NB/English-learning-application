@@ -11,6 +11,7 @@ public class DictionaryCommandline {
         //menu
         System.out.println("Bam 1 de tra tu");
         System.out.println("Bam 2 de them tu");
+        System.out.println("Bam 3 de xoa tu");
         int menuChoice = scan.nextInt();
         dic.dictionaryBasic(menuChoice);
     }
@@ -33,6 +34,9 @@ public class DictionaryCommandline {
         }
         if (menuChoice == 2) {
             dictionaryManagement.addWordInDB();
+        }
+        if (menuChoice == 3) {
+            dictionaryManagement.dropWord();
         }
     }
 }
