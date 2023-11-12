@@ -1,12 +1,18 @@
 package com.example.baitaplon;
 
+import java.io.BufferedReader;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
 
 public class DictionaryManagement {
+    Scanner scan = new Scanner(System.in);
+
     /**
      * Nhập vào bàn phím số lượng từ vựng (Word).
      * Định dạng nhập dữ liệu từ điển Anh – Việt:
@@ -72,7 +78,6 @@ public class DictionaryManagement {
      * Search Word in database.
      */
     public void dictionarySearcherinDB() {
-        Scanner scan = new Scanner(System.in);
         System.out.print("Tim tu: ");
         String input = scan.nextLine();
         String searchWord = input.toLowerCase();
@@ -98,5 +103,61 @@ public class DictionaryManagement {
         }
 
         mySQLConnection.closeConnection();
+    }
+
+    public void addWordInDB() {
+        //Input
+        System.out.print("Add word: ");
+        String input = scan.nextLine();
+        String addWord = input.toLowerCase();
+        //Check whether it was in DB or not
+        MySQLConnector mySQLConnection = new MySQLConnector();
+        Connection connection = mySQLConnection.getConnection();
+        boolean ifNot = false;
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT definition FROM dictionary_db.dictionary where target like '" + addWord + "'";
+            ResultSet resultSet = statement.executeQuery(query);
+            String detail = "";
+
+            while (resultSet.next()) {
+                detail = resultSet.getString("definition");
+            }
+            //Check
+            if (detail == "") {
+                ifNot = true;
+            } else {
+                ifNot = false;
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        mySQLConnection.closeConnection();
+        //If not then add
+        if (ifNot) {
+            //Add to txt file
+            try {
+                String filePath = "data/Add_Word_Dictionary.txt";
+                FileWriter filePen = new FileWriter(filePath);
+                BufferedWriter bufferedWriter = new BufferedWriter(filePen);
+                //write
+                System.out.println("Nhap nghia cua tu " + addWord);
+                String mean = scan.nextLine();
+                String newWord =  addWord + "\t\t" + mean;
+                bufferedWriter.write(newWord);
+                //close
+                bufferedWriter.flush();
+                filePen.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //If it was the same -> anouncement
+        else {
+            //Note
+            System.out.println("Tu da ton tai");
+        }
     }
 }

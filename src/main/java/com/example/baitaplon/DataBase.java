@@ -7,7 +7,7 @@ import java.util.TreeSet;
 public class DataBase {
     private final static String url = "jdbc:mysql://localhost:3306/jdbc_db";
     private final static String username = "root";
-    private final static String password = "123456789";
+    private final static String password = "thanhtre2004";
 
     public static Connection getConnectionToDataBase() {
         Connection connection = null;
