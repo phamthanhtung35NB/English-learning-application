@@ -191,8 +191,7 @@ public class DictionaryManagement {
                     System.out.printf("%s,%s\n", word, definition);
 
                     mapofWord.put(word, definition);
-                }
-                else {
+                } else {
                     System.out.println("Lỗi out of bound exception");
                 }
             }
@@ -241,10 +240,47 @@ public class DictionaryManagement {
             }
         } else {
             //Khong co check trong DB
-            System.out.println("Không thấy từ " + wordDrop);
+            MySQLConnector mySQLConnection = new MySQLConnector();
+            Connection connection = mySQLConnection.getConnection();
+            boolean ifNot = false;
+            try {
+                Statement statement = connection.createStatement();
+                String query = "SELECT definition FROM dictionary_db.dictionary where target like '" + wordDrop + "'";
+                ResultSet resultSet = statement.executeQuery(query);
+                String definition = "";
+
+                while (resultSet.next()) {
+                    definition = resultSet.getString("definition");
+                }
+                if (definition == "") {
+                    ifNot = true;
+                } else {
+                    ifNot = false;
+                }
+
+                if (!ifNot) {
+                    //Co thi xoa trong DB
+                    query = "DELETE FROM dictionary_db.dictionary WHERE target = ?";
+                    PreparedStatement preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setString(1, wordDrop);
+                    int delete = preparedStatement.executeUpdate();
+
+                    if (delete > 0) {
+                        System.out.println("Đã XÓA từ + " + wordDrop + " khỏi CSDL!");
+                    } else {
+                        System.out.println("LỖI: KHÔNG THỂ XÓA từ + " + wordDrop + " khỏi CSDL!");
+                    }
+                } else {
+                    //Khong co nua thi bao loi
+                    System.out.println("LỖI: KHÔNG TÌM ĐƯỢC TỪ ĐÃ CHO");
+                }
+
+                resultSet.close();
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            mySQLConnection.closeConnection();
         }
-        //Co thi xoa trong DB
-        //Khong co nua thi bao loi
-        //Output
     }
 }
