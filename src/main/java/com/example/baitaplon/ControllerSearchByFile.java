@@ -66,10 +66,10 @@ public class ControllerSearchByFile {
             this.explainView.getEngine().loadContent("\n\n Not in the dictionary", "text/html");
         }
     }
-    @FXML
-    protected void clickSpeech() {
-        new TextToSpeech(text);
-    }
+//    @FXML
+//    protected void clickSpeech() {
+//        new TextToSpeech(text);
+//    }
 
     @FXML
     protected void load() throws IOException {

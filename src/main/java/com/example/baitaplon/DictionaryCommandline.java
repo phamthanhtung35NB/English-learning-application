@@ -10,6 +10,8 @@ public class DictionaryCommandline {
         Scanner scan = new Scanner(System.in);
         //menu
         System.out.println("Bam 1 de tra tu");
+        System.out.println("Bam 2 de them tu");
+        System.out.println("Bam 3 de xoa tu");
         int menuChoice = scan.nextInt();
         dic.dictionaryBasic(menuChoice);
     }
@@ -29,6 +31,12 @@ public class DictionaryCommandline {
     public void dictionaryBasic(int menuChoice) {
         if (menuChoice == 1) {
             dictionaryManagement.dictionarySearcherinDB();
+        }
+        if (menuChoice == 2) {
+            dictionaryManagement.addWordInDB();
+        }
+        if (menuChoice == 3) {
+            dictionaryManagement.dropWord();
         }
     }
 }
