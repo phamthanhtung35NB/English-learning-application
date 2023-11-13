@@ -1,12 +1,14 @@
 package com.example.baitaplon;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.*;
+import java.sql.*;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class DictionaryManagement {
+    Scanner scan = new Scanner(System.in);
+
     /**
      * Nhập vào bàn phím số lượng từ vựng (Word).
      * Định dạng nhập dữ liệu từ điển Anh – Việt:
@@ -72,7 +74,6 @@ public class DictionaryManagement {
      * Search Word in database.
      */
     public void dictionarySearcherinDB() {
-        Scanner scan = new Scanner(System.in);
         System.out.print("Tim tu: ");
         String input = scan.nextLine();
         String searchWord = input.toLowerCase();
@@ -98,5 +99,188 @@ public class DictionaryManagement {
         }
 
         mySQLConnection.closeConnection();
+    }
+
+    /**
+     * Add Word.
+     * Search text in database + add to Add_Word_Dictionary.txt if word not in data
+     */
+    public void addWordInDB() {
+        //Input
+        System.out.print("Add word: ");
+        String input = scan.nextLine();
+        String addWord = input.toLowerCase();
+        //Check whether it was in DB or not
+        MySQLConnector mySQLConnection = new MySQLConnector();
+        Connection connection = mySQLConnection.getConnection();
+        boolean ifNot = false;
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT definition FROM dictionary_db.dictionary where target like '" + addWord + "'";
+            ResultSet resultSet = statement.executeQuery(query);
+            String detail = "";
+
+            while (resultSet.next()) {
+                detail = resultSet.getString("definition");
+            }
+            //Check
+            if (detail == "") {
+                ifNot = true;
+            } else {
+                ifNot = false;
+            }
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        mySQLConnection.closeConnection();
+        //If not then add
+        if (ifNot) {
+            //Add to txt file -> Add to database
+            try {
+                String filePath = "data/Add_Word_Dictionary.txt";
+                FileWriter filePen = new FileWriter(filePath);
+                BufferedWriter bufferedWriter = new BufferedWriter(filePen);
+                //write
+                System.out.println("Nhap nghia cua tu " + addWord);
+                String mean = scan.nextLine();
+                String newWord = addWord + "\t\t\t" + mean;
+                bufferedWriter.write(newWord);
+                //close
+                bufferedWriter.flush();
+                filePen.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        //If it was the same -> anouncement
+        else {
+            //Note
+            System.out.println("Tu da ton tai");
+        }
+    }
+
+    public void dropWord() {
+        //Input
+        System.out.print("Xoa tu: ");
+        String input = scan.nextLine();
+        String wordDrop = input.toLowerCase();
+        HashMap<String, String> mapofWord = new HashMap<>();
+
+        //Slove
+        //Check tu trong text
+        //Doc file tuan tu luu vao mot mang / map
+        try {
+            String filePath = "data/Add_Word_Dictionary.txt";
+            FileInputStream fileInputStream = new FileInputStream(filePath);
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+            String line = "";
+            while ((line = bufferedReader.readLine()) != null) {
+                if (line.isEmpty()) {
+                    continue;
+                }
+
+                String[] arrayofWord = line.split("\t", 2);
+                if (arrayofWord.length >= 2) {
+                    String word = arrayofWord[0].trim().toLowerCase();
+                    String definition = arrayofWord[1].trim();
+
+                    System.out.printf("%s,%s\n", word, definition);
+
+                    mapofWord.put(word, definition);
+                } else {
+                    System.out.println("Lỗi out of bound exception");
+                }
+            }
+            System.out.println("Lưu file txt vào bộ nhớ đệm Map");
+
+            //Close buff, file,...
+            bufferedReader.close();
+            inputStreamReader.close();
+            fileInputStream.close();
+        } catch (IOException e) {
+            System.out.print("Lỗi đọc hoặc đóng mở file: ");
+            e.printStackTrace();
+        }
+        //Duyet mang va check
+        if (mapofWord.containsKey(wordDrop)) {
+            //Neu co thi xoa trong text
+            //Xoa tu trong map
+            System.out.println("Đã xóa từ khỏi Map: " + wordDrop);
+            mapofWord.remove(wordDrop);
+            //Ghi lai len file
+            try {
+                String filePath = "data/Add_Word_Dictionary.txt";
+                FileWriter fileWriter = new FileWriter(filePath, false);
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+                mapofWord.forEach(
+                        (word, definition)
+                                -> {
+                            String temp = word + "\t\t\t" + definition + "\n";
+                            try {
+                                bufferedWriter.write(temp);
+                            } catch (IOException e) {
+                                System.out.print("Lỗi ghi đè lại file: ");
+                                e.printStackTrace();
+                            }
+                        }
+                );
+                System.out.println("Đã ghi đè lại file");
+
+                //close
+                bufferedWriter.close();
+                fileWriter.close();
+            } catch (IOException e) {
+                System.out.print("Lỗi ghi file hoặc đóng file: ");
+                e.printStackTrace();
+            }
+        } else {
+            //Khong co check trong DB
+            MySQLConnector mySQLConnection = new MySQLConnector();
+            Connection connection = mySQLConnection.getConnection();
+            boolean ifNot = false;
+            try {
+                Statement statement = connection.createStatement();
+                String query = "SELECT definition FROM dictionary_db.dictionary where target like '" + wordDrop + "'";
+                ResultSet resultSet = statement.executeQuery(query);
+                String definition = "";
+
+                while (resultSet.next()) {
+                    definition = resultSet.getString("definition");
+                }
+                if (definition == "") {
+                    ifNot = true;
+                } else {
+                    ifNot = false;
+                }
+
+                if (!ifNot) {
+                    //Co thi xoa trong DB
+                    query = "DELETE FROM dictionary_db.dictionary WHERE target = ?";
+                    PreparedStatement preparedStatement = connection.prepareStatement(query);
+                    preparedStatement.setString(1, wordDrop);
+                    int delete = preparedStatement.executeUpdate();
+
+                    if (delete > 0) {
+                        System.out.println("Đã XÓA từ + " + wordDrop + " khỏi CSDL!");
+                    } else {
+                        System.out.println("LỖI: KHÔNG THỂ XÓA từ + " + wordDrop + " khỏi CSDL!");
+                    }
+                } else {
+                    //Khong co nua thi bao loi
+                    System.out.println("LỖI: KHÔNG TÌM ĐƯỢC TỪ ĐÃ CHO");
+                }
+
+                resultSet.close();
+                statement.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            mySQLConnection.closeConnection();
+        }
     }
 }

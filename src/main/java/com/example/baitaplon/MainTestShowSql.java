@@ -11,8 +11,8 @@ public class MainTestShowSql extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("ViewFileSql.fxml"));
-//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("ViewFileSql.fxml")));
+        Parent root = FXMLLoader.load(getClass().getResource("FileSql.fxml"));
+//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("FileSql.fxml")));
         primaryStage.setTitle("SQL");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
