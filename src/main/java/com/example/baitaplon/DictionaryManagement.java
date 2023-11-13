@@ -129,6 +129,40 @@ public class DictionaryManagement {
             } else {
                 ifNot = false;
             }
+
+            if (ifNot) {
+                //Add to txt file -> Add to database
+                System.out.println("Nhap nghia cua tu " + addWord);
+                String mean = scan.nextLine();
+                try {
+                    String filePath = "data/Add_Word_Dictionary.txt";
+                    FileWriter filePen = new FileWriter(filePath);
+                    BufferedWriter bufferedWriter = new BufferedWriter(filePen);
+                    //write
+                    String newWord = addWord + "\t\t\t" + mean;
+                    bufferedWriter.write(newWord);
+                    //close
+                    bufferedWriter.flush();
+                    filePen.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                //Add at last in database
+                query = "INSERT INTO dictionary_db.dictionary (target, definition) VALUES (?, ?);";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, addWord);
+                preparedStatement.setString(2, mean);
+                int add = preparedStatement.executeUpdate();
+                if (add > 0) {
+                    System.out.println("Thêm thành công từ vào CSDL");
+                } else {
+                    System.out.println("LỖI: KHÔNG THỂ THÊM TỪ VÀO CSDL");
+                }
+            } else {
+                //Note
+                System.out.println("TỪ ĐÃ TỒN TẠI");
+            }
+
             resultSet.close();
             statement.close();
         } catch (SQLException e) {
@@ -136,29 +170,9 @@ public class DictionaryManagement {
         }
         mySQLConnection.closeConnection();
         //If not then add
-        if (ifNot) {
-            //Add to txt file -> Add to database
-            try {
-                String filePath = "data/Add_Word_Dictionary.txt";
-                FileWriter filePen = new FileWriter(filePath);
-                BufferedWriter bufferedWriter = new BufferedWriter(filePen);
-                //write
-                System.out.println("Nhap nghia cua tu " + addWord);
-                String mean = scan.nextLine();
-                String newWord = addWord + "\t\t\t" + mean;
-                bufferedWriter.write(newWord);
-                //close
-                bufferedWriter.flush();
-                filePen.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+
         //If it was the same -> anouncement
-        else {
-            //Note
-            System.out.println("Tu da ton tai");
-        }
+
     }
 
     public void dropWord() {
@@ -239,48 +253,49 @@ public class DictionaryManagement {
                 e.printStackTrace();
             }
         } else {
-            //Khong co check trong DB
-            MySQLConnector mySQLConnection = new MySQLConnector();
-            Connection connection = mySQLConnection.getConnection();
-            boolean ifNot = false;
-            try {
-                Statement statement = connection.createStatement();
-                String query = "SELECT definition FROM dictionary_db.dictionary where target like '" + wordDrop + "'";
-                ResultSet resultSet = statement.executeQuery(query);
-                String definition = "";
-
-                while (resultSet.next()) {
-                    definition = resultSet.getString("definition");
-                }
-                if (definition == "") {
-                    ifNot = true;
-                } else {
-                    ifNot = false;
-                }
-
-                if (!ifNot) {
-                    //Co thi xoa trong DB
-                    query = "DELETE FROM dictionary_db.dictionary WHERE target = ?";
-                    PreparedStatement preparedStatement = connection.prepareStatement(query);
-                    preparedStatement.setString(1, wordDrop);
-                    int delete = preparedStatement.executeUpdate();
-
-                    if (delete > 0) {
-                        System.out.println("Đã XÓA từ + " + wordDrop + " khỏi CSDL!");
-                    } else {
-                        System.out.println("LỖI: KHÔNG THỂ XÓA từ + " + wordDrop + " khỏi CSDL!");
-                    }
-                } else {
-                    //Khong co nua thi bao loi
-                    System.out.println("LỖI: KHÔNG TÌM ĐƯỢC TỪ ĐÃ CHO");
-                }
-
-                resultSet.close();
-                statement.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-            mySQLConnection.closeConnection();
+            System.out.println("Từ " + wordDrop + " không có trong bộ nhớ đệm");
         }
+        //Check trong DB neu co xoa trong db
+        MySQLConnector mySQLConnection = new MySQLConnector();
+        Connection connection = mySQLConnection.getConnection();
+        boolean ifNot = false;
+        try {
+            Statement statement = connection.createStatement();
+            String query = "SELECT definition FROM dictionary_db.dictionary where target like '" + wordDrop + "'";
+            ResultSet resultSet = statement.executeQuery(query);
+            String definition = "";
+
+            while (resultSet.next()) {
+                definition = resultSet.getString("definition");
+            }
+            if (definition == "") {
+                ifNot = true;
+            } else {
+                ifNot = false;
+            }
+
+            if (!ifNot) {
+                //Co thi xoa trong DB
+                query = "DELETE FROM dictionary_db.dictionary WHERE target = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                preparedStatement.setString(1, wordDrop);
+                int delete = preparedStatement.executeUpdate();
+
+                if (delete > 0) {
+                    System.out.println("Đã XÓA từ " + wordDrop + " khỏi CSDL!");
+                } else {
+                    System.out.println("LỖI: KHÔNG THỂ XÓA từ " + wordDrop + " khỏi CSDL!");
+                }
+            } else {
+                //Khong co nua thi bao loi
+                System.out.println("LỖI: KHÔNG TÌM ĐƯỢC TỪ ĐÃ CHO");
+            }
+
+            resultSet.close();
+            statement.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        mySQLConnection.closeConnection();
     }
 }
