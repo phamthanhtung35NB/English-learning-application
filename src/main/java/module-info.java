@@ -13,7 +13,7 @@ module com.example.baitaplon {
     requires java.desktop;
     requires java.sql;
     requires mysql.connector.java;
-//    requires java.google.speech.api;
+    requires java.google.speech.api;
     requires jlayer;
     requires json;
     requires java.flac.encoder;
