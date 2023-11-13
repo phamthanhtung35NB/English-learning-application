@@ -145,7 +145,7 @@ public class DictionaryManagement {
                 //write
                 System.out.println("Nhap nghia cua tu " + addWord);
                 String mean = scan.nextLine();
-                String newWord =  addWord + "\t\t" + mean;
+                String newWord = addWord + "\t\t" + mean;
                 bufferedWriter.write(newWord);
                 //close
                 bufferedWriter.flush();
@@ -166,37 +166,85 @@ public class DictionaryManagement {
         System.out.print("Xoa tu: ");
         String input = scan.nextLine();
         String wordDrop = input.toLowerCase();
+        HashMap<String, String> mapofWord = new HashMap<>();
 
         //Slove
-            //Check tu trong text
-                //Doc file tuan tu luu vao mot mang / map
+        //Check tu trong text
+        //Doc file tuan tu luu vao mot mang / map
         try {
             String filePath = "data/Add_Word_Dictionary.txt";
             FileInputStream fileInputStream = new FileInputStream(filePath);
             InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-            HashMap<String, String> mapofWord = new HashMap<>();
 
             String line = "";
             while ((line = bufferedReader.readLine()) != null) {
-                String [] arrayofWord = line.split("\t", 2);
-                String word = arrayofWord[0];
-                String definition = arrayofWord[1].trim();
-                mapofWord.put(word, definition);
+                if (line.isEmpty()) {
+                    continue;
+                }
+                String[] arrayofWord = line.split("   ", 2);
+                if (arrayofWord.length >= 2) {
+                    String word = arrayofWord[0].trim().toLowerCase();
+                    String definition = arrayofWord[1].trim();
+
+                    System.out.printf("%s,%s\n", word, definition);
+
+                    mapofWord.put(word, definition);
+                }
+                else {
+                    System.out.println("Lỗi out of bound exception");
+                }
             }
+            System.out.println("Lưu file txt vào bộ nhớ đệm Map");
 
             //Close buff, file,...
             bufferedReader.close();
             inputStreamReader.close();
             fileInputStream.close();
         } catch (IOException e) {
+            System.out.print("Lỗi đọc hoặc đóng mở file: ");
             e.printStackTrace();
         }
         //Duyet mang va check
+        if (mapofWord.containsKey(wordDrop)) {
             //Neu co thi xoa trong text
+            //Xoa tu trong map
+            System.out.println("Đã xóa từ khỏi Map: " + wordDrop);
+            mapofWord.remove(wordDrop);
+            //Ghi lai len file
+            try {
+                String filePath = "data/Add_Word_Dictionary.txt";
+                FileWriter fileWriter = new FileWriter(filePath, false);
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+                mapofWord.forEach(
+                        (word, definition)
+                                -> {
+                            String temp = word + "\t\t" + definition + "\n";
+                            try {
+                                bufferedWriter.write(temp);
+                            } catch (IOException e) {
+                                System.out.print("Lỗi ghi đè lại file: ");
+                                e.printStackTrace();
+                            }
+                        }
+                );
+                System.out.println("Đã ghi đè lại file");
+
+                //close
+                bufferedWriter.close();
+                fileWriter.close();
+            } catch (IOException e) {
+                System.out.print("Lỗi ghi file hoặc đóng file: ");
+                e.printStackTrace();
+            }
+        } else {
             //Khong co check trong DB
-            //Co thi xoa trong DB
-            //Khong co nua thi bao loi
+            System.out.println("Không thấy từ " + wordDrop);
+        }
+
+        //Co thi xoa trong DB
+        //Khong co nua thi bao loi
         //Output
     }
 }
