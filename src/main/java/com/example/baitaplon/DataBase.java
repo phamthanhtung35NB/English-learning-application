@@ -25,7 +25,43 @@ public class DataBase {
         return connection;
     }
 
-    public static String addDataLogin(String username,String password) throws SQLException {
+    public static boolean checkDataUsernameLogin(String username) throws SQLException {
+        //cau lech khong co tham so
+
+        Statement query = null;
+        ResultSet ketQuaTruyVan = null;
+        Connection connection = getConnectionToDataBase();
+        try {
+            System.out.println(connection);
+            query = connection.createStatement();
+            ketQuaTruyVan = query.executeQuery("select user_name from account");
+            //check tk mk
+            while (ketQuaTruyVan.next()) {
+                System.out.println(ketQuaTruyVan.getString("user_name") + "\n" + username);
+                if (username.equals(ketQuaTruyVan.getString("user_name"))) {
+                    System.out.println("true");
+                    return true;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ketQuaTruyVan != null) {
+                    ketQuaTruyVan.close();
+                }
+                if (query != null) {
+                    query.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        System.out.println("false");
+        return false;
+    }
+
+    public static String checkDataLogin(String username, String password) throws SQLException {
         //cau lech khong co tham so
 
         Statement query = null;
@@ -37,9 +73,14 @@ public class DataBase {
             ketQuaTruyVan = query.executeQuery("select user_name,password,studying_array from account");
             //check tk mk
             while (ketQuaTruyVan.next()) {
-                System.out.printf(ketQuaTruyVan.getString("user_name") + " " + ketQuaTruyVan.getString("password") + "\n");
+//                System.out.printf(ketQuaTruyVan.getString("user_name") + " " + ketQuaTruyVan.getString("password") + "\n");
                 if (username.equals(ketQuaTruyVan.getString("user_name")) && password.equals(ketQuaTruyVan.getString("password"))) {
-                    return ketQuaTruyVan.getString("studying_array");
+                    System.out.println(ketQuaTruyVan.getString("studying_array"));
+                    if (ketQuaTruyVan.getString("studying_array") == null) {
+                        return "";
+                    } else {
+                        return ketQuaTruyVan.getString("studying_array");
+                    }
                 }
             }
         } catch (SQLException e) {
@@ -63,24 +104,32 @@ public class DataBase {
         Connection connection = getConnectionToDataBase();
         Statement query = connection.createStatement();
         ResultSet ketQuaTruyVan = null;
-        try {
-            System.out.println(getConnectionToDataBase());
-            ketQuaTruyVan = query.executeQuery("SELECT MAX(id_account) AS max_id FROM account");
-            int maxId = ketQuaTruyVan.getInt("max_id");
-            maxId++;
 
-            String sql = "INSERT INTO account (id_account,user_name, password) VALUES (?,?,?)";
-            //cau lech co tham so
+        try {
+            // Get the maximum account ID from the database
+            ketQuaTruyVan = query.executeQuery("SELECT MAX(id_account) AS max_id FROM account");
+            int maxId = 0;
+
+            if (ketQuaTruyVan.next()) {
+                maxId = ketQuaTruyVan.getInt("max_id");
+                maxId++;
+            }
+            System.out.println(maxId);
+
+            String sql = "INSERT INTO account (id_account, user_name, password) VALUES (?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, maxId);
             preparedStatement.setString(2, username);
             preparedStatement.setString(3, password);
-            // Push to database
+            System.out.println(preparedStatement);
+            // Execute the SQL statement to insert the new account
             preparedStatement.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         } finally {
+            // Close resources in the finally block to ensure they are always closed
             try {
                 if (ketQuaTruyVan != null) {
                     ketQuaTruyVan.close();
@@ -94,6 +143,7 @@ public class DataBase {
         }
         return true;
     }
+
 
     public static Set<Integer> takeData(String string) throws SQLException {
         String[] numberStrings = string.split(",");
