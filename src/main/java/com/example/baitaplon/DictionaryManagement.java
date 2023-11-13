@@ -137,7 +137,7 @@ public class DictionaryManagement {
         mySQLConnection.closeConnection();
         //If not then add
         if (ifNot) {
-            //Add to txt file
+            //Add to txt file -> Add to database
             try {
                 String filePath = "data/Add_Word_Dictionary.txt";
                 FileWriter filePen = new FileWriter(filePath);
@@ -145,7 +145,7 @@ public class DictionaryManagement {
                 //write
                 System.out.println("Nhap nghia cua tu " + addWord);
                 String mean = scan.nextLine();
-                String newWord = addWord + "\t\t" + mean;
+                String newWord = addWord + "\t\t\t" + mean;
                 bufferedWriter.write(newWord);
                 //close
                 bufferedWriter.flush();
@@ -182,7 +182,8 @@ public class DictionaryManagement {
                 if (line.isEmpty()) {
                     continue;
                 }
-                String[] arrayofWord = line.split("   ", 2);
+
+                String[] arrayofWord = line.split("\t", 2);
                 if (arrayofWord.length >= 2) {
                     String word = arrayofWord[0].trim().toLowerCase();
                     String definition = arrayofWord[1].trim();
@@ -220,7 +221,7 @@ public class DictionaryManagement {
                 mapofWord.forEach(
                         (word, definition)
                                 -> {
-                            String temp = word + "\t\t" + definition + "\n";
+                            String temp = word + "\t\t\t" + definition + "\n";
                             try {
                                 bufferedWriter.write(temp);
                             } catch (IOException e) {
@@ -242,7 +243,6 @@ public class DictionaryManagement {
             //Khong co check trong DB
             System.out.println("Không thấy từ " + wordDrop);
         }
-
         //Co thi xoa trong DB
         //Khong co nua thi bao loi
         //Output
