@@ -1,0 +1,97 @@
+
+.buttonOk {
+    -fx-pref-height: 25;
+    -fx-pref-width: 60;
+    -fx-text-fill: #3f2e33;
+    -fx-background-color: Null;
+    -fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -10, 15);
+    -fx-font-weight: bold;
+    -fx-background-radius: 20 20 20 20;
+    -fx-padding: 20 20 20 20;
+    -fx-font-size: 13px;
+}
+
+.buttonOk:hover {
+    -fx-pref-height: 25;
+    -fx-pref-width: 60;
+    -fx-background-color:#dc9064;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 10, 0, 0);
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-padding: 10 10 10 10;
+    /*-fx-background-image: url("hover-background.png");*/
+    -fx-text-fill: black;
+}
+.buttonOk-rotate-ver-right {
+    -webkit-animation: slide-rotate-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-rotate-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+.buttonCancel {
+    -fx-text-fill: #3f2e33;
+    -fx-background-color: Null;
+    -fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -10, 15);
+    -fx-font-weight: bold;
+    -fx-background-radius: 20 20 20 20;
+    -fx-padding: 20 20 20 20;
+    -fx-font-size: 13px;
+}
+
+.buttonCancel:hover {
+    -fx-background-color:#dc9064;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 10, 0, 0);
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-padding: 10 10 10 10;
+    /*-fx-background-image: url("hover-background.png");*/
+    -fx-text-fill: black;
+}
+.buttonNew {
+    -fx-pref-height: 30;
+    -fx-pref-width: 130;
+    -fx-text-fill: #3f2e33;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-background-color: Null;
+}
+.buttonNew:hover {
+    -fx-pref-height: 10;
+    -fx-pref-width: 120;
+    -fx-background-color: #eba76a;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 10, 0, 0);
+    -fx-cursor: hand;
+    -fx-font-size: 13px;
+    -fx-padding: 5 5 5 5;
+    /*-fx-background-image: url("hover-background.png");*/
+    -fx-text-fill: #ff00ff;
+}
+.textBox{
+    -fx-font-size: 15px;
+    -fx-background-color: Null;
+    -fx-padding: 5 5 5 5;
+    -fx-border-color: #d2ae94;
+    -fx-border-width: 1px;
+}
+.textBox:hover {
+    -fx-font-size: 15px;
+    -fx-padding: 5 5 5 5;
+    -fx-background-color: #8695ac;
+    -webkit-animation: slide-rotate-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: slide-rotate-ver-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.textBox:focused {
+    -fx-font-size: 15px;
+    -fx-background-color: #697486;
+    -fx-text-fill: #fefacd;
+    -fx-padding: 5 5 5 5;
+}
+/*.focus-in-expand {*/
+/*    -webkit-animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;*/
+/*    animation: focus-in-expand 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;*/
+/*}*/
+/*.label{*/
+/*    -fx-font-size: 15px;*/
+/*    -fx-background-color: Null;*/
+/*    -fx-padding: 5 5 5 5;*/
+
+/*}*/
