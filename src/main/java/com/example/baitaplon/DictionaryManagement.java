@@ -175,6 +175,10 @@ public class DictionaryManagement {
 
     }
 
+    /**
+     * Delete Word.
+     * Search text in database + DELETE in Add_Word_Dictionary.txt if word not in data
+     */
     public void dropWord() {
         //Input
         System.out.print("Xoa tu: ");
