@@ -20,6 +20,15 @@ public class APIgoogle{
 //    public static void main(String[] args) {
 //        launch(args);
 //    }
+
+    /**
+     * dich tu
+     * @param langFrom ngoon ngu dich
+     * @param langTo ngon ngu dich
+     * @param text tu can dich
+     * @return  tu da dich
+     * @throws IOException
+     */
     static String translate(String langFrom, String langTo, String text) throws IOException {
         // INSERT YOU URL HERE
         String urlStr = "https://script.google.com/macros/s/AKfycbyVeA0Z-oCUPgZsH7nIXe-i8h_RrAEWtLJofqHcqbIRvWsPlze6g826UE69BpLUgiU/exec" +

@@ -17,31 +17,13 @@ import java.io.IOException;
  */
 public class TextToSpeech {
 
-    public static void main(String[] args) {
-        new TextToSpeech("con chim");
-    }
+//    public static void main(String[] args) {
+//        new TextToSpeech("con chim");
+//    }
     SynthesiserV2 synthesizer = new SynthesiserV2("AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw");
 
     public TextToSpeech(String text) {
-
-        //Let's speak in English
         speak(text);
-
-        //Speak Chinese Fuckers
-        //speak("我可以说你想要的任何语言！");
-
-        //Let's Speak in Somalian
-        //speak("Waxaan ku hadli karaa luqad aad rabto!");
-
-        //Let's Speak in Hindi
-        //speak("मैं चाहता हूं कि कोई भी भाषा बोल सकता हूँ!");
-
-        //Let's Speak in Polish
-        //speak("Mogę mówić dowolnym językiem, którego chcesz!");
-
-        //Let's Speak in Persian       ----- This doens't work for some reason i have to figure out ... ;(
-        //speak("من می توانم به هر زبان که می خواهید صحبت کنید!");
-
     }
 
     public void speak(String text) {

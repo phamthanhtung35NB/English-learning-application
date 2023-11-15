@@ -17,34 +17,29 @@ public class ControllerLogin {
 
     protected static String studying_array = "";
 
+    /**
+     * Khai báo các thành phần trong giao diện login
+     */
     @FXML
     private TextField textName;
     @FXML
     private PasswordField textPass;
     @FXML
-    private TextField textNameNew;
-    @FXML
-    private PasswordField textPassNew;
-    @FXML
-    private PasswordField textRepeatPassNew;
-    @FXML
     private Label labelShowPass;
     @FXML
-    private Label labelShowPassNewAccount;
-    @FXML
-    private Label labelShowPassNewAccountRepeat;
-    @FXML
     private CheckBox trueShow;
-    @FXML
-    private CheckBox trueShowNewAccount;
-    @FXML
-    private CheckBox trueShowNewAccountRepeat;
+
 //    @FXML
 //    protected void buttonCancelLogin(ActionEvent event) {
 //        Node source = (Node) event.getSource();
 //        Stage currentStage = (Stage) source.getScene().getWindow();
 //        currentStage.close();
 //    }
+
+    /**
+     * Hiển thị mật khẩu khi check vào ô hiển thị mật khẩu
+     * @param event
+     */
     @FXML
     protected void checkBoxShowPass(ActionEvent event) {
         if (trueShow.isSelected()) {
@@ -56,27 +51,43 @@ public class ControllerLogin {
             labelShowPass.setText("");
         }
     }
-    @FXML
-    protected void checkBoxShowPassNewAccount(ActionEvent event) {
-        if (trueShowNewAccount.isSelected()) {
-            // If selected, display the password
-            labelShowPassNewAccount.setText(textPassNew.getText());
-        } else {
-            // If not selected, hide the password
-            labelShowPassNewAccount.setText("");
+
+    /**
+     * Chuyển sang giao diện home sau khi đăng nhập thành công và đóng giao diện login
+     * @param event
+     */
+    public void viewLoginToHome(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage HomeStage = new Stage();
+            HomeStage.setTitle("Home");
+            HomeStage.setScene(scene);
+
+            /**
+             * Lấy Node từ sự kiện
+             * Đối tượng event là sự kiện mà chúng ta đã gán cho nút đăng nhập
+             * Đối tượng source là Node gốc mà sự kiện được phát ra
+             * Trong trường hợp này, Node gốc là nút đăng nhập
+             * Sau khi có Node gốc, chúng ta có thể lấy Stage từ Node gốc
+             * Cuối cùng, chúng ta có thể đóng Stage
+             */
+            Node source = (Node) event.getSource();
+            Stage currentStage = (Stage) source.getScene().getWindow();
+            currentStage.close();
+
+            HomeStage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-    @FXML
-    protected void checkBoxShowPassNewAccountRepeat(ActionEvent event) {
-        if (trueShowNewAccountRepeat.isSelected()) {
-            // If selected, display the password
-            labelShowPassNewAccountRepeat.setText(textRepeatPassNew.getText());
-//            System.out.println(labelShowPass.getText());
-        } else {
-            // If not selected, hide the password
-            labelShowPassNewAccountRepeat.setText("");
-        }
-    }
+    /**
+     * Chuyển sang giao diện new account
+     * @param event
+     * @throws IOException
+     */
     @FXML
     protected void buttonNewAccount(ActionEvent event) throws IOException {
         Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
@@ -86,15 +97,11 @@ public class ControllerLogin {
         Scene scene = new Scene(sampleParent);
         stage.setScene(scene);
     }
-    @FXML
-    protected void buttonCancelNewAccount(ActionEvent event) throws IOException {
-        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("Login.fxml"));
-        Parent sampleParent = loader.load();
-        Scene scene = new Scene(sampleParent);
-        stage.setScene(scene);
-    }
+    /**
+     * Kiểm tra tài khoản và mật khẩu có đúng không và chuyển sang giao diện home
+     * @param event
+     * @throws SQLException
+     */
     @FXML
     protected void buttonOkLogin(ActionEvent event) throws SQLException {
 
@@ -113,6 +120,78 @@ public class ControllerLogin {
             alert.show();
         }
     }
+
+
+    //cua so new account
+    /**
+     * Khai báo các thành phần trong giao diện new account
+     */
+    @FXML
+    private TextField textNameNew;
+    @FXML
+    private PasswordField textPassNew;
+    @FXML
+    private PasswordField textRepeatPassNew;
+    @FXML
+    private Label labelShowPassNewAccount;
+    @FXML
+    private Label labelShowPassNewAccountRepeat;
+    @FXML
+    private CheckBox trueShowNewAccount;
+    @FXML
+    private CheckBox trueShowNewAccountRepeat;
+    /**
+     * Hiển thị mật khẩu khi check vào ô hiển thị mật khẩu cuả new account
+     * @param event
+     */
+    @FXML
+    protected void checkBoxShowPassNewAccount(ActionEvent event) {
+        if (trueShowNewAccount.isSelected()) {
+            // If selected, display the password
+            labelShowPassNewAccount.setText(textPassNew.getText());
+        } else {
+            // If not selected, hide the password
+            labelShowPassNewAccount.setText("");
+        }
+    }
+
+    /**
+     * Hiển thị mật khẩu khi check vào ô hiển thị mật khẩu nhap lai cuả new account
+     * @param event
+     */
+    @FXML
+    protected void checkBoxShowPassNewAccountRepeat(ActionEvent event) {
+        if (trueShowNewAccountRepeat.isSelected()) {
+            // If selected, display the password
+            labelShowPassNewAccountRepeat.setText(textRepeatPassNew.getText());
+//            System.out.println(labelShowPass.getText());
+        } else {
+            // If not selected, hide the password
+            labelShowPassNewAccountRepeat.setText("");
+        }
+    }
+
+    /**
+     * Chuyển sang giao diện login
+     * @param event
+     * @throws IOException
+     */
+    @FXML
+    protected void buttonCancelNewAccount(ActionEvent event) throws IOException {
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("Login.fxml"));
+        Parent sampleParent = loader.load();
+        Scene scene = new Scene(sampleParent);
+        stage.setScene(scene);
+    }
+
+    /**
+     * Tạo tài khoản mới
+     * @param event
+     * @throws IOException
+     * @throws SQLException
+     */
     @FXML
     protected void buttonOkNewAccount(ActionEvent event) throws IOException, SQLException {
         if (textPassNew.getText().equals(textRepeatPassNew.getText())&&!textPassNew.getText().equals("")&&!textNameNew.getText().equals("")) {
@@ -159,36 +238,6 @@ public class ControllerLogin {
             System.out.println("Tên tài khoản và Mật khẩu không được để trống, mật khẩu và mật khẩu lặp lại phải giống nhau");
             alert.setContentText("Account name and Password cannot be blank, password and repeated password need to be the same");
             alert.show();
-        }
-
-
-
-    }
-    public void viewLoginToHome(ActionEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage HomeStage = new Stage();
-            HomeStage.setTitle("Home");
-            HomeStage.setScene(scene);
-
-            /**
-             * Lấy Node từ sự kiện
-             * Đối tượng event là sự kiện mà chúng ta đã gán cho nút đăng nhập
-             * Đối tượng source là Node gốc mà sự kiện được phát ra
-             * Trong trường hợp này, Node gốc là nút đăng nhập
-             * Sau khi có Node gốc, chúng ta có thể lấy Stage từ Node gốc
-             * Cuối cùng, chúng ta có thể đóng Stage
-             */
-            Node source = (Node) event.getSource();
-            Stage currentStage = (Stage) source.getScene().getWindow();
-            currentStage.close();
-
-            HomeStage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 }

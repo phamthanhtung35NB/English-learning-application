@@ -24,6 +24,9 @@ public class ComboBoxController implements Initializable {
     String selectedInPut = "auto";
     String selectedOutPut = "en";
 
+    /**
+     * list cac ngon ngu cua input
+     */
     ObservableList<String> listInPut = FXCollections.observableArrayList("Auto",
             "Tiếng Việt (Việt Nam)",
             "Tiếng Anh (English)",
@@ -66,6 +69,9 @@ public class ComboBoxController implements Initializable {
             "Tiếng Nhật (日本語)",
             "Tiếng Hàn (한국어)"
     );
+    /**
+     * list cac ngon ngu cua output
+     */
     ObservableList<String> listOutPut = FXCollections.observableArrayList("Tiếng Việt (Việt Nam)",
             "Tiếng Anh (English)",
             "Tiếng Ả Rập (العربية)",
@@ -108,7 +114,7 @@ public class ComboBoxController implements Initializable {
             "Tiếng Hàn (한국어)"
     );
 
-    //khi chon
+    //khi chon ngon ngu trong combobox
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // load gia tri
@@ -128,46 +134,13 @@ public class ComboBoxController implements Initializable {
         System.out.println("selectedInPut: " + selectedInPut);
         System.out.println("selectedOutPut: " + selectedOutPut);
     }
-//    es: Tiếng Tây Ban Nha (Español)
-//    fr: Tiếng Pháp (Français)
-//    de: Tiếng Đức (Deutsch)
-//    ja: Tiếng Nhật (日本語)
-//    ko: Tiếng Hàn (한국어)
-//    zh: Tiếng Trung (中文)
-//    ru: Tiếng Nga (Русский)
-//    ar: Tiếng Ả Rập (العربية)
-//    pt: Tiếng Bồ Đào Nha (Português)
-//    hi: Tiếng Hin-ddi (हिन्दी)
-//    it: Tiếng Ý (Italiano)
-//    nl: Tiếng Hà Lan (Nederlands)
-//    th: Tiếng Thái (ไทย)
-//    tr: Tiếng Thổ Nhĩ Kỳ (Türkçe)
-//    pl: Tiếng Ba Lan (Polski)
-//    sv: Tiếng Thụy Điển (Svenska)
-//    da: Tiếng Đan Mạch (Dansk)
-//    fi: Tiếng Phần Lan (Suomi)
-//    no: Tiếng Na Uy (Norsk)
-//    el: Tiếng Hy Lạp (Ελληνικά)
-//    cs: Tiếng Séc (Čeština)
-//    hu: Tiếng Hungary (Magyar)
-//    ro: Tiếng Romania (Română)
-//    sk: Tiếng Slovakia (Slovenčina)
-//    hr: Tiếng Croatia (Hrvatski)
-//    id: Tiếng Indonesia (Bahasa Indonesia)
-//    ms: Tiếng Malay (Bahasa Melayu)
-//    th: Tiếng Thái (ไทย)
-//    bg: Tiếng Bulgaria (Български)
-//    he: Tiếng Hebrew (עברית)
-//    sr: Tiếng Serbia (Српски)
-//    sl: Tiếng Slovenia (Slovenščina)
-//    et: Tiếng Estonia (Eesti)
-//    lv: Tiếng Latvia (Latviešu)
-//    lt: Tiếng Lithuania (Lietuvių)
-//    sq: Tiếng Albania (Shqip)
-//    mk: Tiếng Macedonia (Македонски)
-//    is: Tiếng Iceland (Íslenska)
-//    sw: Tiếng Swahili
-//    fil: Tiếng Filipino (Filipino)
+
+
+    /**
+     * chuyen tu ten ngon ngu sang ma ngon ngu
+     * @param string
+     * @return ma ngon ngu
+     */
     public String convertToLanguageCode(String string) {
         if (selectedInPut.equals("Select Language")) {
 
@@ -265,6 +238,12 @@ public class ComboBoxController implements Initializable {
 
         return "auto";
     }
+
+    /**
+     * chuyen tu ma ngon ngu sang ten ngon ngu
+     * @param string
+     * @return ma ngon ngu
+     */
     public static String convertToLanguageName(String string) {
         switch (string) {
             case "en":
@@ -355,6 +334,10 @@ public class ComboBoxController implements Initializable {
     }
 
 
+    /**
+     * dich tu
+     * input: tu can dich lay tu textfield
+     */
     public void translateText() {
         String input = inputTextApiGoogle.getText();
         try {
