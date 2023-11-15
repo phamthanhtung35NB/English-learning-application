@@ -8,6 +8,7 @@ import javafx.scene.web.WebView;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class ControllerSearchByFile {
@@ -26,10 +27,13 @@ public class ControllerSearchByFile {
     private static final String DATA_FILE_PATH = "data/E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
 
+    private ArrayList<Word> wordList = new ArrayList<>();
 
     private String text;
+
     public void initComponents() {
 //        ControllerSearchByFile context = this;
+
         this.listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     text = newValue.trim();
@@ -38,6 +42,19 @@ public class ControllerSearchByFile {
                     this.explainView.getEngine().loadContent(definition, "text/html");
                 }
         );
+
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            String searchContent = search.getText().toLowerCase();
+            listView.getItems().clear();
+
+            for (Word word : wordList) {
+                if (word.getWord_target().toLowerCase().startsWith(searchContent)) {
+                    listView.getItems().add(word.getWord_target());
+                }
+            }
+        });
+
+
     }
 
     public void readData() throws IOException {
@@ -49,6 +66,7 @@ public class ControllerSearchByFile {
             String word = parts[0];
             String definition = SPLITTING_CHARACTERS + parts[1];
             Word wordObj = new Word(word, definition);
+            wordList.add(wordObj);
             data.put(word, wordObj);
         }
     }
@@ -66,10 +84,11 @@ public class ControllerSearchByFile {
             this.explainView.getEngine().loadContent("\n\n Not in the dictionary", "text/html");
         }
     }
-//    @FXML
-//    protected void clickSpeech() {
-//        new TextToSpeech(text);
-//    }
+
+    @FXML
+    protected void clickSpeech() {
+        new TextToSpeech(text);
+    }
 
     @FXML
     protected void load() throws IOException {
