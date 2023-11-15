@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="dataSourceStorageLocal" created-in="IU-232.10227.8">
+=======
+  <component name="dataSourceStorageLocal" created-in="IU-232.10203.10">
+>>>>>>> b953160e984bee9caeee7297ae341bdd0ae7a07f
     <data-source name="@localhost" uuid="81e34b5b-bfde-4d84-9212-dc069c2d9ec1">
       <database-info product="MySQL" version="8.1.0" jdbc-version="4.2" driver-name="MySQL Connector/J" driver-version="mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)" dbms="MYSQL" exact-version="8.1.0" exact-driver-version="8.0">
         <extra-name-characters>#@</extra-name-characters>

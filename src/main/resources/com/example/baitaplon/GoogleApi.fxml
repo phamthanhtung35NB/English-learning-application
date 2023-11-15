@@ -4,7 +4,10 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<<<<<<< HEAD
 <?import javafx.scene.control.ToggleButton?>
+=======
+>>>>>>> b953160e984bee9caeee7297ae341bdd0ae7a07f
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
@@ -31,6 +34,9 @@
       <Button layoutX="237.0" layoutY="94.0" mnemonicParsing="false" text="Button" />
       <Button layoutX="489.0" layoutY="94.0" mnemonicParsing="false" text="Button" />
       <Button layoutX="582.0" layoutY="94.0" mnemonicParsing="false" text="Button" />
+<<<<<<< HEAD
       <ToggleButton layoutX="67.0" layoutY="94.0" mnemonicParsing="false" text="ToggleButton" />
+=======
+>>>>>>> b953160e984bee9caeee7297ae341bdd0ae7a07f
    </children>
 </Pane>

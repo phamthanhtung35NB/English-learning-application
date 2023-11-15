@@ -1,8 +1,13 @@
 package com.example.baitaplon;
 
 public class Word {
+<<<<<<< HEAD
     protected String word_target; //tieng anh
     protected String word_explain; //nghia tieng viet
+=======
+    String word_target; //tieng anh
+    String word_explain; //nghia tieng viet
+>>>>>>> b953160e984bee9caeee7297ae341bdd0ae7a07f
 
 
     public Word(String word_target, String word_explain) {

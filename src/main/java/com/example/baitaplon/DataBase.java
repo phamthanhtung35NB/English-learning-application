@@ -12,6 +12,7 @@ public class DataBase {
     private static String UserName = "";
     protected static Set<Integer> numberIdCuaTuDien = new TreeSet<>();
 
+
     public static Connection getConnectionToDataBase() {
         Connection connection = null;
         try {
@@ -31,6 +32,7 @@ public class DataBase {
     //check tai khoan da co chua
     //tra ve true neu tk chua ton tai
     //tra ve false neu tk da ton tai
+
     public static boolean checkDataUsernameLogin(String username) throws SQLException {
         //cau lech khong co tham so
 
@@ -43,7 +45,7 @@ public class DataBase {
             ketQuaTruyVan = query.executeQuery("select user_name from account");
             //check tk mk
             while (ketQuaTruyVan.next()) {
-//                System.out.println(ketQuaTruyVan.getString("user_name") + "\n" + username);
+                System.out.println(ketQuaTruyVan.getString("user_name") + "\n" + username);
                 if (username.equals(ketQuaTruyVan.getString("user_name"))) {
                     System.out.println("true");
                     return true;
@@ -67,10 +69,12 @@ public class DataBase {
         return false;
     }
 
+
     //tra ve chuoi studying_array
     //neu tk mk dung tra ve chuoi studying_array
     //neus studing_array null tra ve chuoi rong ""
     //neu tk mk sai tra ve -1
+
     public static String checkDataLogin(String username, String password) throws SQLException {
         //cau lech khong co tham so
 
@@ -83,9 +87,10 @@ public class DataBase {
             ketQuaTruyVan = query.executeQuery("select user_name,password,studying_array from account");
             //check tk mk
             while (ketQuaTruyVan.next()) {
+
                 System.out.printf(ketQuaTruyVan.getString("user_name") + " " + ketQuaTruyVan.getString("password") + "\n");
                 if (username.equals(ketQuaTruyVan.getString("user_name")) && password.equals(ketQuaTruyVan.getString("password"))) {
-                    UserName=ketQuaTruyVan.getString("user_name");
+                    UserName = ketQuaTruyVan.getString("user_name");
                     System.out.println(ketQuaTruyVan.getString("studying_array"));
                     if (ketQuaTruyVan.getString("studying_array") == null) {
                         chuoiStudying_array = "";
@@ -93,6 +98,7 @@ public class DataBase {
                     } else {
                         chuoiStudying_array = ketQuaTruyVan.getString("studying_array");
                         return chuoiStudying_array;
+
                     }
                 }
             }
@@ -112,7 +118,8 @@ public class DataBase {
         }
         return "-1";
     }
-//Studing_array
+
+    //Studing_array
     public static boolean setStuding_array(int id) throws SQLException {
         Connection connection = getConnectionToDataBase();
         Statement query = connection.createStatement();
@@ -152,6 +159,7 @@ public class DataBase {
 
     /**
      * chuyen kieu set sang string de truy van
+     *
      * @return
      * @throws SQLException
      */
@@ -170,6 +178,7 @@ public class DataBase {
 
     /**
      * load data tu dien cua so tu ca nhan
+     *
      * @throws SQLException
      */
     public static void loadDataSqlOfSoTuCaNhan() throws SQLException {
@@ -210,6 +219,7 @@ public class DataBase {
             }
         }
     }
+
 
     public static boolean newAccount(String username, String password) throws SQLException {
         Connection connection = getConnectionToDataBase();
@@ -259,6 +269,7 @@ public class DataBase {
     // lay tu tien anh cua dictionary bang id cua tu sau khi tach chuoi studying_array tra ve
     public static Set<Integer> takeData() throws SQLException {
         String[] numberStrings = chuoiStudying_array.split(",");
+
         Set<Integer> numberSetKetQua = new TreeSet<>();
 
         for (String numberString : numberStrings) {
@@ -273,10 +284,12 @@ public class DataBase {
     }
 
     public static void main(String[] args) throws SQLException {
+
 //        System.out.println(takeData("1,32,3,21,8"));
     }
 
 //    public static void main(String[] args) throws SQLException {
+
 //        System.out.println(newAccount("admin3", "admin3"));
 //        Set<Integer> tam = takeData(login("admin2", "admin2"));
 //        for (Integer i : tam) {
@@ -284,9 +297,7 @@ public class DataBase {
 //        }
 
 
-//    }
-    //test
-//    @Test
+}
 //    public static void main(String[] args) throws SQLException {
 //        // MySQL database URL
 //        System.out.println(getConnectionToDataBase());
@@ -298,5 +309,4 @@ public class DataBase {
 //                    + "  " + ketQuaTruyVan.getString(3));
 //        }
 //        query.close();
-//    }
-}
+

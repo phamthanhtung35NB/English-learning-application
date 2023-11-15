@@ -14,7 +14,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class ControllerLogin {
+
     protected static String studying_array = "";
+
     @FXML
     private TextField textName;
     @FXML

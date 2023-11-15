@@ -30,12 +30,17 @@ public class HomeController  {
     @FXML
     protected void buttonSearch() throws IOException{
         System.out.println("Search");
+<<<<<<< HEAD
         System.out.println("1");
         AnchorPane view = FXMLLoader.load(getClass().getResource("FileTxt.fxml"));
         System.out.println("2");
         centerBorderPane.setCenter(view);
         System.out.println("3");
 //        new ControllerSearchByFile().autoLoad();
+=======
+        AnchorPane view = FXMLLoader.load(getClass().getResource("FileTxt.fxml"));
+        centerBorderPane.setCenter(view);
+>>>>>>> b953160e984bee9caeee7297ae341bdd0ae7a07f
     }
     @FXML
     protected void buttonOnlineSearch() throws IOException{
@@ -48,6 +53,7 @@ public class HomeController  {
         System.out.println("Game");
     }
     @FXML
+<<<<<<< HEAD
     protected void buttonButton() throws IOException {
         System.out.println("buttonButton");
         System.out.println("1");
@@ -61,4 +67,14 @@ public class HomeController  {
     protected void buttonFeedback(){
         System.out.println("Feed Back");
     }
+=======
+    protected void buttonFeedback(){
+        System.out.println("Feed Back");
+    }
+    @FXML
+    protected void buttonButton() throws IOException {
+        System.out.println("buttonButton");
+
+    }
+>>>>>>> b953160e984bee9caeee7297ae341bdd0ae7a07f
 }

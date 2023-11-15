@@ -8,6 +8,9 @@ import javafx.scene.web.WebView;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+
+import java.util.ArrayList;
+
 import java.util.TreeMap;
 
 public class ControllerSearchByFile {
@@ -27,11 +30,14 @@ public class ControllerSearchByFile {
     private static final String SPLITTING_CHARACTERS = "<html>";
 
 
+
     //text la tu can doc
     private String text;
     //khoi tao cac thanh phan
+
+
     public void initComponents() {
-//        ControllerSearchByFile context = this;
+
         this.listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     text = newValue.trim();
@@ -40,6 +46,19 @@ public class ControllerSearchByFile {
                     this.explainView.getEngine().loadContent(definition, "text/html");
                 }
         );
+
+
+        search.textProperty().addListener((observable, oldValue, newValue) -> {
+            String searchContent = search.getText().toLowerCase();
+            listView.getItems().clear();
+
+            for (Word word : data.values()) {
+                if (word.getWord_target().toLowerCase().startsWith(searchContent)) {
+                    listView.getItems().add(word.getWord_target());
+                }
+            }
+        });
+
     }
 
     public void readData() throws IOException {
@@ -68,6 +87,7 @@ public class ControllerSearchByFile {
             this.explainView.getEngine().loadContent("\n\n Not in the dictionary", "text/html");
         }
     }
+
     @FXML
     protected void clickSpeech() {
         new TextToSpeech(text);
@@ -76,6 +96,7 @@ public class ControllerSearchByFile {
     @FXML
     protected void load() throws IOException {
         System.out.println("tesss");
+
         readData();
         loadWordList();
         initComponents();
@@ -92,6 +113,9 @@ public class ControllerSearchByFile {
         loadWordList();
         initComponents();
     }
+
+
+
     public void loadWordList() {
         this.listView.getItems().addAll(data.keySet());
     }
