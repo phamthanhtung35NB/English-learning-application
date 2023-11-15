@@ -6,6 +6,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 import java.io.IOException;
@@ -16,6 +17,7 @@ public class HomeController  {
 //    @FXML
 //    private Field tesst;
 
+    // centerBorderPane laf view chinh cua BorderPane
     @FXML
     private BorderPane centerBorderPane;
     @FXML
@@ -45,8 +47,10 @@ public class HomeController  {
         centerBorderPane.setCenter(view);
     }
     @FXML
-    protected void buttonGame(){
+    protected void buttonGame() throws IOException {
         System.out.println("Game");
+        GridPane view = FXMLLoader.load(getClass().getResource("Hangman.fxml"));
+        centerBorderPane.setCenter(view);
     }
     @FXML
     protected void buttonButton() throws IOException {

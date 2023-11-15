@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.WebView?>
+<?import java.net.URL?>
+<GridPane alignment="CENTER" hgap="10" prefHeight="600.0" prefWidth="800.0" vgap="10" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerHangman">
+    <Label prefHeight="59.0" prefWidth="192.0" text="Guess the word:" GridPane.rowIndex="0" />
+   <WebView fx:id="webView" prefHeight="200.0" prefWidth="200.0" styleClass="webView2" GridPane.columnIndex="1" />
+   <HBox prefHeight="100.0" prefWidth="521.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <children>
+          <Button onAction="#clickSubmit" styleClass="buttonChuCai" text="Submit" />
+      </children>
+   </HBox>
+    <Label fx:id="labelNotification" text="" GridPane.columnSpan="2" GridPane.rowIndex="4" />
+   <HBox fx:id="hBoxButtonsSecret" prefHeight="33.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   <HBox fx:id="hBoxAlphabet" prefHeight="33.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   <columnConstraints>
+      <ColumnConstraints maxWidth="344.0000244140625" minWidth="126.39999999999998" prefWidth="126.39999999999998" />
+      <ColumnConstraints maxWidth="517.5999633789063" minWidth="91.99997558593748" prefWidth="517.5999633789063" />
+      <ColumnConstraints maxWidth="333.5999755859375" minWidth="10.0" prefWidth="100.80003662109368" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="213.60000610351562" minHeight="160.0" prefHeight="211.20001220703125" />
+      <RowConstraints maxHeight="73.6" minHeight="19.99999389648437" prefHeight="22.399987792968744" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" />
+   </rowConstraints>
+
+   <stylesheets>
+      <URL value="@Hangman.css"></URL>
+    </stylesheets>
+</GridPane>
