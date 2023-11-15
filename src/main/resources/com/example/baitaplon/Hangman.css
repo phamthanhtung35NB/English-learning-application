@@ -33,7 +33,7 @@
     -fx-background-radius: 10 10 10 10;
     /*-fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -10, 15);*/
     -fx-font-weight: bold;
-    -fx-padding: 5 5 5 5;
+    -fx-padding: 2 2 2 2;
 
     -fx-background-color: #6bcc1b; /* Màu nền */
     -fx-text-fill: #000000; /* Màu chữ */
