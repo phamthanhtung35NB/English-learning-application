@@ -27,7 +27,6 @@ public class ControllerSearchByFile {
     private static final String DATA_FILE_PATH = "data/E_V.txt";
     private static final String SPLITTING_CHARACTERS = "<html>";
 
-    private ArrayList<Word> wordList = new ArrayList<>();
 
     private String text;
 
@@ -47,7 +46,7 @@ public class ControllerSearchByFile {
             String searchContent = search.getText().toLowerCase();
             listView.getItems().clear();
 
-            for (Word word : wordList) {
+            for (Word word : data.values()) {
                 if (word.getWord_target().toLowerCase().startsWith(searchContent)) {
                     listView.getItems().add(word.getWord_target());
                 }
@@ -66,7 +65,6 @@ public class ControllerSearchByFile {
             String word = parts[0];
             String definition = SPLITTING_CHARACTERS + parts[1];
             Word wordObj = new Word(word, definition);
-            wordList.add(wordObj);
             data.put(word, wordObj);
         }
     }
