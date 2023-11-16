@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
+
 public class DictionaryManagement {
     Scanner scan = new Scanner(System.in);
 
@@ -301,5 +302,14 @@ public class DictionaryManagement {
             e.printStackTrace();
         }
         mySQLConnection.closeConnection();
+    }
+
+
+    public void dictionarySQLiteSearch() {
+        System.out.print("Tim tu: ");
+        String input = scan.nextLine();
+        String searchWord = input.toLowerCase();
+
+
     }
 }
