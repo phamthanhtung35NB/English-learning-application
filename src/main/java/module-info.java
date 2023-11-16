@@ -17,6 +17,10 @@ module com.example.baitaplon {
     requires jlayer;
     requires json;
     requires java.flac.encoder;
+    requires org.mongodb.driver.core;
+    requires org.mongodb.driver.sync.client;
+    requires org.mongodb.bson;
+//    requires mongodb.driver;
 
 
     opens com.example.baitaplon to javafx.fxml;

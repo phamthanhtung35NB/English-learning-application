@@ -12,6 +12,7 @@ public class speechToText implements GSpeechResponseListener {
     // You have to make your own GOOGLE_API_KEY
     protected GSpeechDuplex duplex = new GSpeechDuplex("AIzaSyBOti4mM-6x9WDnZIjIeyEU21OpBXqWBgw");
     private String ketQua = "";
+    // Set language to English (The language must be supported by Google)
     public String speech(String setLanguage) throws IOException {
 
         duplex.setLanguage(setLanguage);
@@ -29,10 +30,8 @@ public class speechToText implements GSpeechResponseListener {
 //                duplex.stopSpeechRecognition();
 
 
-
         duplex.addResponseListener(new GSpeechResponseListener() {
             String old_text = "";
-
             public void onResponse(GoogleResponse gr) {
                 String output = "";
                 output = gr.getResponse();
@@ -56,6 +55,8 @@ public class speechToText implements GSpeechResponseListener {
         });
         return ketQua;
     }
+
+    // Default language is English
     public String speech() throws IOException {
 
         duplex.setLanguage("en");

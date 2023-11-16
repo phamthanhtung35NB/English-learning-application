@@ -153,6 +153,18 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.34.0</version> <!-- Thay phiên bản phù hợp -->
         </dependency>
+        <dependency>
+            <groupId>org.mongodb</groupId>
+            <artifactId>mongodb-driver-sync</artifactId>
+            <version>4.4.0</version> <!-- Use the latest version available -->
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.4.6</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
