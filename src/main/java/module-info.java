@@ -20,6 +20,7 @@ module com.example.baitaplon {
     requires org.mongodb.driver.core;
     requires org.mongodb.driver.sync.client;
     requires org.mongodb.bson;
+    requires javafx.media;
 //    requires mongodb.driver;
 
 

@@ -11,6 +11,18 @@
     /*-fx-font-family: url("@Nunito-Bold.ttf");*/
 
 }
+#vbox {
+    -fx-background-color: lightgray;
+    -fx-translate-x: -100%; /* Di chuyển từ bên trái ra ngoài màn hình ban đầu */
+    -fx-transition: -fx-translate-x 0.5s; /* Thời gian hiệu ứng 0.5 giây */
+}
+
+#vbox:hover {
+    -fx-translate-x: 0; /* Di chuyển về vị trí ban đầu khi di chuột vào */
+    -fx-transition: -fx-translate-x 0.001s; /* Thời gian hiệu ứng 0.5 giây */
+}
+
+
 
 .button1:hover {
     -fx-pref-height: 75;

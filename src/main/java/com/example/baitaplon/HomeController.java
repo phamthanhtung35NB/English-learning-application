@@ -4,10 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 
@@ -24,10 +21,40 @@ public class HomeController  {
     private TextField textName;
     @FXML
     private PasswordField textPass;
+
+    @FXML
+    private VBox vbox;
+    @FXML
+    public void abc123() {
+        if (centerBorderPane.getLeft() != null) {
+            centerBorderPane.setLeft(null);
+            System.out.println("Thanh Top Ẩn");
+        } else {
+            centerBorderPane.setLeft(vbox);
+            System.out.println("Thanh Top");
+        }
+    }
     @FXML
     public void initialize() throws IOException {
         buttonHome();
         System.out.println("Home");
+        centerBorderPane.setOnMouseMoved(event -> {
+            int x = (int)event.getX();
+            int y = (int) event.getY();
+            if ((x>=0&&x < 100)&&(y>=0&&y<750)) {
+                if (centerBorderPane.getLeft() == null) {
+                    centerBorderPane.setLeft(vbox);
+                    System.out.println("show");
+                }
+            }else if ((x > 240&&x<1320)&&(y>=0&&y<750)){
+                if (centerBorderPane.getLeft() != null) {
+                    centerBorderPane.setLeft(null);
+                    System.out.println("hide");
+                }
+            }
+            System.out.println("Mouse Entered - X: " + x+ " Y: " + y );
+
+        });
     }
 
     @FXML
