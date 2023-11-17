@@ -19,15 +19,25 @@ public class HomeController  {
 
     // centerBorderPane laf view chinh cua BorderPane
     @FXML
-    private BorderPane centerBorderPane;
+    protected BorderPane centerBorderPane;
     @FXML
     private TextField textName;
     @FXML
     private PasswordField textPass;
+    @FXML
+    public void initialize() throws IOException {
+        buttonHome();
+        System.out.println("Home");
+    }
 
     @FXML
-    protected void buttonHome() {
+    protected void buttonHome() throws IOException {
         System.out.println("Home");
+        AnchorPane view = FXMLLoader.load(getClass().getResource("TabHome.fxml"));
+        view.getStylesheets().add(getClass().getResource("TabHome.css").toExternalForm());
+        System.out.println("2");
+        centerBorderPane.setCenter(view);
+        System.out.println("3");
     }
     @FXML
     protected void buttonSearch() throws IOException{

@@ -8,9 +8,6 @@ import javafx.scene.web.WebView;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
-import java.util.ArrayList;
-
 import java.util.TreeMap;
 
 public class ControllerSearchByFile {
@@ -30,14 +27,19 @@ public class ControllerSearchByFile {
     private static final String SPLITTING_CHARACTERS = "<html>";
 
 
-
     //text la tu can doc
     private String text;
+
+    //setup cac thanh phan
+    @FXML
+    public void initialize() throws IOException {
+        readData();
+        loadWordList();
+        initComponents();
+    }
+
     //khoi tao cac thanh phan
-
-
     public void initComponents() {
-
         this.listView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     text = newValue.trim();
@@ -58,7 +60,6 @@ public class ControllerSearchByFile {
                 }
             }
         });
-
     }
 
     public void readData() throws IOException {
@@ -101,6 +102,7 @@ public class ControllerSearchByFile {
         loadWordList();
         initComponents();
     }
+
     //neu mo cmt dong nay thi se bi loi
 //    ControllerSearchByFile() throws IOException {
 //        System.out.println("tesss");
@@ -113,7 +115,6 @@ public class ControllerSearchByFile {
         loadWordList();
         initComponents();
     }
-
 
 
     public void loadWordList() {
