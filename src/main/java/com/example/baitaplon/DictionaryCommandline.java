@@ -41,7 +41,8 @@ public class DictionaryCommandline {
 
 
         if (menuChoice == 3) {
-            dictionaryManagement.dropWord();
+//            dictionaryManagement.dropWord();
+            dictionaryManagement.dropWordInSQLiteDB();
         }
     }
 }

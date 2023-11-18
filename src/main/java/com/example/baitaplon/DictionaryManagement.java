@@ -373,8 +373,66 @@ public class DictionaryManagement {
                 System.out.println("TỪ ĐÃ TỒN TẠI");
                 System.out.println(html);
             }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
         } catch (Exception e) {
             System.out.println("LỖI: " + e.getMessage());
         }
+        connectorSQLite.closeConnection();
+    }
+
+    public void dropWordInSQLiteDB() {
+        System.out.print("Xoa tu: ");
+        String input = scan.nextLine();
+        String wordDrop = input.toLowerCase();
+
+        SQLiteConnector connectorSQLite = new SQLiteConnector();
+        Connection connection = connectorSQLite.getConnection();
+        boolean ifNot = true;
+        String querry = "";
+        try {
+            querry = "SELECT * FROM av WHERE word = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(querry);
+            preparedStatement.setString(1, wordDrop);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            String html = "";
+            while (resultSet.next()) {
+                if (resultSet.getString("html") != null) {
+                    html = resultSet.getString("html");
+                }
+                else if (resultSet.getString("description") != null) {
+                    html = resultSet.getString("description");
+                }
+            }
+            if (html.equals("")) {
+                ifNot = true;
+            } else {
+                ifNot = false;
+            }
+            if (!ifNot) {
+                //Delete in DB
+                querry = "DELETE FROM av WHERE word = ?";
+                preparedStatement = connection.prepareStatement(querry);
+                preparedStatement.setString(1, wordDrop);
+                int check = preparedStatement.executeUpdate();
+                if (check > 0) {
+                    System.out.println("Đã XÓA từ " + wordDrop + " khỏi CSDL!");
+                } else {
+                    System.out.println("LỖI: KHÔNG THỂ XÓA từ " + wordDrop + " khỏi CSDL!");
+                }
+            } else {
+                //Khong co nua thi bao loi
+                System.out.println("LỖI: KHÔNG TÌM ĐƯỢC TỪ ĐÃ CHO");
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("LỖI: " + e.getMessage());
+        }
+        connectorSQLite.closeConnection();
     }
 }
