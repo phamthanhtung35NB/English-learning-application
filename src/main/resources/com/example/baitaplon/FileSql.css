@@ -61,8 +61,8 @@
     -fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 10.0% , center 50.0% 50.0%, radius 60.0%, #fdffff 0.0%, #ff66b2 100.0%);
 }
 .webView1 {
-    -fx-blend-mode: overlay; /* Chế độ kết hợp */
-    -fx-context-menu-enabled: true; /* Cho phép menu ngữ cảnh */
+    -fx-blend-mode: overlay;
+    -fx-context-menu-enabled: true;
     -fx-cursor: hand;
     -fx-focus-traversable: true; /* Có thể focus */
     -fx-font-scale: 1.2; /* Tỉ lệ font */
@@ -70,24 +70,24 @@
     /*-fx-zoom: 1.5;*/
 }
 .webView2 {
-    -fx-blend-mode: overlay; /* Chế độ kết hợp */
-    -fx-context-menu-enabled: true; /* Cho phép menu ngữ cảnh */
+    -fx-blend-mode: overlay;
+    -fx-context-menu-enabled: true;
     -fx-cursor: hand;
-    -fx-focus-traversable: true; /* Có thể focus */
-    -fx-font-scale: 1.2; /* Tỉ lệ font */
+    -fx-focus-traversable: true;
+    -fx-font-scale: 1.2;
     -fx-text-fill: #000000;
     -fx-zoom: 1.5;
 }
 .textField1 {
     -fx-background-color: #f0d4dc;
-    -fx-text-fill: #3f2e33; /* Màu chữ */
-    -fx-font-size: 14px; /* Kích thước chữ */
-    -fx-font-family: "Arial"; /* Font chữ */
-    -fx-border-color: #999999; /* Màu viền */
-    -fx-border-width: 1px; /* Độ rộng viền */
-    -fx-border-radius: 5px; /* Độ cong của viền */
-    -fx-padding: 5px; /* Khoảng cách bên trong */
-    -fx-prompt-text-fill: #999999; /* Màu chữ gợi ý */
+    -fx-text-fill: #3f2e33;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-border-color: #999999;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-prompt-text-fill: #999999;
 }
 
 .textField1:focused {

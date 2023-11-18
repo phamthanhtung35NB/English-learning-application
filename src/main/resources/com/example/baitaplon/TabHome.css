@@ -1,6 +1,6 @@
 .clock-circle {
     -fx-stroke: black;
-    -fx-fill: white;
+    -fx-fill: null;
 }
 
 .hour-hand, .minute-hand, .second-hand {
