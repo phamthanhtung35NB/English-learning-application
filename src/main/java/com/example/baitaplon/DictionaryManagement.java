@@ -9,7 +9,9 @@ import java.util.Scanner;
 
 public class DictionaryManagement {
     Scanner scan = new Scanner(System.in);
-
+//    jdbc:sqlite:D:\\Thanh\\Study_Work\\Self_study\\Project\\IT_Project\\Bai_tap_lon\\Lap_trinh_huong_doi_tuong\\English_learning_apply\\Developing-an-English-learning-application-in-Java\\data\\dict_hh.db
+    private static final String DIC_URL
+            = "jdbc:sqlite:D:\\Thanh\\Study_Work\\Self_study\\Project\\IT_Project\\Bai_tap_lon\\Lap_trinh_huong_doi_tuong\\English_learning_apply\\Developing-an-English-learning-application-in-Java\\data\\dict_hh.db";
     /**
      * Nhập vào bàn phím số lượng từ vựng (Word).
      * Định dạng nhập dữ liệu từ điển Anh – Việt:
@@ -310,6 +312,24 @@ public class DictionaryManagement {
         String input = scan.nextLine();
         String searchWord = input.toLowerCase();
 
+        SQLiteConnector connector = new SQLiteConnector();
+        Connection connection = connector.getConnection();
 
+        try {
+            Statement statement = connection.createStatement();
+            String querry = "SELECT * FROM av WHERE word = '" + searchWord + "';";
+            ResultSet resultSet = statement.executeQuery(querry);
+
+            while (resultSet.next()) {
+                String info = resultSet.getString("description");
+                System.out.println(info);
+            }
+
+            resultSet.close();
+            statement.close();
+            connection.close();
+        } catch (Exception e) {
+            System.out.println("LỖI:" + e.getMessage());
+        }
     }
 }

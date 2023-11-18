@@ -8,12 +8,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-
 
 <AnchorPane maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.HomeController">
    <children>
-      <ImageView disable="true" fitHeight="758.0" fitWidth="1322.0" focusTraversable="true" layoutX="-18.0" layoutY="-14.0" pickOnBounds="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView disable="true" fitHeight="1522.0" fitWidth="2442.0" focusTraversable="true" layoutX="-120.0" layoutY="-53.0" pickOnBounds="true" AnchorPane.bottomAnchor="-711.0" AnchorPane.leftAnchor="-120.0" AnchorPane.rightAnchor="-1000.0" AnchorPane.topAnchor="-53.0">
          <image>
             <Image url="@Image/nenMoi.png" />
          </image>
@@ -24,48 +24,108 @@
             <Cursor fx:constant="MOVE" />
          </cursor>
       </ImageView>
-      <BorderPane fx:id="centerBorderPane" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <BorderPane fx:id="centerBorderPane" cache="true" depthTest="ENABLE" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="720.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <AnchorPane focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="720.0" prefWidth="866.0" />
          </center>
          <left>
-            <VBox alignment="CENTER" fillWidth="false" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="250.0" BorderPane.alignment="TOP_CENTER">
+            <VBox fx:id="vbox" alignment="CENTER" fillWidth="false" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="742.0" prefWidth="250.0" styleClass="visible" stylesheets="@Home.css">
                <children>
-                  <HBox focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS" />
+                  <Pane prefHeight="22.0" prefWidth="200.0" />
                   <HBox alignment="TOP_CENTER" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="250.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#buttonHome" styleClass="button1" stylesheets="@Home.css" text="Home" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#buttonHome" styleClass="button1" stylesheets="@Home.css" text="Home" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Image/home.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="250.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#buttonSearch" prefWidth="106.0" styleClass="button1" stylesheets="@Home.css" text="Search" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#buttonSearch" prefWidth="106.0" styleClass="button1" stylesheets="@Home.css" text="Search" HBox.hgrow="ALWAYS">
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Image/loupe.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="250.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#buttonOnlineSearch" styleClass="button1" stylesheets="@Home.css" text="Online Search" />
+                        <Button mnemonicParsing="false" onAction="#buttonOnlineSearch" styleClass="button1" stylesheets="@Home.css" text="  Online     Search" wrapText="true">
+                           <graphic>
+                              <ImageView fitHeight="46.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Image/search.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="250.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#buttonGame" styleClass="button1" stylesheets="@Home.css" text="Game" />
+                        <Button mnemonicParsing="false" onAction="#buttonGame" styleClass="button1" stylesheets="@Home.css" text="Game">
+                           <graphic>
+                              <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Image/game.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="250.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#buttonButton" styleClass="button1" stylesheets="@Home.css" text="Button" />
+                        <Button mnemonicParsing="false" onAction="#buttonButton" styleClass="button1" stylesheets="@Home.css" text="Notebook">
+                           <graphic>
+                              <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Image/notebook.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" prefWidth="250.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#buttonFeedback" styleClass="button1" stylesheets="@Home.css" text="Feedback" />
+                        <Button mnemonicParsing="false" onAction="#buttonFeedback" styleClass="button1" stylesheets="@Home.css" text="Feedback">
+                           <graphic>
+                              <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Image/customer-experience.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
                      </children>
                   </HBox>
                   <HBox focusTraversable="true" nodeOrientation="LEFT_TO_RIGHT" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
          </left>
+         <right>
+            <VBox prefHeight="758.0" prefWidth="114.0" BorderPane.alignment="CENTER" />
+         </right>
+         <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="150.0" prefWidth="1322.0">
+               <children>
+                  <Pane prefHeight="102.0" prefWidth="46.0" />
+                  <ImageView fitHeight="154.0" fitWidth="153.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="NEVER">
+                     <image>
+                        <Image url="@Image/logo.png" />
+                     </image>
+                  </ImageView>
+                  <Pane minHeight="0.0" minWidth="0.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="154.0" prefWidth="1047.0" HBox.hgrow="ALWAYS" />
+                  <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#abc123" prefHeight="57.0" prefWidth="89.0" stylesheets="@Home.css" text="Button" HBox.hgrow="NEVER" />
+                  <Pane prefHeight="154.0" prefWidth="46.0" />
+               </children>
+            </HBox>
+         </top>
       </BorderPane>
    </children>
 </AnchorPane>

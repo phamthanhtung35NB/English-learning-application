@@ -9,6 +9,11 @@
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_19" default="true" project-jdk-name="20" project-jdk-type="JavaSDK">
+  <component name="PWA">
+    <option name="enabled" value="true" />
+    <option name="wasEnabledAtLeastOnce" value="true" />
+  </component>
+
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

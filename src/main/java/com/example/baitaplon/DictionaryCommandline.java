@@ -30,11 +30,14 @@ public class DictionaryCommandline {
      */
     public void dictionaryBasic(int menuChoice) {
         if (menuChoice == 1) {
-            dictionaryManagement.dictionarySearcherinDB();
+//            dictionaryManagement.dictionarySearcherinDB();
+            dictionaryManagement.dictionarySQLiteSearch();
         }
+
         if (menuChoice == 2) {
             dictionaryManagement.addWordInDB();
         }
+
         if (menuChoice == 3) {
             dictionaryManagement.dropWord();
         }
