@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -36,6 +37,35 @@ public class ControllerLogin {
 //        currentStage.close();
 //    }
 
+    @FXML
+    public void initialize() {
+        textName.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.TAB) {
+                System.out.println("Tab pressed");
+
+            }
+        });
+
+    }
+@FXML
+public void evenTextFieldName(javafx.scene.input.KeyEvent event) {
+    System.out.println(event.getCode());
+    if (event.getCode() == javafx.scene.input.KeyCode.TAB) {
+        System.out.println("TAB pressed");
+        textPass.requestFocus();
+        event.consume();
+    }
+}
+
+    @FXML
+    public void evenPasswordFieldPass(javafx.scene.input.KeyEvent event) {
+        System.out.println(event.getCode());
+        if (event.getCode() == javafx.scene.input.KeyCode.TAB && event.isShiftDown()) {
+            System.out.println("Shift + TAB pressed");
+            textName.requestFocus();
+            event.consume();
+        }
+    }
     /**
      * Hiển thị mật khẩu khi check vào ô hiển thị mật khẩu
      * @param event
