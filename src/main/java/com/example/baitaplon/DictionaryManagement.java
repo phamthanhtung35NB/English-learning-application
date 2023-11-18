@@ -9,9 +9,6 @@ import java.util.Scanner;
 
 public class DictionaryManagement {
     Scanner scan = new Scanner(System.in);
-//    jdbc:sqlite:D:\\Thanh\\Study_Work\\Self_study\\Project\\IT_Project\\Bai_tap_lon\\Lap_trinh_huong_doi_tuong\\English_learning_apply\\Developing-an-English-learning-application-in-Java\\data\\dict_hh.db
-    private static final String DIC_URL
-            = "jdbc:sqlite:D:\\Thanh\\Study_Work\\Self_study\\Project\\IT_Project\\Bai_tap_lon\\Lap_trinh_huong_doi_tuong\\English_learning_apply\\Developing-an-English-learning-application-in-Java\\data\\dict_hh.db";
     /**
      * Nhập vào bàn phím số lượng từ vựng (Word).
      * Định dạng nhập dữ liệu từ điển Anh – Việt:
@@ -321,8 +318,8 @@ public class DictionaryManagement {
             ResultSet resultSet = statement.executeQuery(querry);
 
             while (resultSet.next()) {
-                String info = resultSet.getString("description");
-                System.out.println(info);
+                String mean = resultSet.getString("description");
+                System.out.println(mean);
             }
 
             resultSet.close();
@@ -330,6 +327,28 @@ public class DictionaryManagement {
             connection.close();
         } catch (Exception e) {
             System.out.println("LỖI:" + e.getMessage());
+        }
+        connector.closeConnection();
+    }
+
+    public void addWordInSQLiteDB() {
+        System.out.print("Add word: ");
+        String input = scan.nextLine();
+        String addWord = input.toLowerCase();
+        //Check whether it was in DB or not
+        SQLiteConnector connectorSQLite = new SQLiteConnector();
+        Connection connection = connectorSQLite.getConnection();
+        boolean ifNot = false;
+        String querry = "";
+        try {
+//            query = "INSERT INTO dictionary_db.dictionary (target, definition) VALUES (?, ?);";
+//            PreparedStatement preparedStatement = connection.prepareStatement(query);
+//            preparedStatement.setString(1, addWord);
+//            preparedStatement.setString(2, mean);
+
+            querry = "SELECT ";
+        } catch (Exception e) {
+            System.out.println("LỖI: " + e.getMessage());
         }
     }
 }
