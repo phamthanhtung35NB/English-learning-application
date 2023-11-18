@@ -1,9 +1,9 @@
-.button1 {
-    -fx-pref-height: 65;
-    -fx-pref-width: 150;
+.buttonTranslate {
+    /*-fx-pref-height: 65;*/
+    /*-fx-pref-width: 150;*/
     -fx-text-fill: #3f2e33;
     -fx-background-color: #ffb8d0;
-    -fx-background-radius: 50 10 50 10;
+    -fx-background-radius: 10 10 10 10;
     -fx-effect: dropshadow(three-pass-box, #e05697, 5, 0, -3, 5);
     -fx-font-weight: bold;
     /*-fx-padding: 5 15 10 15;*/
@@ -24,9 +24,9 @@
 
 
 
-.button1:hover {
-    -fx-pref-height: 75;
-    -fx-pref-width: 170;
+.buttonTranslate:hover {
+    /*-fx-pref-height: 75;*/
+    /*-fx-pref-width: 170;*/
     -fx-background-radius: 90 10 90 10;
     /*-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 5, 0, 0);*/
     -fx-cursor: hand;
@@ -36,6 +36,7 @@
     -fx-text-fill: #ff00ff;
     -fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 10.0% , center 50.0% 50.0%, radius 60.0%, #aee4ff 0.0%, #6a9cfd 100.0%);
 }
+/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
 .comboBox {
     -fx-pref-height: 30;
     -fx-pref-width: 200;
@@ -49,6 +50,30 @@
     /*-fx-font-family: url("@Nunito-Bold.ttf");*/
 
 }
+.comboBox:focused {
+    -fx-border-color: #0078d4;
+    -fx-background-color: #ffb8d0;
+}
+
+/*nut mui ten*/
+.comboBox .arrow-button {
+    -fx-background-color: #ef9bb9;
+}
+/*moi phan tu trong danh sach*/
+.comboBox .list-cell {
+    -fx-background-color: #ffb8d0;
+    -fx-text-fill: #000000;
+}
+/*cua so popup*/
+.comboBox .list-cell:hover {
+    -fx-background-color: #e7638a;
+    -fx-text-fill: #000000;
+}
+
+.comboBox .scroll-bar {
+    -fx-background-color: #e7638a;
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
 .cssListView {
     -fx-pref-height: 500;
     -fx-pref-width: 200;
@@ -60,11 +85,33 @@
     -fx-padding: 5 5 5 5;
     -fx-font-size: 15px;
     /*-fx-font-family: url("@Nunito-Bold.ttf");*/
-
+}
+.cssListView .list-cell {
+    -fx-background-color: #ffb8d0;
+    -fx-text-fill: #000000;
+}
+.cssListView .list-cell:hover {
+    -fx-background-color: #e7638a;
+    -fx-text-fill: #000000;
 }
 /* styles.css */
+.webView1 {
+    -fx-blend-mode: overlay; /* Chế độ kết hợp */
+    -fx-context-menu-enabled: true; /* Cho phép menu ngữ cảnh */
+    -fx-cursor: hand;
+    -fx-focus-traversable: true; /* Có thể focus */
+    -fx-font-scale: 1.2; /* Tỉ lệ font */
+    -fx-text-fill: #3f2e33;
+    -fx-background-color: #c92861;
+    /*-fx-zoom: 1.5;*/
+}
+.webView1 .scroll-bar {
+    -fx-background-color: #333; /* Màu nền cho thanh cuộn trong WebView */
+}
 
-
+.webView1 .scroll-bar-thumb {
+    -fx-background-color: #666; /* Màu nền cho đối tượng trượt trong thanh cuộn */
+}
 .comboBox:hover {
     /*-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 10, 0, 0);*/
     /*-fx-cursor: hand;*/
@@ -75,15 +122,7 @@
     -fx-text-fill: #ff00ff;
     -fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 10.0% , center 50.0% 50.0%, radius 60.0%, #fdffff 0.0%, #ff66b2 100.0%);
 }
-.webView1 {
-    -fx-blend-mode: overlay; /* Chế độ kết hợp */
-    -fx-context-menu-enabled: true; /* Cho phép menu ngữ cảnh */
-    -fx-cursor: hand;
-    -fx-focus-traversable: true; /* Có thể focus */
-    -fx-font-scale: 1.2; /* Tỉ lệ font */
-    -fx-text-fill: #3f2e33;
-    /*-fx-zoom: 1.5;*/
-}
+
 .webView2 {
     -fx-blend-mode: overlay; /* Chế độ kết hợp */
     -fx-context-menu-enabled: true; /* Cho phép menu ngữ cảnh */
@@ -109,28 +148,4 @@
     -fx-border-color: #0078d4;
     /*-fx-background-color: #ffb8d0;*/
     -fx-background-color: #050103;
-}
-.buttonOkCancelVvv {
-    -fx-text-fill: #3f2e33;
-    -fx-background-color: #ffb8d0;
-    -fx-background-radius: 10 10 10 10;
-    -fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -2, 2);
-    -fx-font-weight: bold;
-    -fx-padding: 5 5 5 5;
-    -fx-font-size: 15px;
-    /*-fx-font-family: url("@Nunito-Bold.ttf");*/
-
-}
-.textFieldWordTargetExplain {
-    -fx-background-color: #f0d4dc;
-    -fx-text-fill: #3f2e33;
-    -fx-border-color: #999999; /* Màu viền */
-    -fx-border-width: 1px;
-    -fx-border-radius: 5px;
-    -fx-padding: 3px;
-    -fx-prompt-text-fill: #999999;
-}
-.textFieldWordTargetExplain:focused {
-    -fx-border-color: #0078d4;
-    -fx-background-color: #ffb8d0;
 }

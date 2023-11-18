@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,8 +22,85 @@ public class ComboBoxController implements Initializable {
     private Label outputLabelApiGoogle;
     @FXML
     private TextField inputTextApiGoogle;
+    @FXML
+    private ToggleButton isRecordSpeechIn;
     String selectedInPut = "auto";
     String selectedOutPut = "en";
+
+
+    //khi chon ngon ngu trong combobox
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // load gia tri
+        comboBoxInPut.getItems().addAll(listInPut);
+        comboBoxOutPut.getItems().addAll(listOutPut);
+        // gia tri mac dinh
+        comboBoxInPut.setValue("Select Language");
+        comboBoxOutPut.setValue("Select Language");
+
+        comboBoxInPut.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedInPut = comboBoxInPut.getValue();
+
+        });
+        comboBoxOutPut.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            selectedOutPut = comboBoxOutPut.getValue();
+        });
+        System.out.println("selectedInPut: " + selectedInPut);
+        System.out.println("selectedOutPut: " + selectedOutPut);
+    }
+
+    @FXML
+    public void speechIn() {
+        String input = inputTextApiGoogle.getText();
+        new TextToSpeech(input);
+    }
+
+    @FXML
+    public void speechOut() {
+        String input = outputLabelApiGoogle.getText();
+        new TextToSpeech(input);
+    }
+
+    @FXML
+    public void buttonRecordSpeechIn() {
+        if (isRecordSpeechIn.isSelected()) {
+            isRecordSpeechIn.setText("Stop");
+            try {
+//                System.out.println(new speechToText().speech(convertToLanguageCode(selectedInPut)));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        } else {
+            isRecordSpeechIn.setText("Record");
+        }
+    }
+
+
+    /**
+     * dich tu
+     * input: tu can dich lay tu textfield
+     */
+    public void translateText() {
+        String input = inputTextApiGoogle.getText();
+        try {
+//            String translatedText = APIgoogle.translate(convertToLanguageCode(selectedInPut), convertToLanguageCode(selectedOutPut), input);
+//            System.out.println(convertToLanguageCode(selectedInPut) + " "+ selectedInPut);
+            if (!convertToLanguageCode(selectedInPut).equals("auto")) {
+                String[] translatedText = GoogleTranslate.translate(convertToLanguageCode(selectedInPut), convertToLanguageCode(selectedOutPut), input);
+                outputLabelApiGoogle.setText("  \n" + translatedText[0]);
+            } else {
+                String[] translatedText = GoogleTranslate.translate(convertToLanguageCode(selectedInPut), convertToLanguageCode(selectedOutPut), input);
+                outputLabelApiGoogle.setText("  \n-Translate from " + convertToLanguageName(translatedText[1]) +
+                        " to \n->" + convertToLanguageName(convertToLanguageCode(selectedOutPut)) + " :  \n\t" + translatedText[0]);
+                System.out.println(translatedText[0]);
+                System.out.println(convertToLanguageName(translatedText[1]));
+            }
+
+        } catch (Exception e) {
+            outputLabelApiGoogle.setText("Translation failed. Please try again.");
+            e.printStackTrace();
+        }
+    }
 
     /**
      * list cac ngon ngu cua input
@@ -114,30 +192,9 @@ public class ComboBoxController implements Initializable {
             "Tiếng Hàn (한국어)"
     );
 
-    //khi chon ngon ngu trong combobox
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // load gia tri
-        comboBoxInPut.getItems().addAll(listInPut);
-        comboBoxOutPut.getItems().addAll(listOutPut);
-        // gia tri mac dinh
-        comboBoxInPut.setValue("Select Language");
-        comboBoxOutPut.setValue("Select Language");
-
-        comboBoxInPut.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            selectedInPut = comboBoxInPut.getValue();
-
-        });
-        comboBoxOutPut.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            selectedOutPut = comboBoxOutPut.getValue();
-        });
-        System.out.println("selectedInPut: " + selectedInPut);
-        System.out.println("selectedOutPut: " + selectedOutPut);
-    }
-
-
     /**
      * chuyen tu ten ngon ngu sang ma ngon ngu
+     *
      * @param string
      * @return ma ngon ngu
      */
@@ -241,6 +298,7 @@ public class ComboBoxController implements Initializable {
 
     /**
      * chuyen tu ma ngon ngu sang ten ngon ngu
+     *
      * @param string
      * @return ma ngon ngu
      */
@@ -330,33 +388,6 @@ public class ComboBoxController implements Initializable {
                 return "Tiếng Filipino (Filipino)";
             default:
                 return "Mysterious language";
-        }
-    }
-
-
-    /**
-     * dich tu
-     * input: tu can dich lay tu textfield
-     */
-    public void translateText() {
-        String input = inputTextApiGoogle.getText();
-        try {
-//            String translatedText = APIgoogle.translate(convertToLanguageCode(selectedInPut), convertToLanguageCode(selectedOutPut), input);
-//            System.out.println(convertToLanguageCode(selectedInPut) + " "+ selectedInPut);
-            if (!convertToLanguageCode(selectedInPut).equals("auto")){
-                String[] translatedText = GoogleTranslate.translate(convertToLanguageCode(selectedInPut), convertToLanguageCode(selectedOutPut), input);
-                outputLabelApiGoogle.setText("  \n" + translatedText[0]);
-            }else {
-                String[] translatedText = GoogleTranslate.translate(convertToLanguageCode(selectedInPut), convertToLanguageCode(selectedOutPut), input);
-                outputLabelApiGoogle.setText("  \n-Translate from "+convertToLanguageName(translatedText[1]) +
-                        " to \n->"+convertToLanguageName(convertToLanguageCode(selectedOutPut))+" :  \n\t"+translatedText[0]);
-                System.out.println(translatedText[0]);
-                System.out.println(convertToLanguageName(translatedText[1]));
-            }
-
-        } catch (Exception e) {
-            outputLabelApiGoogle.setText("Translation failed. Please try again.");
-            e.printStackTrace();
         }
     }
 }
