@@ -332,21 +332,47 @@ public class DictionaryManagement {
     }
 
     public void addWordInSQLiteDB() {
-        System.out.print("Add word: ");
+        System.out.print("Thêm từ: ");
         String input = scan.nextLine();
         String addWord = input.toLowerCase();
         //Check whether it was in DB or not
         SQLiteConnector connectorSQLite = new SQLiteConnector();
         Connection connection = connectorSQLite.getConnection();
         boolean ifNot = false;
-        String querry = "";
+        String querry;
         try {
-//            query = "INSERT INTO dictionary_db.dictionary (target, definition) VALUES (?, ?);";
-//            PreparedStatement preparedStatement = connection.prepareStatement(query);
-//            preparedStatement.setString(1, addWord);
-//            preparedStatement.setString(2, mean);
-
-            querry = "SELECT ";
+            querry = "SELECT html FROM av WHERE word = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(querry);
+            preparedStatement.setString(1, addWord);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            String html = "";
+            while (resultSet.next()) {
+                html = resultSet.getString("html");
+            }
+            if (html.equals("")) {
+                ifNot = true;
+            } else {
+                ifNot = false;
+            }
+            if (ifNot) {
+                System.out.println("Nhap nghia cua tu " + addWord);
+                String mean = scan.nextLine();
+                //Add at last in database
+                querry = "INSERT INTO av (word, description) VALUES (?, ?);";
+                preparedStatement = connection.prepareStatement(querry);
+                preparedStatement.setString(1, addWord);
+                preparedStatement.setString(2, mean);
+                int check = preparedStatement.executeUpdate();
+                if (check > 0) {
+                    System.out.println("Thêm thành công từ vào CSDL");
+                } else {
+                    System.out.println("LỖI: KHÔNG THỂ THÊM TỪ VÀO CSDL");
+                }
+            } else {
+                //Note
+                System.out.println("TỪ ĐÃ TỒN TẠI");
+                System.out.println(html);
+            }
         } catch (Exception e) {
             System.out.println("LỖI: " + e.getMessage());
         }

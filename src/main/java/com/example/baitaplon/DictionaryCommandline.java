@@ -35,8 +35,10 @@ public class DictionaryCommandline {
         }
 
         if (menuChoice == 2) {
-            dictionaryManagement.addWordInDB();
+//            dictionaryManagement.addWordInDB();
+            dictionaryManagement.addWordInSQLiteDB();
         }
+
 
         if (menuChoice == 3) {
             dictionaryManagement.dropWord();
