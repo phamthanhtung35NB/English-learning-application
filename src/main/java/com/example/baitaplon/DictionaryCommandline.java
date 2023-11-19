@@ -4,6 +4,13 @@ import java.util.Scanner;
 
 public class DictionaryCommandline {
     DictionaryManagement dictionaryManagement = new DictionaryManagement();
+
+
+    /**
+     * Hàm main
+     * Thực thi qua Terminal
+     * Hàm in ra các lựa chọn và đọc yêu cầu của người dùng
+     */
     public static void main(String[] args) {
         System.out.println("Dictionary_CommandLine");
         DictionaryCommandline dic = new DictionaryCommandline();
@@ -15,18 +22,18 @@ public class DictionaryCommandline {
         int menuChoice = scan.nextInt();
         dic.dictionaryBasic(menuChoice);
     }
+
     /**
      * hiển thị kết quả danh sách dữ liệu từ vựng trên màn
      * hình theo thứ tự alphabet.
      */
-
     public void showAllWords() {
 
     }
 
     /**
-     * có chức năng gọi hàm insertFromCommandline() và
-     * showAllWords().
+     * Thực thi qua Terminal
+     * Xử lý đầu vào gọi 1 trong ba hàm tìm từ, thêm từ, xóa từ
      */
     public void dictionaryBasic(int menuChoice) {
         if (menuChoice == 1) {
@@ -36,7 +43,6 @@ public class DictionaryCommandline {
         if (menuChoice == 2) {
             dictionaryManagement.addWordInSQLiteDB();
         }
-
 
         if (menuChoice == 3) {
             dictionaryManagement.dropWordInSQLiteDB();
