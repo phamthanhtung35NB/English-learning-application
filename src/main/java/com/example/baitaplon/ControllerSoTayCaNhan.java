@@ -24,21 +24,37 @@ public class ControllerSoTayCaNhan {
     @FXML
     private TextField searchTra;
 
-    protected static TreeMap<String, IndividualWord> dataSoTu = new TreeMap<>();
+    protected static TreeMap<String, WordSQL> dataSoTu = new TreeMap<>();
 
     //text la tu can doc/xoa
     private String text;
-    private int idCanXoa;
+    private static int idCanXoa;
 
+    //khoi tao tu dong
+    @FXML
+    public void initialize() throws IOException, SQLException {
+        DataBase.loadDataSqlOfSoTuCaNhan();
+        initComponents();
+        loadWordList();
+    }
+    @FXML
+    protected void load() throws IOException, SQLException {
+        DataBase.loadDataSqlOfSoTuCaNhan();
+        System.out.println("test");
+        listViewA= new ListView<>();
+        initComponents();
+        loadWordList();
+    }
     public void initComponents() {
         this.listViewA.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-//                    text =
-                    IndividualWord selectedWord = dataSoTu.get(newValue.trim());
+                  text = newValue.trim();
+                    WordSQL selectedWord = dataSoTu.get(text);
                     //lay nghia cua tu
-                    String definition = selectedWord.getWord_explain();
+                    String definition = selectedWord.getHtml();
                     //lay id cua tu can xoa neu muon xoa
-                    idCanXoa = selectedWord.getId();
+                    idCanXoa = selectedWord.getID();
+                    System.out.println(idCanXoa);
                     this.explainViewNghia.getEngine().loadContent(definition, "text/html");
                 }
         );
@@ -48,12 +64,12 @@ public class ControllerSoTayCaNhan {
     protected void clickCheck() {
         try {
             text = searchTra.getText().toLowerCase();
-            IndividualWord selectedWord = dataSoTu.get(text);
+            WordSQL selectedWord = dataSoTu.get(text);
             //lay nghia cua tu
-            String definition = selectedWord.getWord_explain();
+            String definition = selectedWord.getHtml();
             //lay id cua tu can xoa neu muon xoa
-            idCanXoa = selectedWord.getId();
-            System.out.println(text);
+            idCanXoa = selectedWord.getID();
+            System.out.println(idCanXoa);
             this.explainViewNghia.getEngine().loadContent(definition, "text/html");
         } catch (Exception e) {
             System.out.println("WARNING");
@@ -66,22 +82,14 @@ public class ControllerSoTayCaNhan {
         new TextToSpeech(text);
     }
 
-    @FXML
-    protected void load() throws IOException, SQLException {
-        DataBase.loadDataSqlOfSoTuCaNhan();
-        System.out.println("test");
-        initComponents();
-        loadWordList();
-    }
+
 
     //ddang loi cho nay
     @FXML
     protected void clickDelete() throws IOException, SQLException {
-
-        //xoa trong set studying
-        DataBase.numberIdCuaTuDien.remove(idCanXoa);
+        System.out.println(idCanXoa);
         //xoa trong SQL
-        if (DataBase.setStuding_array(idCanXoa)) {
+        if (DataBase.deleteSQLiteStuding_array(idCanXoa)) {
             DataBase.loadDataSqlOfSoTuCaNhan();
             ObservableList<String> emptyList = FXCollections.observableArrayList();
             listViewA.setItems(emptyList);
