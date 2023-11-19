@@ -7,7 +7,7 @@ public class WordSQL extends Word{
 
     public WordSQL(int id, String word_target, String word_explain, String html, String pronounce) {
         super(word_target, word_explain);
-        this.ID = ID;
+        this.ID = id;
         this.html = html;
         this.pronounce = pronounce;
     }
