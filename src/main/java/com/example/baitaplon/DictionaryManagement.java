@@ -3,10 +3,14 @@ package com.example.baitaplon;
 import java.sql.*;
 import java.util.Scanner;
 
-
 public class DictionaryManagement {
     Scanner scan = new Scanner(System.in);
 
+
+    /**
+     * Tìm từ bằng Cơ sở dữ liệu.
+     * Gọi hàm: mở Terminal, thao tác nhập từ cần tìm, trả lại ý nghĩa của từ. Tất cả qua Terminal
+     */
     public void dictionarySQLiteSearch() {
         System.out.print("Tim tu: ");
         String input = scan.nextLine();
@@ -34,6 +38,13 @@ public class DictionaryManagement {
         connector.closeConnection();
     }
 
+    /**
+     * Thêm từ bằng Cơ sở dữ liệu.
+     * Gọi hàm: mở Terminal, thao tác nhập từ cần thêm
+     * Nếu từ đã tồn tại - in ra lỗi
+     * Nếu từ chưa tồn tại yêu cầu nhập thêm ý nghĩa từ đó
+     * Tất cả qua Terminal
+     */
     public void addWordInSQLiteDB() {
         System.out.print("Thêm từ: ");
         String input = scan.nextLine();
@@ -86,6 +97,13 @@ public class DictionaryManagement {
         connectorSQLite.closeConnection();
     }
 
+    /**
+     * Xóa từ bằng Cơ sở dữ liệu.
+     * Gọi hàm: mở Terminal, thao tác nhập từ cần xóa
+     * Nếu từ chưa có trong csdl - in ra lỗi
+     * Xóa từ đó nếu đã tồn tại trong CSDL
+     * Tất cả qua Terminal
+     */
     public void dropWordInSQLiteDB() {
         System.out.print("Xoa tu: ");
         String input = scan.nextLine();
@@ -104,8 +122,7 @@ public class DictionaryManagement {
             while (resultSet.next()) {
                 if (resultSet.getString("html") != null) {
                     html = resultSet.getString("html");
-                }
-                else if (resultSet.getString("description") != null) {
+                } else if (resultSet.getString("description") != null) {
                     html = resultSet.getString("description");
                 }
             }
