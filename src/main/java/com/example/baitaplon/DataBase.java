@@ -10,6 +10,7 @@ public class DataBase {
     private static String chuoiStudying_array = "-1";
     private static String UserName = "";
 
+
     //main
     public static void main(String[] args) {
         DataBase dataBase = new DataBase();
@@ -139,8 +140,8 @@ public class DataBase {
             int check = insertStatement.executeUpdate();
             checkResultSet.close();
             maxIdResultSet.close();
-            checkStatement.close();
             maxIdStatement.close();
+            checkStatement.close();
             insertStatement.close();
             // close connection and return true
             connector.closeConnection();

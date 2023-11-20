@@ -2,86 +2,189 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="600" prefWidth="800" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerTabSql">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="600" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerTabSql">
     <children>
-        <VBox layoutY="14.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.8000000000000682" AnchorPane.topAnchor="0.4000000000000341">
-            <children>
-                <Pane prefHeight="26.0" prefWidth="602.0" VBox.vgrow="NEVER" />
-                <HBox prefHeight="28.0" prefWidth="570.0" VBox.vgrow="NEVER">
+      <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="1000.0">
+         <center>
+                <HBox prefWidth="450.0" BorderPane.alignment="CENTER">
                     <children>
-                        <Pane prefHeight="28.0" prefWidth="36.0" />
-                        <TextField fx:id="search" prefHeight="26.0" prefWidth="170.0" HBox.hgrow="ALWAYS" />
-                        <Pane prefHeight="28.0" prefWidth="36.0" />
-                        <Button mnemonicParsing="false" onAction="#clickCheck" styleClass="comboBox" stylesheets="@Home.css" text="Check" />
-                        <Pane prefHeight="28.0" prefWidth="61.0" />
+                        <WebView fx:id="webViewNghia" prefHeight="569.0" prefWidth="306.0" styleClass="webView2" stylesheets="@Home.css" HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>
-                <Pane prefHeight="36.0" prefWidth="599.0" VBox.vgrow="NEVER" />
-                <HBox VBox.vgrow="ALWAYS">
-                    <children>
-                        <WebView fx:id="webView" prefHeight="506.0" prefWidth="380.0" styleClass="webView2" stylesheets="@Home.css" HBox.hgrow="ALWAYS" />
-                  <TabPane prefHeight="506.0" prefWidth="426.0" tabClosingPolicy="UNAVAILABLE">
-                    <tabs>
-                      <Tab text="ADD">
-                           <content>
-                              <Pane prefHeight="394.0" prefWidth="315.0">
-                                 <children>
-                                          <Label layoutX="12.0" layoutY="59.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Target" />
-                                          <TextField fx:id="textWordTargetAdd" layoutX="18.0" layoutY="89.0" prefHeight="31.0" prefWidth="371.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
-                                          <Label layoutX="12.0" layoutY="147.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Explain" />
-                                          <TextField fx:id="textWordExplainAdd" layoutX="16.0" layoutY="179.0" prefHeight="31.0" prefWidth="371.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
-                                          <Button layoutX="124.0" layoutY="246.0" mnemonicParsing="false" onAction="#clickAddAdd" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" text="Add" />
-                                          <Button layoutX="217.0" layoutY="248.0" mnemonicParsing="false" onAction="#clickDeleteAdd" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" text="Delete" />
-                                 </children>
-                              </Pane>
-                           </content>
-                      </Tab>
-                        <Tab text="SET">
-                           <content>
-                              <Pane prefHeight="394.0" prefWidth="315.0">
-                                 <children>
-                                    <Label layoutX="40.0" layoutY="37.0" prefHeight="25.0" prefWidth="27.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="ID" />
-                                    <TextField fx:id="textIdSet" layoutX="89.0" layoutY="34.0" prefHeight="31.0" prefWidth="295.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
-                                    <Label layoutX="24.0" layoutY="94.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Target" />
-                                    <TextField fx:id="textWordTargetSet" layoutX="25.0" layoutY="129.0" prefHeight="31.0" prefWidth="371.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
-                                    <Label layoutX="25.0" layoutY="191.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Explain" />
-                                    <TextField fx:id="textWordExplainSet" layoutX="24.0" layoutY="223.0" prefHeight="31.0" prefWidth="371.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
-                                    <Button layoutX="101.0" layoutY="314.0" mnemonicParsing="false" onAction="#clickSetSet" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" text="Set" />
-                                    <Button layoutX="220.0" layoutY="314.0" mnemonicParsing="false" onAction="#clickDeleteSet" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" text="Delete" />
-                                 </children>
-                              </Pane>
-                           </content>
-                        </Tab>
-                        <Tab text="DELETE">
-                           <content>
-                              <Pane prefHeight="394.0" prefWidth="315.0">
-                                 <children>
-                                    <Label layoutX="40.0" layoutY="35.0" prefHeight="25.0" prefWidth="27.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="ID" />
-                                    <TextField fx:id="textIdDelete" layoutX="89.0" layoutY="32.0" prefHeight="31.0" prefWidth="295.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
-                                    <Label layoutX="15.0" layoutY="86.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Target" />
-                                    <TextField fx:id="textWordTargetDelete" layoutX="17.0" layoutY="122.0" prefHeight="31.0" prefWidth="371.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
-                                    <Label layoutX="16.0" layoutY="171.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Explain" />
-                                    <TextField fx:id="textWordExplainDelete" layoutX="16.0" layoutY="206.0" prefHeight="31.0" prefWidth="371.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
-                                    <Button layoutX="112.0" layoutY="288.0" mnemonicParsing="false" onAction="#clickDeleteDelete" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" text="Delete" />
-                                    <Button layoutX="212.0" layoutY="288.0" mnemonicParsing="false" onAction="#clickCancelDelete" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" text="Cancel" />
-                                 </children>
-                              </Pane>
-                           </content>
-                        </Tab>
-                    </tabs>
-                  </TabPane>
-                    </children>
-                </HBox>
-            </children>
-        </VBox>
+         </center>
+         <left>
+            <HBox prefHeight="569.0" prefWidth="256.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ListView fx:id="listViewA" prefHeight="569.0" prefWidth="274.0" />
+               </children>
+            </HBox>
+         </left>
+         <top>
+            <HBox alignment="CENTER" prefHeight="28.0" prefWidth="570.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="32.0" prefWidth="4.0" />
+                  <TextField fx:id="searchTra" prefHeight="30.0" prefWidth="532.0" HBox.hgrow="ALWAYS" />
+                  <Pane prefHeight="31.0" prefWidth="78.0" />
+                  <Button mnemonicParsing="false" onAction="#clickCheck" styleClass="comboBox" stylesheets="@Home.css" text="Check" />
+                  <Pane prefHeight="28.0" prefWidth="61.0" />
+                  <Button mnemonicParsing="false" onAction="#showHiden">
+                     <graphic>
+                        <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/setting.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Pane layoutX="896.0" layoutY="10.0" prefHeight="28.0" prefWidth="61.0" />
+               </children>
+            </HBox>
+         </top>
+         <right>
+            <VBox alignment="CENTER" prefHeight="568.0" prefWidth="422.0">
+               <children>
+                  <HBox fx:id="hBoxLeft" alignment="CENTER" prefHeight="591.0" prefWidth="370.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#addToTap" prefHeight="26.0" prefWidth="47.0" text="&gt;&gt;" HBox.hgrow="NEVER" />
+                        <Pane prefHeight="568.0" prefWidth="11.0" />
+                        <TabPane fx:id="tabPane" prefHeight="568.0" prefWidth="0.0" tabClosingPolicy="UNAVAILABLE" HBox.hgrow="ALWAYS">
+                          <tabs>
+                            <Tab text="ADD">
+                                 <content>
+                                    <VBox prefHeight="539.0" prefWidth="286.0">
+                                       <children>
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="76.0" prefWidth="396.0">
+                                             <children>
+                                                      <Label styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Target" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="78.0" prefWidth="396.0">
+                                             <children>
+                                                      <TextField fx:id="textWordTargetAdd" prefHeight="31.0" prefWidth="323.0" promptText="ADD" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="64.0" prefWidth="396.0">
+                                             <children>
+                                                      <Label styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Explain" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                      <TextField fx:id="textWordExplainAdd" prefHeight="31.0" prefWidth="310.0" promptText="ADD" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="210.0" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                      <Button mnemonicParsing="false" onAction="#clickAddAdd" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" text="Add" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="164.0" prefHeight="64.0" prefWidth="396.0">
+                                             <children>
+                                                <Label styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="phát âm" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="228.0" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <TextField fx:id="textWordPronounceAdd" prefHeight="31.0" prefWidth="310.0" promptText="ADD" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="456.0" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <TextField fx:id="textWordLoaiTu" prefHeight="31.0" prefWidth="310.0" promptText="ADD" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                            </Tab>
+                              <Tab text="SET">
+                                 <content>
+                                    <VBox prefHeight="539.0" prefWidth="316.0">
+                                       <children>
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Target" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <TextField fx:id="textWordTargetSet" prefHeight="31.0" prefWidth="200.0" promptText="ADD" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
+                                                <Pane prefHeight="100.0" prefWidth="26.0" />
+                                                <Label alignment="CENTER" prefHeight="31.0" prefWidth="27.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="ID:" />
+                                                <Pane prefHeight="63.0" prefWidth="3.0" />
+                                                <TextField fx:id="textIdSet" prefHeight="31.0" prefWidth="79.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="AUTO" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="62.0" prefWidth="396.0">
+                                             <children>
+                                                <Label styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Explain" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="396.0">
+                                             <children>
+                                                <TextField fx:id="textWordExplainSet" prefHeight="31.0" prefWidth="326.0" promptText="ADD" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#clickSetSet" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" text="Set" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </Tab>
+                              <Tab text="DELETE">
+                                 <content>
+                                    <VBox prefHeight="510.0" prefWidth="375.0">
+                                       <children>
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label alignment="CENTER" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="Word Target" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="112.0" prefWidth="297.0">
+                                             <children>
+                                                <TextField fx:id="textWordTargetDelete" prefHeight="31.0" prefWidth="220.0" promptText="ADD" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" />
+                                                <Pane prefHeight="112.0" prefWidth="15.0" />
+                                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="31.0" prefWidth="27.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="ID:" textAlignment="CENTER" />
+                                                <Pane prefHeight="86.0" prefWidth="8.0" />
+                                                <TextField fx:id="textIdDelete" prefHeight="31.0" prefWidth="79.0" styleClass="textFieldWordTargetExplain" stylesheets="@Home.css" text="AUTO" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Label fx:id="labelNoteDelete" alignment="CENTER" textAlignment="CENTER" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#clickDeleteDelete" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" text="Delete" />
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </right>
+      </BorderPane>
     </children>
 </AnchorPane>
