@@ -105,7 +105,7 @@ public class DictionaryManagement {
      * Nếu từ chưa có trong csdl - in ra lỗi
      * Xóa từ đó nếu đã tồn tại trong CSDL
      * Tất cả qua Terminal
-     * Link vào phần giao diện
+     * Link vào phần giao diện.
      */
     public void dropWordInSQLiteDB() {
         System.out.print("Xoa tu: ");
