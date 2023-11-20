@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.util.TreeMap;
 
 
-
 public class ControllerSoTayCaNhan {
 
     @FXML
@@ -25,6 +24,7 @@ public class ControllerSoTayCaNhan {
     private TextField searchTra;
 
     protected static TreeMap<String, WordSQL> dataSoTu = new TreeMap<>();
+    protected static boolean isLoadData = false;
 
     //text la tu can doc/xoa
     private String text;
@@ -33,22 +33,28 @@ public class ControllerSoTayCaNhan {
     //khoi tao tu dong
     @FXML
     public void initialize() throws IOException, SQLException {
-        DataBase.loadDataSqlOfSoTuCaNhan();
+        if (isLoadData == false) {
+            DataBase.loadDataSqlOfSoTuCaNhan();
+            isLoadData = true;
+        }
+        isLoadData = true;
         initComponents();
         loadWordList();
     }
+
     @FXML
     protected void load() throws IOException, SQLException {
         DataBase.loadDataSqlOfSoTuCaNhan();
         System.out.println("test");
-        listViewA= new ListView<>();
+        listViewA = new ListView<>();
         initComponents();
         loadWordList();
     }
+
     public void initComponents() {
         this.listViewA.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
-                  text = newValue.trim();
+                    text = newValue.trim();
                     WordSQL selectedWord = dataSoTu.get(text);
                     //lay nghia cua tu
                     String definition = selectedWord.getHtml();
@@ -83,7 +89,6 @@ public class ControllerSoTayCaNhan {
     }
 
 
-
     //ddang loi cho nay
     @FXML
     protected void clickDelete() throws IOException, SQLException {
@@ -98,6 +103,7 @@ public class ControllerSoTayCaNhan {
             System.out.println("xoa thanh cong");
         }
     }
+
     public void loadWordList() {
         this.listViewA.getItems().addAll(dataSoTu.keySet());
     }

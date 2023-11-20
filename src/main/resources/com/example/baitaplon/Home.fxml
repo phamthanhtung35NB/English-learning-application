@@ -117,9 +117,9 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="143.0">
                      <children>
-                        <VBox blendMode="SCREEN" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="128.0" HBox.hgrow="ALWAYS">
+                        <VBox blendMode="SCREEN" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="128.0" styleClass="vBox" stylesheets="@Home.css" HBox.hgrow="ALWAYS">
                            <children>
-                              <ToggleButton fx:id="isSettingLockUnlockSetLeft" mnemonicParsing="false" onAction="#buttonSettingLockUnlockSetLeft" prefHeight="158.0" prefWidth="165.0">
+                              <ToggleButton fx:id="isSettingLockUnlockSetLeft" mnemonicParsing="false" onAction="#buttonSettingLockUnlockSetLeft" prefHeight="158.0" prefWidth="165.0" styleClass="buttonOkCancelVvv">
                                  <graphic>
                                     <ImageView fitHeight="55.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
@@ -128,7 +128,7 @@
                                     </ImageView>
                                  </graphic>
                               </ToggleButton>
-                              <TextField alignment="CENTER" promptText="Home Lock" text="Home Lock" />
+                              <TextField alignment="CENTER" promptText="Home Lock" styleClass="textR" stylesheets="@Home.css" text="Home Lock" />
                            </children>
                         </VBox>
                      </children>
@@ -136,18 +136,18 @@
                   <Pane prefHeight="37.0" prefWidth="135.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <VBox prefHeight="128.0" prefWidth="135.0">
+                        <VBox prefHeight="128.0" prefWidth="135.0" styleClass="vBox" stylesheets="@Home.css">
                            <children>
-                              <Button mnemonicParsing="false" prefHeight="88.0" prefWidth="140.0">
+                              <Button mnemonicParsing="false" prefHeight="88.0" prefWidth="140.0" styleClass="buttonOkCancelVvv" stylesheets="@Home.css">
                                  <graphic>
-                                    <ImageView fitHeight="80.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="70.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@Image/next.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <TextField alignment="CENTER" promptText="Home Lock" text="Continue" />
+                              <TextField alignment="CENTER" promptText="Home Lock" styleClass="textR" stylesheets="@Home.css" text="Continue" />
                            </children>
                         </VBox>
                      </children>
@@ -155,18 +155,18 @@
                   <Pane layoutX="10.0" layoutY="110.0" prefHeight="37.0" prefWidth="135.0" />
                   <HBox layoutX="10.0" layoutY="147.0" prefHeight="112.0" prefWidth="135.0">
                      <children>
-                        <VBox prefHeight="128.0" prefWidth="135.0">
+                        <VBox prefHeight="128.0" prefWidth="135.0" styleClass="vBox" stylesheets="@Home.css">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#buttonLoOut" prefHeight="88.0" prefWidth="140.0">
+                              <Button mnemonicParsing="false" onAction="#buttonLoOut" prefHeight="88.0" prefWidth="140.0" styleClass="buttonOkCancelVvv" stylesheets="@Home.css">
                                  <graphic>
-                                    <ImageView fitHeight="80.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="49.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@Image/logoutAcc.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <TextField alignment="CENTER" promptText="Home Lock" text="Logout" />
+                              <TextField alignment="CENTER" promptText="Home Lock" styleClass="textR" stylesheets="@Home.css" text="Logout" />
                            </children>
                         </VBox>
                      </children>
@@ -174,18 +174,18 @@
                   <Pane layoutX="10.0" layoutY="256.0" prefHeight="37.0" prefWidth="135.0" />
                   <HBox layoutX="10.0" layoutY="297.0" prefHeight="112.0" prefWidth="135.0">
                      <children>
-                        <VBox prefHeight="128.0" prefWidth="135.0">
+                        <VBox prefHeight="128.0" prefWidth="135.0" styleClass="vBox" stylesheets="@Home.css">
                            <children>
-                              <Button mnemonicParsing="false" onAction="#exit" prefHeight="88.0" prefWidth="140.0">
+                              <Button mnemonicParsing="false" onAction="#exit" prefHeight="88.0" prefWidth="140.0" styleClass="buttonOkCancelVvv" stylesheets="@Home.css">
                                  <graphic>
-                                    <ImageView fitHeight="80.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="46.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@Image/logout.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
                               </Button>
-                              <TextField alignment="CENTER" promptText="Home Lock" text="Exit" />
+                              <TextField alignment="CENTER" promptText="Home Lock" styleClass="textR" stylesheets="@Home.css" text="Exit" />
                            </children>
                         </VBox>
                      </children>
@@ -204,16 +204,16 @@
                   </ImageView>
                   <HBox alignment="CENTER" prefHeight="154.0" prefWidth="1022.0" HBox.hgrow="ALWAYS">
                      <children>
-                        <Label fx:id="title" alignment="CENTER" prefHeight="130.0" prefWidth="505.0" text="Label">
+                        <Label fx:id="title" alignment="CENTER" prefHeight="130.0" prefWidth="505.0" text="Home">
                            <font>
                               <Font size="56.0" />
                            </font>
                         </Label>
                      </children>
                   </HBox>
-                  <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#buttonSetting" prefHeight="46.0" prefWidth="25.0" stylesheets="@Home.css" HBox.hgrow="NEVER">
+                  <Button alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#buttonSetting" prefHeight="48.0" prefWidth="57.0" styleClass="buttonOkCancelVvv" stylesheets="@Home.css" HBox.hgrow="NEVER">
                      <graphic>
-                        <ImageView fitHeight="46.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" styleClass="buttonOkCancelVvv">
                            <image>
                               <Image url="@Image/setting.png" />
                            </image>

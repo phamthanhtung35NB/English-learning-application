@@ -94,28 +94,29 @@ public class HomeController  {
 
     @FXML
     protected void buttonHome() throws IOException {
-        System.out.println("Home");
+//        System.out.println("Home");
         AnchorPane view = FXMLLoader.load(getClass().getResource("TabHome.fxml"));
         view.getStylesheets().add(getClass().getResource("TabHome.css").toExternalForm());
-        System.out.println("2");
+//        System.out.println("2");
         centerBorderPane.setCenter(view);
-        System.out.println("3");
+//        System.out.println("3");
         title.setText("Home");
     }
     @FXML
     protected void buttonSearch() throws IOException{
-        System.out.println("Search");
-        System.out.println("1");
-        AnchorPane view = FXMLLoader.load(getClass().getResource("FileTxt.fxml"));
-        System.out.println("2");
+//        System.out.println("Search");
+//        System.out.println("1");
+        AnchorPane view = FXMLLoader.load(getClass().getResource("FileSql.fxml"));
+//        System.out.println("2");
+        view.getStylesheets().add(getClass().getResource("FileSql.css").toExternalForm());
         centerBorderPane.setCenter(view);
-        System.out.println("3");
+//        System.out.println("3");
 //        new ControllerSearchByFile().autoLoad();
         title.setText("Search");
     }
     @FXML
     protected void buttonOnlineSearch() throws IOException{
-        System.out.println("O Search");
+//        System.out.println("O Search");
         Pane view = FXMLLoader.load(getClass().getResource("GoogleApi.fxml"));
         centerBorderPane.setCenter(view);
         title.setText("Online Search");

@@ -23,9 +23,20 @@
     -fx-text-fill: #ff00ff;
     -fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 10.0% , center 50.0% 50.0%, radius 60.0%, #aee4ff 0.0%, #6a9cfd 100.0%);
 }
+.buttonOkCancelVvv {
+    -fx-text-fill: #3f2e33;
+    -fx-background-color: #ffb8d0;
+    -fx-background-radius: 10 10 10 10;
+    -fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -2, 2);
+    -fx-font-weight: bold;
+    /*-fx-padding: 5 5 5 5;*/
+    -fx-font-size: 15px;
+    /*-fx-font-family: url("@Nunito-Bold.ttf");*/
+
+}
 
 .text-field {
-    -fx-background-color: #d5a2b2;
+    -fx-background-color: #ffb8d0;
     -fx-text-fill: #282727;
     -fx-border-color: #ccc;
     -fx-border-width: 1px;

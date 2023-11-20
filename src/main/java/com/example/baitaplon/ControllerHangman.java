@@ -1,24 +1,27 @@
 package com.example.baitaplon;
 
 
+import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
-import javafx.scene.web.WebView;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
-public class ControllerHangman {
+public class ControllerHangman extends Application {
     @FXML
-    private WebView webView;
+    private Canvas hangmanCanvas;
+    @FXML
+    private TextArea webView;
     //tu bi mat
     @FXML
     private HBox hBoxButtonsSecret;
@@ -30,10 +33,11 @@ public class ControllerHangman {
     @FXML
     private Label labelNotification;
 
-    private static String wordToGuess = "hangmana";
+    private static String wordToGuess = "null";
+    private static String meaningOfTheWordToGuess;
 
     //tu bi mat chua duoc hien thi
-    private StringBuilder wordHasNotGuessed = new StringBuilder("--------");
+    private StringBuilder wordHasNotGuessed = new StringBuilder("");
     // list cac nut bam
     private static List<Button> ListButtonsSecret;
     private static List<Button> ListAlphabetButtons;
@@ -47,6 +51,15 @@ public class ControllerHangman {
      */
     @FXML
     public void initialize() {
+        if (ControllerSoTayCaNhan.isLoadData == false) {
+            try {
+                DataBase.loadDataSqlOfSoTuCaNhan();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            ControllerSoTayCaNhan.isLoadData = true;
+        }
+        randomWord();
         ListButtonsSecret = new ArrayList<>();
         // load nut bam vao hBoxButtonsSecret (tu bi mat)
         for (int i = 1; i < wordToGuess.length() + 1; i++) {
@@ -58,6 +71,7 @@ public class ControllerHangman {
             ListButtonsSecret.add(button);
             // them nut bam vao hBoxButtonsSecret
             hBoxButtonsSecret.getChildren().add(button);
+            wordHasNotGuessed.append("-");
         }
 
         ListAlphabetButtons = new ArrayList<>();
@@ -75,8 +89,8 @@ public class ControllerHangman {
             // Thêm nút vào hBoxAlphabet
             hBoxAlphabet.getChildren().add(button);
         }
-        //random 5 chu cai
-        for (int i = 0; i < 5; i++) {
+        //random 2 chu cai
+        for (int i = 0; i < 7; i++) {
             String letter = RandomKitu();
             Button button = new Button(letter);
             // Thiết lập sự kiện onAction
@@ -96,7 +110,7 @@ public class ControllerHangman {
         System.out.println("ListButtonsSecret: " + ListButtonsSecret);
         System.out.println("ListAlphabetButtons (shuffled): " + ListAlphabetButtons);
         updateAlphabetButtons();
-
+        webView.setText("\n\n\t" + meaningOfTheWordToGuess);
     }
 
     //update lai cac nut bam sau khi xao tron
@@ -116,15 +130,31 @@ public class ControllerHangman {
         wordHasNotGuessed.setCharAt(buttonIndex, wordToGuess.charAt(buttonIndex));
         updatehBoxButtonsSecret();
         //neu doan dung thi thong bao
-        if (wordHasNotGuessed.toString().equals(wordToGuess)) {
+        if (checkWin() == true) {
             labelNotification.setText("Congratulations! You guessed it!\n" +
                     "\tClick submit to continue");
             for (Button button : ListAlphabetButtons) {
-                button.setDisable(false);
+                button.setDisable(true);
                 button.getStyleClass().remove("button_");
                 button.getStyleClass().add("button_Done");
             }
         }
+    }
+
+    //check xem thang chua
+    private boolean checkWin() {
+        if (wordHasNotGuessed.toString().equals(wordToGuess)) {
+            labelNotification.setText("Congratulations! You guessed it!\n" +
+                    "\tClick submit to continue");
+
+            for (Button button : ListAlphabetButtons) {
+                button.setDisable(true);
+                button.getStyleClass().remove("button_");
+                button.getStyleClass().add("button_Done");
+            }
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -142,16 +172,35 @@ public class ControllerHangman {
                 }
             }
             updatehBoxButtonsSecret();
-            if (wordHasNotGuessed.toString().equals(wordToGuess)) {
-                labelNotification.setText("Congratulations! You guessed the word!");
+            labelNotification.setText("Correct guess. Keep going!");
+            if (checkWin() == true) {
+                labelNotification.setText("Congratulations! You guessed it!\n" +
+                        "\tClick submit to continue");
+                new TextToSpeech(wordToGuess);
+                for (Button button : ListAlphabetButtons) {
+                    button.setDisable(true);
+                    button.getStyleClass().remove("button_");
+                    button.getStyleClass().add("button_Done");
+                }
             }
         } else {
             labelNotification.setText("Incorrect guess. Try again.");
             countIncorrectGuesses++;
-            System.out.println(countIncorrectGuesses);
+            updateHangmanCanvas();
+            if (countIncorrectGuesses >= 4) {
+                labelNotification.setText("Game over. You lost. Click submit to continue");
+                for (Button button : ListAlphabetButtons) {
+                    button.setDisable(true);
+                    button.getStyleClass().remove("button_");
+                    button.getStyleClass().add("button_Done");
+                }
+                webView.setText("\n\n\t" + meaningOfTheWordToGuess + " \n\n\tThe answer is>" + wordToGuess);
+                new TextToSpeech(wordToGuess);
+            }
         }
     }
 
+    //update lai cac nut bam chua cac chu cai bi mat
     private void updatehBoxButtonsSecret() {
         // clear hBoxButtonsSecret
         hBoxButtonsSecret.getChildren().clear();
@@ -171,42 +220,150 @@ public class ControllerHangman {
 
     public static String RandomKitu() {
         Random random = new Random();
-        // 'a' là 97 và 'z' là 122
+        // 'a'  97  'z'  122
         int randomAscii = random.nextInt(26) + 97;
         char randomChar = (char) randomAscii;
         return String.valueOf(randomChar);
+    }
+
+    //randum tu bi mat in so tay ca nhan
+    public String randomWord() {
+        countIncorrectGuesses = 0;
+        wordHasNotGuessed = new StringBuilder("");
+        ListAlphabetButtons = new ArrayList<>();
+        ListButtonsSecret = new ArrayList<>();
+        hBoxButtonsSecret.getChildren().clear();
+        hBoxAlphabet.getChildren().clear();
+        updateHangmanCanvas();
+        labelNotification.setText("");
+
+        if (ControllerSoTayCaNhan.dataSoTu.isEmpty()) {
+            return "null";
+        }
+
+        int randomIndex = new Random().nextInt(ControllerSoTayCaNhan.dataSoTu.size());
+        int currentIndex = 0;
+
+        for (Map.Entry<String, WordSQL> entry : ControllerSoTayCaNhan.dataSoTu.entrySet()) {
+            if (currentIndex == randomIndex) {
+                wordToGuess = entry.getKey();
+                meaningOfTheWordToGuess = entry.getValue().getWord_explain();
+                System.out.println("wordToGuess: " + wordToGuess);
+                System.out.println("meaningOfTheWordToGuess: " + meaningOfTheWordToGuess);
+                return "true";
+            }
+            currentIndex++;
+        }
+
+        return "false";
     }
 
     //nut bam submit chuyen man
     @FXML
     public void clickSubmit() {
         System.out.println("submit");
-    }
-
-    @FXML
-    public void cancelGame() {
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("hangman2.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Hangman Game");
-            stage.setScene(new Scene(root, 800, 600));
-            stage.show();
-            // Dong cua so hien tai
-            hBoxAlphabet.getScene().getWindow().hide();
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (checkWin() == true) {
+            initialize();
+            new TextToSpeech("Good job");
+        } else {
+            new TextToSpeech("Try again");
+            initialize();
         }
     }
 
-//    @Override
-//    public void start(Stage primaryStage) throws Exception {
-//        Parent root = FXMLLoader.load(getClass().getResource("hangman.fxml"));
-//        primaryStage.setTitle("Hangman Game");
-//        primaryStage.setScene(new Scene(root, 800, 600));
-//        primaryStage.show();
-//    }
-//
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    private void updateHangmanCanvas() {
+        GraphicsContext gc = hangmanCanvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, hangmanCanvas.getWidth(), hangmanCanvas.getHeight());
+
+        switch (countIncorrectGuesses) {
+            case 0:
+                drawHangman(gc);
+                break;
+            case 1:
+                drawHangman(gc);
+                drawHead(gc);
+                break;
+            case 2:
+                drawHangman(gc);
+                drawHead(gc);
+                drawBody(gc);
+                break;
+            case 3:
+                drawHangman(gc);
+                drawHead(gc);
+                drawBody(gc);
+                drawLeftArm(gc);
+                drawRightArm(gc);
+                break;
+            //ngoai le
+            default:
+                drawHangman(gc);
+                drawHead(gc);
+                drawBody(gc);
+                drawLeftArm(gc);
+                drawRightArm(gc);
+                drawLeftLeg(gc);
+                drawRightLeg(gc);
+                break;
+        }
+    }
+
+    private void drawHangman(GraphicsContext gc) {
+        // khung treo
+        gc.setStroke(Color.BROWN);
+        gc.setLineWidth(10);
+        gc.strokeLine(175, 10, 175, 20); // Dây treo
+        gc.strokeLine(175, 20, 100, 20); // Cột trái
+        gc.strokeLine(175, 20, 250, 20); // Cột phải
+
+        gc.setLineWidth(5);
+        gc.strokeLine(175, 90, 100, 20);
+        gc.strokeLine(175, 90, 250, 20);
+    }
+
+    private void drawHead(GraphicsContext gc) {
+        gc.setFill(Color.BLACK);
+        gc.fillOval(160, 55, 30, 30);
+    }
+
+    private void drawBody(GraphicsContext gc) {
+        gc.setStroke(Color.BLACK);
+        gc.fillRect(172, 85, 6, 60);
+    }
+
+    private void drawLeftArm(GraphicsContext gc) {
+
+        gc.strokeLine(175, 90, 150, 110);
+    }
+
+    private void drawRightArm(GraphicsContext gc) {
+
+        gc.strokeLine(175, 90, 200, 110);
+    }
+
+    private void drawLeftLeg(GraphicsContext gc) {
+
+        gc.strokeLine(175, 145, 150, 165);
+    }
+
+    private void drawRightLeg(GraphicsContext gc) {
+
+        gc.strokeLine(175, 145, 200, 165);
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getResource("Hangman.fxml"));
+        primaryStage.setTitle("Hangman Game");
+        primaryStage.setScene(new Scene(root, 800, 600));
+
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
+    }
 }

@@ -121,16 +121,25 @@
     /*-fx-font-family: url("@Nunito-Bold.ttf");*/
 
 }
-.textFieldWordTargetExplain {
-    -fx-background-color: #f0d4dc;
-    -fx-text-fill: #3f2e33;
-    -fx-border-color: #999999; /* Màu viền */
-    -fx-border-width: 1px;
-    -fx-border-radius: 5px;
-    -fx-padding: 3px;
-    -fx-prompt-text-fill: #999999;
+.vBox {
+    /*-fx-text-fill: #3f2e33;*/
+    -fx-background-color: #c95a84;
+    -fx-background-radius: 10 10 10 10;
+    -fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -2, 2);
+    -fx-font-weight: bold;
+    -fx-padding: 5 5 5 5;
+    -fx-font-size: 15px;
+    /*-fx-font-family: url("@Nunito-Bold.ttf");*/
+
 }
-.textFieldWordTargetExplain:focused {
-    -fx-border-color: #0078d4;
+.textR {
+    -fx-text-fill: #3f2e33;
     -fx-background-color: #ffb8d0;
+    -fx-background-radius: 10 10 10 10;
+    /*-fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -2, 2);*/
+    -fx-font-weight: bold;
+    -fx-padding: 5 5 5 5;
+    -fx-font-size: 15px;
+    /*-fx-font-family: url("@Nunito-Bold.ttf");*/
+
 }

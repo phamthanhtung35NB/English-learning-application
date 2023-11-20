@@ -23,9 +23,6 @@ public class ClockController {
     @FXML
     private Label dateText;
 
-//    @FXML
-//    private DatePicker datePicker;
-
     @FXML
     private TextField dateField;
     public void initialize() {

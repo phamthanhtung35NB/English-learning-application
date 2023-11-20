@@ -25,7 +25,7 @@ public class ControllerGame extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Game.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("TabGame.fxml"));
         primaryStage.setTitle("Speech Pronunciation Test");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();

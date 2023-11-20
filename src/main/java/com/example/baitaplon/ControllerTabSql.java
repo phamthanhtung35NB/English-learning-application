@@ -30,7 +30,8 @@ public class ControllerTabSql extends Application {
     protected static TreeMap<String, WordSQL> dataWordinSql = new TreeMap<>();
     @FXML
     private ListView<String> listViewA;
-    //text la tu can doc/xoa
+
+    //text ,id la tu can doc/xoa/ them vao so tu ca nhan
     private String text;
     private static int idCanXoa;
     @FXML
@@ -68,6 +69,23 @@ public class ControllerTabSql extends Application {
     @FXML
     private Label labelNoteDelete;
 
+    @FXML
+    public  void buttonAddNotebook(){
+        DataBase.setSQLiteStuding_array(idCanXoa);
+        searchTra.setText("Add to notebook success");
+    }
+    //doc tu
+    @FXML
+    public void buttonSpeeck(){
+        new TextToSpeech(text);
+    }
+    @FXML
+    public void buttonReload(){
+        DictionaryManagement.dictionarySQLiteLoadAll();
+        listViewA.getItems().clear();
+        searchTra.setText("");
+        loadWordList();
+    }
     //khoi tao tu dong
     @FXML
     public void initialize() throws IOException {
@@ -79,6 +97,11 @@ public class ControllerTabSql extends Application {
 
     @FXML
     protected void clickCheck() {
+        if (searchTra.getText().equals("Add to notebook success")){
+            searchTra.setText("");
+            listViewA.getItems().clear();
+            loadWordList();
+        }
         if (searchTra.getText().length() > 0) {
 
             try {
@@ -243,6 +266,7 @@ public class ControllerTabSql extends Application {
                     "<h3><i>/"+word_pronounce+"/</i></h3>" +
                     "<h2>"+word_loaiTu+"</h2>" +
                     "<ul><li>"+word_explain+"</li></ul>";
+
 //            "<h1>"+word_target+"</h1>" +
 //                    "<h3><i>/"+word_pronounce+"/</i></h3>" +
 //                    "<h2>ngoại động từ</h2>" +
@@ -324,7 +348,7 @@ public class ControllerTabSql extends Application {
         Scene scene = new Scene(fxml);
         stage.setTitle("Home!");
 
-//        scene.getStylesheets().add(getClass().getResource("Home.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("FileSql.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
     }

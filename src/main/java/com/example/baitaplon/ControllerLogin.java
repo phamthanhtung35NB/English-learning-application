@@ -8,7 +8,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,32 +38,6 @@ public class ControllerLogin {
 
     @FXML
     public void initialize() {
-        textName.setOnKeyPressed(event -> {
-            if (event.getCode() == KeyCode.TAB) {
-                System.out.println("Tab pressed");
-
-            }
-        });
-
-    }
-@FXML
-public void evenTextFieldName(javafx.scene.input.KeyEvent event) {
-    System.out.println(event.getCode());
-    if (event.getCode() == javafx.scene.input.KeyCode.TAB) {
-        System.out.println("TAB pressed");
-        textPass.requestFocus();
-        event.consume();
-    }
-}
-
-    @FXML
-    public void evenPasswordFieldPass(javafx.scene.input.KeyEvent event) {
-        System.out.println(event.getCode());
-        if (event.getCode() == javafx.scene.input.KeyCode.TAB && event.isShiftDown()) {
-            System.out.println("Shift + TAB pressed");
-            textName.requestFocus();
-            event.consume();
-        }
     }
 
     /**
@@ -133,6 +106,16 @@ public void evenTextFieldName(javafx.scene.input.KeyEvent event) {
         stage.setScene(scene);
     }
 
+    @FXML
+    protected void buttonChangePassword(ActionEvent event) throws IOException {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("LoginChangePassword.fxml"));
+        Parent sampleParent = loader.load();
+        Scene scene = new Scene(sampleParent);
+        stage.setScene(scene);
+    }
+
     /**
      * Kiểm tra tài khoản và mật khẩu có đúng không và chuyển sang giao diện home
      *
@@ -146,7 +129,7 @@ public void evenTextFieldName(javafx.scene.input.KeyEvent event) {
         String pass = textPass.getText();
         System.out.println(name + " " + pass);
         studying_array = DataBase.checkSQLiteLogin(name, pass);
-        System.out.println(studying_array);
+//        System.out.println(studying_array);
         if ((name.equals("test") && pass.equals("test")) || !(studying_array.equals("-1"))) {
             System.out.println("Đăng nhập thành công");
             viewLoginToHome(event);
@@ -159,7 +142,7 @@ public void evenTextFieldName(javafx.scene.input.KeyEvent event) {
     }
 
 
-    //cua so new account
+    /////////////////////////////////NEW ACCOUNT///////////////////////////////////////////////
     /**
      * Khai báo các thành phần trong giao diện new account
      */
@@ -269,6 +252,134 @@ public void evenTextFieldName(javafx.scene.input.KeyEvent event) {
                 alert.setTitle("WARNING");
                 System.out.println("Tạo tài khoản mới thất bại");
                 alert.setContentText("Create account failed");
+                alert.show();
+
+            }
+//            Tên tài khoản và Mật khẩu không được để trống, mật khẩu và mật khẩu lặp lại phải giống nhau
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("WARNING");
+            System.out.println("Tên tài khoản và Mật khẩu không được để trống, mật khẩu và mật khẩu lặp lại phải giống nhau");
+            alert.setContentText("Account name and Password cannot be blank, password and repeated password need to be the same");
+            alert.show();
+        }
+    }
+    /////////////////////////////////////CHANGE PASSWORD/////////////////////////////////////////
+    /**
+     * Khai báo các thành phần trong giao diện new account
+     */
+    @FXML
+    private TextField textNameChange;
+    @FXML
+    private PasswordField textPassChange;
+    @FXML
+    private PasswordField textPassChangeNew;
+    @FXML
+    private PasswordField textRepeatPassChangeNew;
+    @FXML
+    private Label labelShowPassOld;
+    @FXML
+    private Label labelShowPassChangeNew;
+    @FXML
+    private Label labelShowPassChangeRepeatNew;
+    @FXML
+    private CheckBox trueShowPassOld;
+    @FXML
+    private CheckBox trueShowPassChangeNew;
+    @FXML
+    private CheckBox trueShowPassChangeRepeatNew;
+
+    /**
+     * Hiển thị mật khẩu khi check vào ô hiển thị mật khẩu cuả new account
+     *
+     * @param event
+     */
+    @FXML
+    protected void checkBoxShowPassOld(ActionEvent event) {
+        if (trueShowPassOld.isSelected()) {
+            // If selected, display the password
+            labelShowPassOld.setText(textPassChange.getText());
+        } else {
+            // If not selected, hide the password
+            labelShowPassOld.setText("");
+        }
+    }
+
+    /**
+     * Hiển thị mật khẩu khi check vào ô hiển thị mật khẩu nhap lai cuả new account
+     *
+     * @param event
+     */
+    @FXML
+    protected void checkBoxShowPassChangeNew(ActionEvent event) {
+        if (trueShowPassChangeNew.isSelected()) {
+            // If selected, display the password
+            labelShowPassChangeNew.setText(textPassChangeNew.getText());
+//            System.out.println(labelShowPass.getText());
+        } else {
+            // If not selected, hide the password
+            labelShowPassChangeNew.setText("");
+        }
+    }
+
+    /**
+     * Hiển thị mật khẩu khi check vào ô hiển thị mật khẩu nhap lai cuả new account
+     *
+     * @param event
+     */
+    @FXML
+    protected void checkBoxShowPassChangeRepeatNew(ActionEvent event) {
+        if (trueShowPassChangeRepeatNew.isSelected()) {
+            // If selected, display the password
+            labelShowPassChangeRepeatNew.setText(textRepeatPassChangeNew.getText());
+//            System.out.println(labelShowPass.getText());
+        } else {
+            // If not selected, hide the password
+            labelShowPassChangeRepeatNew.setText("");
+        }
+    }
+
+    /**
+     * Doi mat khau
+     *
+     * @param event
+     * @throws IOException
+     * @throws SQLException
+     */
+    @FXML
+    protected void buttonOkChangePass(ActionEvent event) throws IOException {
+        if (textRepeatPassChangeNew.getText().equals(textPassChangeNew.getText()) && !textNameChange.getText().equals("") &&
+                !textPassChange.getText().equals("") && !textPassChangeNew.getText().equals("")) {
+            String name = textNameChange.getText();
+            String pass = textPassChange.getText();
+            String passNew = textPassChangeNew.getText();
+
+
+            String ketQua = DataBase.changePasswordSQLite(name, pass, passNew);
+            //sai tên tài khoản hoặc mật khẩu
+            if (ketQua.equals("IncorrectAccountOrPassword")) {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARNING");
+                alert.setContentText("Incorrect Account Or Password");
+                alert.show();
+            } else if (ketQua.equals("success")) {
+                //tao tai khoan moi thanh cong
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARNING");
+                alert.setContentText("Done");
+                alert.show();
+                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("Login.fxml"));
+                Parent sampleParent = loader.load();
+                Scene scene = new Scene(sampleParent);
+                stage.setScene(scene);
+            }
+            //Tạo tài khoản mới thất bại
+            else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("WARNING");
+                alert.setContentText("Error");
                 alert.show();
 
             }

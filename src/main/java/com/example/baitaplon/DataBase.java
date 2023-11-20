@@ -159,24 +159,23 @@ public class DataBase {
 
     ///////////////////////////////////////CHANGE PASSWORD///////////////////////////////////////////////////////////////////////
     //doi mat khau
-    public static String changePasswordSQLite(String password, String newPassword) {
+    public static String changePasswordSQLite(String userName,String password, String newPassword) {
         SQLiteConnector connector = new SQLiteConnector();
         Connection connection = connector.getConnection();
 
         try {
             String checkQuery = "SELECT * FROM account WHERE user_name = ? AND password = ?";
             PreparedStatement checkStatement = connection.prepareStatement(checkQuery);
-            checkStatement.setString(1, UserName);
+            checkStatement.setString(1, userName);
             checkStatement.setString(2, password);
             ResultSet checkResultSet = checkStatement.executeQuery();
 
             while (checkResultSet.next()) {
-                if (checkResultSet.getString("password").equals(password) && checkResultSet.getString("user_name").equals(UserName)) {
+                if (checkResultSet.getString("password").equals(password) && checkResultSet.getString("user_name").equals(userName)) {
                     String updateQuery = "UPDATE account SET password = ? WHERE user_name = ?;";
                     PreparedStatement preparedStatement = connection.prepareStatement(updateQuery);
                     preparedStatement.setString(1, newPassword);
-                    preparedStatement.setString(2, UserName);
-
+                    preparedStatement.setString(2, userName);
                     int rowsAffected = preparedStatement.executeUpdate();
                     preparedStatement.close();
                     connector.closeConnection();
