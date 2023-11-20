@@ -10,6 +10,7 @@ public class DictionaryManagement {
     /**
      * Tìm từ bằng Cơ sở dữ liệu.
      * Gọi hàm: mở Terminal, thao tác nhập từ cần tìm, trả lại ý nghĩa của từ. Tất cả qua Terminal
+     * Link vào phần giao diện
      */
     public void dictionarySQLiteSearch() {
         System.out.print("Tim tu: ");
@@ -44,6 +45,7 @@ public class DictionaryManagement {
      * Nếu từ đã tồn tại - in ra lỗi
      * Nếu từ chưa tồn tại yêu cầu nhập thêm ý nghĩa từ đó
      * Tất cả qua Terminal
+     * Link vào phần giao diện
      */
     public void addWordInSQLiteDB() {
         System.out.print("Thêm từ: ");
@@ -103,6 +105,7 @@ public class DictionaryManagement {
      * Nếu từ chưa có trong csdl - in ra lỗi
      * Xóa từ đó nếu đã tồn tại trong CSDL
      * Tất cả qua Terminal
+     * Link vào phần giao diện
      */
     public void dropWordInSQLiteDB() {
         System.out.print("Xoa tu: ");
