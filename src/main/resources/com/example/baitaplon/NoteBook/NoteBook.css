@@ -1,0 +1,88 @@
+.buttonCheck {
+    -fx-pref-height: 37;
+    -fx-text-fill: #3f2e33;
+    -fx-background-color: #ffb8d0;
+    -fx-background-radius: 10 10 10 10;
+    -fx-effect: dropshadow(three-pass-box, #e05697, 5, 0, -3, 5);
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+.buttonCheck:hover {
+    -fx-pref-height: 37;
+    -fx-cursor: hand;
+    -fx-font-size: 18px;
+    -fx-text-fill: #ff00ff;
+    -fx-background-color: radial-gradient(focus-angle 0.0deg, focus-distance 10.0% , center 50.0% 50.0%, radius 60.0%, #aee4ff 0.0%, #6a9cfd 100.0%);
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
+.textField1 {
+    -fx-background-color: #f0d4dc;
+    -fx-text-fill: #3f2e33;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-border-color: #999999;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-prompt-text-fill: #999999;
+}
+.textField1:hover {
+    -fx-border-color: #0078d4;
+    -fx-background-color: #e5c1cb;
+}
+.textField1:focused {
+    -fx-border-color: #0078d4;
+    -fx-background-color: #e5c1cb;
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
+.buttonDelete {
+    -fx-background-color: #f0d4dc;
+    -fx-text-fill: #3f2e33;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial";
+    -fx-border-color: #999999;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-prompt-text-fill: #999999;
+}
+.buttonDelete:hover {
+    -fx-border-color: #0078d4;
+    -fx-background-color: #e5c1cb;
+}
+.buttonDelete:focused {
+    -fx-border-color: #0078d4;
+    -fx-background-color: #e5c1cb;
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
+.listView1 {
+    -fx-pref-height: 500;
+    -fx-pref-width: 200;
+    -fx-text-fill: #3f2e33;
+    -fx-background-color: #ffb8d0;
+    -fx-background-radius: 20 10 20 10;
+    -fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -10, 15);
+    -fx-font-weight: bold;
+    -fx-padding: 5 5 5 5;
+    -fx-font-size: 15px;
+    /*-fx-font-family: url("@Nunito-Bold.ttf");*/
+}
+.listView1 .list-cell {
+    -fx-background-color: #ffb8d0;
+    -fx-text-fill: #000000;
+}
+.listView1 .list-cell:hover {
+    -fx-background-color: #e7638a;
+    -fx-text-fill: #000000;
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////*/
+.webView2 {
+    -fx-blend-mode: overlay; /* Chế độ kết hợp */
+    -fx-context-menu-enabled: true; /* Cho phép menu ngữ cảnh */
+    -fx-cursor: hand;
+    -fx-focus-traversable: true; /* Có thể focus */
+    -fx-font-scale: 1.2; /* Tỉ lệ font */
+    -fx-text-fill: #000000;
+    -fx-zoom: 1.5;
+}
+
