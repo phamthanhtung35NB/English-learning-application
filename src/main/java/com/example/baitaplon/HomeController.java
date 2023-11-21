@@ -9,15 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-//import javafx.scene.control.*;
-//import javafx.scene.control.PasswordField;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.Slider;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Slider;
+import javafx.scene.control.SplitPane;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
-import javafx.scene.control.SplitPane;
 
 import java.awt.*;
 import java.io.IOException;
@@ -26,8 +23,6 @@ import java.net.URI;
 public class HomeController {
     public static boolean isLoadData = false;
     public static boolean isLoadDataOfSoTuCaNhan = false;
-
-
 
     @FXML
     public SplitPane setupGame;
@@ -39,7 +34,7 @@ public class HomeController {
 
     // centerBorderPane laf view chinh cua BorderPane
     @FXML
-    public BorderPane centerBorderPane;
+    protected BorderPane centerBorderPane;
 //    @FXML
 //    private TextField textName;
 //    @FXML
@@ -48,7 +43,13 @@ public class HomeController {
     @FXML
     private VBox vbox;
     @FXML
+    private VBox vBoxMoTa;
+    @FXML
+    private VBox vBoxGame;
+    @FXML
     private VBox vboxRight;
+    @FXML
+    private HBox hBoxButton;
     @FXML
     private ToggleButton isLockUnlockSetLeft;
     //    @FXML
@@ -86,10 +87,17 @@ public class HomeController {
 
     @FXML
     public void initialize() throws IOException {
-        buttonHome();
+//        buttonHome();
+//        if (ControllerLogin.isHomeController==false){
+            buttonHome();
+            ControllerLogin.isHomeController=true;
+            centerBorderPane.setRight(null);
+            centerBorderPane.setLeft(null);
+
+//        }
+
         System.out.println("Home");
-        centerBorderPane.setRight(null);
-        centerBorderPane.setLeft(null);
+
         ////////////////////////SET UP MOUSE LEFT///////////////////////////
 //        centerBorderPane.setOnMouseMoved(event -> {
 //            int x = (int)event.getX();
@@ -145,15 +153,22 @@ public class HomeController {
     //tap game
     @FXML
     protected void buttonGame() throws IOException {
-        try {
-            System.out.println("Game");
-            SplitPane view = FXMLLoader.load(getClass().getResource("TabGame.fxml"));
-//            view.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
-            centerBorderPane.setCenter(view);
-            title.setText("Game");
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately, e.g., show an error message
-        }
+//        try {
+//            System.out.println("Game");
+//            SplitPane  view = FXMLLoader.load(getClass().getResource("TabGame.fxml"));
+////            view.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
+//            centerBorderPane.setCenter(view);
+//            title.setText("Game");
+//        } catch (IOException e) {
+//            e.printStackTrace(); // Handle the exception appropriately, e.g., show an error message
+//        }
+//        vBoxMoTa.getChildren().clear();
+
+        centerBorderPane.setCenter(vBoxGame);
+        vBoxGame.getChildren().clear();
+        vBoxGame.getChildren().add(hBoxButton);
+
+
     }
 
     //    @FXML
@@ -259,33 +274,27 @@ public class HomeController {
 
     @FXML
     private void letGo() {
-//        System.out.println("letGo started");
-//        difficultyHangman = (int) difficultySlider.getValue();
-//        System.out.println(difficultyHangman);
+        System.out.println("letGo started");
+        difficultyHangman = (int) difficultySlider.getValue();
+        System.out.println(difficultyHangman);
     }
 
     @FXML
     private void hangman() throws IOException {
         System.out.println("buttonButton");
-//        System.out.println("1");
-//        AnchorPane view = FXMLLoader.load(getClass().getResource("Game/TabGameHangman.fxml"));
-//        view.getStylesheets().add(getClass().getResource("Game/Hangman.css").toExternalForm());
-//        System.out.println("2");
-//        setupGame.getItems().set(0, view);
-//        System.out.println("3");
-        System.out.println("hangman started");
-//        difficultySlider.setMin(2);
-//        difficultySlider.setMax(5);
-//        difficultySlider.setValue(3);
-//        difficultySlider.setShowTickMarks(true);
-//        difficultySlider.setMajorTickUnit(1);
+        System.out.println("1");
+//        AnchorPane view = FXMLLoader.load(getClass().getResource("TabGameHangman.fxml"));
+//        view.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
+        System.out.println("2");
+        vBoxGame.getChildren().add(vBoxMoTa);
     }
 
+    ////////////////////////////GAME TU//////////////////////////////////////
     @FXML
     private void pronounce() throws IOException {
-//        GridPane view = FXMLLoader.load(getClass().getResource("Game/GamePron.fxml"));
-//        view.getStylesheets().add(getClass().getResource("Game/GamePron.css").toExternalForm());
-//        centerBorderPane.setCenter(view);
+        GridPane view = FXMLLoader.load(getClass().getResource("GamePron.fxml"));
+        view.getStylesheets().add(getClass().getResource("GamePron.css").toExternalForm());
+        centerBorderPane.setCenter(view);
         System.out.println("pronounce started");
     }
 

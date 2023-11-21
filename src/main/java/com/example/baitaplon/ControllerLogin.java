@@ -15,6 +15,8 @@ import java.sql.SQLException;
 
 public class ControllerLogin {
 
+    //dam bao khoi tao 1 lan
+    protected static boolean isHomeController = false;
     protected static String studying_array = "";
 
     /**
