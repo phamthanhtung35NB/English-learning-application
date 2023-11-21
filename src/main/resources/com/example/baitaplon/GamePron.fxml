@@ -47,5 +47,10 @@
             <TextField fx:id="inData" />
          </children>
       </HBox>
+      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Label fx:id="goiytu" prefHeight="18.0" prefWidth="0.0" />
+         </children>
+      </HBox>
    </children>
 </GridPane>
