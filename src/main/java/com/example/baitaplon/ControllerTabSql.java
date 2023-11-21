@@ -32,7 +32,7 @@ public class ControllerTabSql extends Application {
     private ListView<String> listViewA;
 
     //text ,id la tu can doc/xoa/ them vao so tu ca nhan
-    private String text;
+    private String text="";
     private static int idCanXoa;
     @FXML
     private WebView webViewNghia;
@@ -72,6 +72,7 @@ public class ControllerTabSql extends Application {
     @FXML
     public  void buttonAddNotebook(){
         DataBase.setSQLiteStuding_array(idCanXoa);
+        HomeController.isLoadDataOfSoTuCaNhan=false;
         searchTra.setText("Add to notebook success");
     }
     //doc tu
@@ -81,7 +82,11 @@ public class ControllerTabSql extends Application {
     }
     @FXML
     public void buttonReload(){
-        DictionaryManagement.dictionarySQLiteLoadAll();
+        if (HomeController.isLoadData==false){
+            DictionaryManagement.dictionarySQLiteLoadAll();
+            HomeController.isLoadData=true;
+        }
+
         listViewA.getItems().clear();
         searchTra.setText("");
         loadWordList();
@@ -89,7 +94,11 @@ public class ControllerTabSql extends Application {
     //khoi tao tu dong
     @FXML
     public void initialize() throws IOException {
-        DictionaryManagement.dictionarySQLiteLoadAll();
+
+        if (HomeController.isLoadData==false){
+            DictionaryManagement.dictionarySQLiteLoadAll();
+            HomeController.isLoadData=true;
+        }
         initComponents();
         loadWordList();
         borderPane.setRight(null);
@@ -277,6 +286,7 @@ public class ControllerTabSql extends Application {
 //                    "<h2>danh từ</h2>" +
 //                    "<ul><li>sự chống lại, sự trái ((xem) pro_and_con)</li></ul>"
             labelNoteDelete.setText(DictionaryManagement.addWordInSQLiteDB(word_target, html));
+            HomeController.isLoadData=false;
         } else {
             labelNoteDelete.setText("Không được để trống");
         }
@@ -292,11 +302,11 @@ public class ControllerTabSql extends Application {
     protected void clickSetSet() {
         System.out.println("set");
     }
-
-    @FXML
-    protected void clickDeleteSet() {
-        System.out.println("delete set");
-    }
+//
+//    @FXML
+//    protected void clickDeleteSet() {
+//        System.out.println("delete set");
+//    }
     ////////////////////////////////DELETE WORD///////////////////////////////////////////
 
 
@@ -305,12 +315,13 @@ public class ControllerTabSql extends Application {
         System.out.println("delete delete");
         String word_target = textWordTargetDelete.getText();
         labelNoteDelete.setText( DictionaryManagement.dropWordInSQLiteDB(word_target));
+        HomeController.isLoadData=false;
     }
 
-    @FXML
-    protected void clickCancelDelete() {
-        System.out.println("cancel delete");
-    }
+//    @FXML
+//    protected void clickCancelDelete() {
+//        System.out.println("cancel delete");
+//    }
 
 
 //    public void initialize() {

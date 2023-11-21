@@ -44,22 +44,22 @@ public class ControllerHangman extends Application {
 
     //so lan doan sai
     private static int countIncorrectGuesses = 0;
-
+    private static boolean isRandom = false;
 
     /**
      * khoi tao game
      */
     @FXML
     public void initialize() {
-        if (ControllerSoTayCaNhan.isLoadData == false) {
-            try {
-                DataBase.loadDataSqlOfSoTuCaNhan();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            ControllerSoTayCaNhan.isLoadData = true;
+        if (HomeController.isLoadDataOfSoTuCaNhan == false) {
+            DataBase.loadDataSqlOfSoTuCaNhan();
+            HomeController.isLoadDataOfSoTuCaNhan = true;
         }
-        randomWord();
+        if (isRandom == false) {
+            isRandom = true;
+            randomWord();
+
+            }
         ListButtonsSecret = new ArrayList<>();
         // load nut bam vao hBoxButtonsSecret (tu bi mat)
         for (int i = 1; i < wordToGuess.length() + 1; i++) {
@@ -86,30 +86,29 @@ public class ControllerHangman extends Application {
             button.getStyleClass().add("buttonChuCai");
             // Thêm nút vào ListAlphabetButtons
             ListAlphabetButtons.add(button);
-            // Thêm nút vào hBoxAlphabet
             hBoxAlphabet.getChildren().add(button);
         }
-        //random 2 chu cai
-        for (int i = 0; i < 7; i++) {
+        //random 5 chu cai
+        for (int i = 0; i < 5; i++) {
             String letter = RandomKitu();
             Button button = new Button(letter);
-            // Thiết lập sự kiện onAction
             button.setOnAction(event -> chooseLetters(button));
             button.getStyleClass().add("buttonChuCai");
             // Thêm nút vào ListAlphabetButtons
             ListAlphabetButtons.add(button);
-            // Thêm nút vào hBoxAlphabet
             hBoxAlphabet.getChildren().add(button);
+
+            Collections.shuffle(ListAlphabetButtons);
         }
 
-        System.out.println("ListButtonsSecret: " + ListButtonsSecret);
-        System.out.println("ListAlphabetButtons (shuffled): " + ListAlphabetButtons);
+//        System.out.println("ListButtonsSecret: " + ListButtonsSecret);
+//        System.out.println("ListAlphabetButtons (shuffled): " + ListAlphabetButtons);
         // Xáo trộn ListAlphabetButtons
-        Collections.shuffle(ListAlphabetButtons);
-        System.out.println("after shuffle");
-        System.out.println("ListButtonsSecret: " + ListButtonsSecret);
-        System.out.println("ListAlphabetButtons (shuffled): " + ListAlphabetButtons);
+//        System.out.println("after shuffle");
+//        System.out.println("ListButtonsSecret: " + ListButtonsSecret);
+//        System.out.println("ListAlphabetButtons (shuffled): " + ListAlphabetButtons);
         updateAlphabetButtons();
+        updateHangmanCanvas();
         webView.setText("\n\n\t" + meaningOfTheWordToGuess);
     }
 
@@ -263,9 +262,11 @@ public class ControllerHangman extends Application {
     public void clickSubmit() {
         System.out.println("submit");
         if (checkWin() == true) {
+            isRandom = false;
             initialize();
             new TextToSpeech("Good job");
         } else {
+            isRandom = false;
             new TextToSpeech("Try again");
             initialize();
         }

@@ -82,7 +82,14 @@ public class ControllerLogin {
             Node source = (Node) event.getSource();
             Stage currentStage = (Stage) source.getScene().getWindow();
             currentStage.close();
-
+            if (HomeController.isLoadData == false) {
+                DictionaryManagement.dictionarySQLiteLoadAll();
+                HomeController.isLoadData = true;
+            }
+            if (HomeController.isLoadDataOfSoTuCaNhan == false) {
+                DataBase.loadDataSqlOfSoTuCaNhan();
+                HomeController.isLoadDataOfSoTuCaNhan = true;
+            }
             HomeStage.show();
 
         } catch (IOException e) {

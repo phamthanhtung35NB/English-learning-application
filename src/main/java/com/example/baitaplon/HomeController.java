@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.net.URI;
 
 public class HomeController  {
+    protected static boolean isLoadData = false;
+    protected static boolean isLoadDataOfSoTuCaNhan = false;
+
 
 
 //    @FXML
@@ -70,6 +73,8 @@ public class HomeController  {
     }
     @FXML
     public void initialize() throws IOException {
+
+
         buttonHome();
         System.out.println("Home");
         centerBorderPane.setRight(null);
@@ -154,6 +159,8 @@ public class HomeController  {
     protected void buttonLoOut(ActionEvent event) {
 
             try {
+                isLoadData = false;
+                isLoadDataOfSoTuCaNhan = false;
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);

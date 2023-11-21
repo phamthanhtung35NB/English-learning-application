@@ -7,7 +7,10 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+
 public class ControllerGame extends Application {
+
+
     @FXML
     private void hangman() {
         // Mở mic hoặc thực hiện các thao tác cần thiết khi bắt đầu thu âm

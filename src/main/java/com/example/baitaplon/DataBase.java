@@ -132,11 +132,12 @@ public class DataBase {
                 maxId++;
             }
             // Add
-            String insertQuery = "INSERT INTO account (id_account, user_name, password) VALUES (?, ?, ?)";
+            String insertQuery = "INSERT INTO account (id_account, user_name, password,studying_array) VALUES (?, ?, ?,?)";
             PreparedStatement insertStatement = connection.prepareStatement(insertQuery);
             insertStatement.setInt(1, maxId);
             insertStatement.setString(2, username);
             insertStatement.setString(3, password);
+            insertStatement.setString(4, "");
             int check = insertStatement.executeUpdate();
             checkResultSet.close();
             maxIdResultSet.close();

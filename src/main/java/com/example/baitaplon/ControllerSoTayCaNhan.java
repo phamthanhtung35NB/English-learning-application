@@ -24,7 +24,7 @@ public class ControllerSoTayCaNhan {
     private TextField searchTra;
 
     protected static TreeMap<String, WordSQL> dataSoTu = new TreeMap<>();
-    protected static boolean isLoadData = false;
+//    protected static boolean isLoadData = false;
 
     //text la tu can doc/xoa
     private String text;
@@ -32,19 +32,22 @@ public class ControllerSoTayCaNhan {
 
     //khoi tao tu dong
     @FXML
-    public void initialize() throws IOException, SQLException {
-        if (isLoadData == false) {
-            DataBase.loadDataSqlOfSoTuCaNhan();
-            isLoadData = true;
-        }
-        isLoadData = true;
+    public void initialize() throws IOException {
+    if (HomeController.isLoadDataOfSoTuCaNhan == false) {
+        DataBase.loadDataSqlOfSoTuCaNhan();
+        HomeController.isLoadDataOfSoTuCaNhan = true;
+    }
+//        listViewA = new ListView<>();
         initComponents();
         loadWordList();
     }
 
     @FXML
-    protected void load() throws IOException, SQLException {
-        DataBase.loadDataSqlOfSoTuCaNhan();
+    protected void load() throws IOException {
+        if (HomeController.isLoadDataOfSoTuCaNhan == false) {
+            DataBase.loadDataSqlOfSoTuCaNhan();
+            HomeController.isLoadDataOfSoTuCaNhan = true;
+        }
         System.out.println("test");
         listViewA = new ListView<>();
         initComponents();
