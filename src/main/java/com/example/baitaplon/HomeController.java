@@ -1,5 +1,6 @@
 package com.example.baitaplon;
 
+import com.example.baitaplon.Game.ControllerGame;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,10 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -30,7 +28,7 @@ public class HomeController  {
 
     // centerBorderPane laf view chinh cua BorderPane
     @FXML
-    protected BorderPane centerBorderPane;
+    public BorderPane centerBorderPane;
     @FXML
     private TextField textName;
     @FXML
@@ -128,11 +126,21 @@ public class HomeController  {
         centerBorderPane.setCenter(view);
         title.setText("Online Search");
     }
+    //tap game
+//    @FXML
+//    protected void buttonGame() throws IOException {
+//        System.out.println("Game");
+//        SplitPane view = FXMLLoader.load(getClass().getResource("Game/TabGame.fxml"));
+//        view.getStylesheets().add(getClass().getResource("Game/Hangman.css").toExternalForm());
+//        centerBorderPane.setCenter(view);
+//        title.setText("Game");
+//    }
     @FXML
     protected void buttonGame() throws IOException {
+//        ControllerGame =
         System.out.println("Game");
-        SplitPane view = FXMLLoader.load(getClass().getResource("Game/TabGame.fxml"));
-        view.getStylesheets().add(getClass().getResource("Game/Hangman.css").toExternalForm());
+        GridPane view = FXMLLoader.load(getClass().getResource("Game/GamePron.fxml"));
+        view.getStylesheets().add(getClass().getResource("Game/GamePron.css").toExternalForm());
         centerBorderPane.setCenter(view);
         title.setText("Game");
     }

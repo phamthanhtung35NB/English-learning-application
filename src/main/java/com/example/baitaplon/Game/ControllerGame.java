@@ -1,5 +1,6 @@
 package com.example.baitaplon.Game;
 
+import com.example.baitaplon.HomeController;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,13 +9,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Slider;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import com.example.baitaplon.*;
 
 import java.io.IOException;
 
 
-public class ControllerGame extends Application {
+public class ControllerGame extends HomeController {
 
+//    @FXML
+//    public BorderPane centerBorderPane;
     @FXML
     SplitPane setupGame;
     @FXML
@@ -54,27 +60,36 @@ public class ControllerGame extends Application {
         difficultySlider.setMajorTickUnit(1);
     }
 
+//    public void getCenterBorderPane(BorderPane center) {
+//        centerBorderPane=center;
+//    }
+
     @FXML
-    private void pronounce() {
+    private void pronounce() throws IOException {
+        GridPane view = FXMLLoader.load(getClass().getResource("Game/GamePron.fxml"));
+        view.getStylesheets().add(getClass().getResource("Game/GamePron.css").toExternalForm());
+
+//        HomeController
+        centerBorderPane.setCenter(view);
         // Mở mic hoặc thực hiện các thao tác cần thiết khi bắt đầu thu âm
         System.out.println("pronounce started");
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
-    @Override
-    public void start(Stage stage) throws Exception {
-
-        Parent fxml = FXMLLoader.load(getClass().getResource("TabGame.fxml"));
-        Scene scene = new Scene(fxml);
-        stage.setTitle("Home!");
-
-        scene.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
-        stage.setScene(scene);
-        stage.show();
-    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
+//
+//    @Override
+//    public void start(Stage stage) throws Exception {
+//
+//        Parent fxml = FXMLLoader.load(getClass().getResource("TabGame.fxml"));
+//        Scene scene = new Scene(fxml);
+//        stage.setTitle("Home!");
+//
+//        scene.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
+//        stage.setScene(scene);
+//        stage.show();
+//    }
 
 
 }
