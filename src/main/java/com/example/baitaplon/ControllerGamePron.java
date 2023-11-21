@@ -7,9 +7,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import java.awt.TextField;
-
-import java.awt.*;
+//import java.awt.TextField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 
@@ -37,7 +37,7 @@ public class ControllerGamePron extends Application {
 //    // khi lam xong database thi lam tiep
 ////    }
         private boolean checkAnsewer(String textToSpeech, String usser){
-            return usser.equals(textToSpeech.toLowerCase());
+            return usser.equals(textToSpeech.toLowerCase().trim());
         }
 //
 //    public static void main(String[] args) {
@@ -49,9 +49,7 @@ public class ControllerGamePron extends Application {
     public static String wordDeBai = "";
     public static String game(String word) {
         //phats aam word
-        new TextToSpeech(word);
 //        goi ham phat am
-
         //luu word de bai
         return wordDeBai = word;
     }
@@ -92,18 +90,20 @@ public class ControllerGamePron extends Application {
 
     @FXML
     public void buttonOk() {
-        inData.setText("hello");
-        String doi = inData.getText();
+//        String doi = inData.getText();
         //kiểu tra đúng sai trong này
-        while (true){
-            if (checkAnsewer(wordDeBai,doi)){
+//        while (true){
+            String a = inData.getText();
+            game("hello");
+            if (checkAnsewer(wordDeBai,a)){
                 thongbao.setText("Chính xác! Bạn đã đoán đúng từ.");
-                break;
+
             }else {
+                System.out.println("111");
                 thongbao.setText("Rất tiếc, câu trả lời không chính xác. Xin mời nhập tiếp");
-                continue;
+
             }
-        }
+//        }
     }
 
     @FXML
