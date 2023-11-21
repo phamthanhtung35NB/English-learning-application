@@ -1,18 +1,12 @@
 package com.example.baitaplon.Game;
 
 import com.example.baitaplon.HomeController;
-import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Slider;
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Stage;
-import com.example.baitaplon.*;
 
 import java.io.IOException;
 
