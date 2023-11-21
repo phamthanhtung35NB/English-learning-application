@@ -20,6 +20,7 @@ public class ControllerGamePron extends Application {
 
     public static String wordDeBai = "";
     public static String wordToGuess = "1";
+    public static String wordNghia="";
     public static boolean doiTu = false;
     public static int k = 0;
 
@@ -34,6 +35,9 @@ public class ControllerGamePron extends Application {
     private Label thongbao;
     @FXML
     private Label goiytu;
+    @FXML
+    private Label goiYNghia;
+
 
     @FXML
     public void buttonOk() {
@@ -71,6 +75,9 @@ public class ControllerGamePron extends Application {
         for (Map.Entry<String, WordSQL> entry : ControllerSoTayCaNhan.dataSoTu.entrySet()) {
             if (currentIndex == randomIndex) {
                 wordToGuess = entry.getKey().toLowerCase();
+                wordNghia=entry.getValue().getWord_explain();
+                System.out.printf(wordNghia);
+                goiYNghia.setText(wordNghia);
                 return "true";
             }
             currentIndex++;
