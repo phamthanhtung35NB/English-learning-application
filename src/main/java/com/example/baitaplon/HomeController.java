@@ -7,10 +7,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.layout.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -129,7 +131,8 @@ public class HomeController  {
     @FXML
     protected void buttonGame() throws IOException {
         System.out.println("Game");
-        GridPane view = FXMLLoader.load(getClass().getResource("Game/Hangman.fxml"));
+        SplitPane view = FXMLLoader.load(getClass().getResource("Game/TabGame.fxml"));
+        view.getStylesheets().add(getClass().getResource("Game/Hangman.css").toExternalForm());
         centerBorderPane.setCenter(view);
         title.setText("Game");
     }
