@@ -23,9 +23,9 @@ public class ControllerGamePron extends Application {
 
 
     public static String wordDeBai = "";
-    public static String wordToGuess ="1" ;
+    public static String wordToGuess = "1";
     public static boolean doiTu = false;
-    public static  int k = 0;
+    public static int k = 0;
 
 
     public static String game(String word) {
@@ -45,7 +45,7 @@ public class ControllerGamePron extends Application {
         game(wordToGuess);
         if (checkAnsewer(wordDeBai, tuNapvao)) {
             thongbao.setText("Chính xác! Bạn đã đoán đúng từ.");
-            k =0;
+            k = 0;
         } else {
             thongbao.setText("Rất tiếc, câu trả lời không chính xác. \n Xin mời nhập tiếp");
             goiytu.setText("Số chữ đã có đúng là " + GoiYsochudung(wordDeBai, tuNapvao));
@@ -56,7 +56,7 @@ public class ControllerGamePron extends Application {
     @FXML
     public void buttonLoa() {
         //gọi hàm loa
-        if(doiTu== false && k == 0){
+        if (doiTu == false && k == 0) {
             randomWord();
             k++;
         }
@@ -64,6 +64,9 @@ public class ControllerGamePron extends Application {
     }
 
     public String randomWord() {
+        thongbao.setText("");
+        goiytu.setText("");
+        inData.setText("");
         if (ControllerSoTayCaNhan.dataSoTu.isEmpty()) {
             return "null";
         }
@@ -71,7 +74,7 @@ public class ControllerGamePron extends Application {
         int currentIndex = 0;
         for (Map.Entry<String, WordSQL> entry : ControllerSoTayCaNhan.dataSoTu.entrySet()) {
             if (currentIndex == randomIndex) {
-                wordToGuess = entry.getKey();
+                wordToGuess = entry.getKey().toLowerCase();
                 return "true";
             }
             currentIndex++;
