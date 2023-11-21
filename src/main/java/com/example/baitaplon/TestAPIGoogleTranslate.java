@@ -1,4 +1,4 @@
-package com.example.baitaplon.Search;
+package com.example.baitaplon;
 
 import java.io.BufferedReader;
 import java.io.IOException;

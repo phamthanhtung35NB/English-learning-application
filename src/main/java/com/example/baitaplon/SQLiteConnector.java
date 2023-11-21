@@ -1,4 +1,4 @@
-package com.example.baitaplon.DataBase;
+package com.example.baitaplon;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

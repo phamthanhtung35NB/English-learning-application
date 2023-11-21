@@ -1,9 +1,6 @@
-package com.example.baitaplon.Login;
+package com.example.baitaplon;
 
 
-import com.example.baitaplon.DataBase.DataBase;
-import com.example.baitaplon.DataBase.DictionaryManagement;
-import com.example.baitaplon.HomeController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,14 +1,10 @@
-package com.example.baitaplon.Game;
+package com.example.baitaplon;
 
-import com.example.baitaplon.NoteBook.ControllerSoTayCaNhan;
-import com.example.baitaplon.TextToSpeech;
-import com.example.baitaplon.WordSQL;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 //import java.awt.TextField;
 import javafx.scene.control.TextField;

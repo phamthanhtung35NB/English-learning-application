@@ -1,6 +1,6 @@
-package com.example.baitaplon.NoteBook;
+package com.example.baitaplon;
 
-import com.example.baitaplon.DataBase.DataBase;
+import com.example.baitaplon.DataBase;
 import com.example.baitaplon.HomeController;
 import com.example.baitaplon.TextToSpeech;
 import com.example.baitaplon.WordSQL;

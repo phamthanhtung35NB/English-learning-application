@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="600" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.Search.ControllerTabSql">
+<AnchorPane nodeOrientation="LEFT_TO_RIGHT" prefHeight="600" prefWidth="900.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerTabSql">
     <children>
       <BorderPane fx:id="borderPane" prefHeight="600.0" prefWidth="900.0">
          <center>
@@ -91,7 +91,7 @@
                                                    <graphic>
                                                       <ImageView fitHeight="28.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Image/more.png" />
+                                                            <Image url="@Image/more.png" />
                                                          </image>
                                                       </ImageView>
                                                    </graphic></Button>
@@ -103,7 +103,7 @@
                                  <graphic>
                                     <ImageView fitHeight="18.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/more.png" />
+                                          <Image url="@Image/more.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -143,7 +143,7 @@
                                                    <graphic>
                                                       <ImageView fitHeight="53.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Image/tools.png" />
+                                                            <Image url="@Image/tools.png" />
                                                          </image>
                                                       </ImageView>
                                                    </graphic></Button>
@@ -155,7 +155,7 @@
                                  <graphic>
                                     <ImageView fitHeight="24.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/tools.png" />
+                                          <Image url="@Image/tools.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -190,7 +190,7 @@
                                                    <graphic>
                                                       <ImageView fitHeight="30.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
-                                                            <Image url="@../Image/delete.png" />
+                                                            <Image url="@Image/delete.png" />
                                                          </image>
                                                       </ImageView>
                                                    </graphic></Button>
@@ -202,7 +202,7 @@
                                  <graphic>
                                     <ImageView fitHeight="23.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/delete.png" />
+                                          <Image url="@Image/delete.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -229,7 +229,7 @@
                            <graphic>
                               <ImageView fitHeight="21.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/transparency.png" />
+                                    <Image url="@Image/transparency.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -239,7 +239,7 @@
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" styleClass="buttonOkCancelVvv">
                                  <image>
-                                    <Image url="@../Image/setting.png" />
+                                    <Image url="@Image/setting.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -254,7 +254,7 @@
                            <graphic>
                               <ImageView fitHeight="26.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/sync.png" />
+                                    <Image url="@Image/sync.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -264,7 +264,7 @@
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/volume.png" />
+                                    <Image url="@Image/volume.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -274,7 +274,7 @@
                            <graphic>
                               <ImageView fitHeight="29.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/notebook.png" />
+                                    <Image url="@Image/notebook.png" />
                                  </image>
                               </ImageView>
                            </graphic>

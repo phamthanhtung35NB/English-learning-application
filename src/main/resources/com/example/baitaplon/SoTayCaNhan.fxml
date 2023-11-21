@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.NoteBook.ControllerSoTayCaNhan">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerSoTayCaNhan">
    <children>
       <VBox layoutY="14.0" AnchorPane.bottomAnchor="0.39999999999997726" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.8000000000000682" AnchorPane.topAnchor="0.4000000000000341">
          <children>
@@ -32,7 +32,7 @@
                      <graphic>
                         <ImageView fitHeight="23.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Image/volume.png" />
+                              <Image url="@Image/volume.png" />
                            </image>
                         </ImageView>
                      </graphic>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<GridPane hgap="10" prefHeight="600.0" prefWidth="800.0" vgap="10" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.Game.ControllerHangman">
+<GridPane hgap="10" prefHeight="600.0" prefWidth="800.0" vgap="10" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerHangman">
    <Label alignment="CENTER" layoutX="77.0" layoutY="10.0" prefHeight="48.0" prefWidth="346.0" styleClass="buttonChuCai" text="Hangman" textAlignment="CENTER" GridPane.columnIndex="1" />
    <Label alignment="CENTER" prefHeight="48.0" prefWidth="479.0" styleClass="buttonChuCai" text="Guess the word" textAlignment="CENTER" />
    <HBox fx:id="hBoxButtonsSecret" alignment="CENTER" prefHeight="33.0" prefWidth="195.0" GridPane.rowIndex="2" />

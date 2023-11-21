@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.Login.ControllerLogin">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="854.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerLogin">
    <children>
       <ImageView fitHeight="663.0" fitWidth="979.0" layoutX="-48.0" layoutY="-65.0" opacity="0.72" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Image/backgroupLogin.jpg" />
+            <Image url="@Image/backgroupLogin.jpg" />
          </image>
       </ImageView>
       <Button layoutX="397.0" layoutY="397.0" mnemonicParsing="false" onAction="#buttonOkNewAccount" styleClass="buttonOk" stylesheets="@Login.css" text="OK" />
@@ -22,7 +22,7 @@
       <PasswordField fx:id="textPassNew" layoutX="324.0" layoutY="235.0" prefHeight="43.0" prefWidth="206.0" styleClass="textBox" stylesheets="@Login.css" />
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="374.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Image/authenticationIconLogin.png" />
+            <Image url="@Image/authenticationIconLogin.png" />
          </image>
       </ImageView>
       <CheckBox fx:id="trueShowNewAccount" layoutX="556.0" layoutY="243.0" mnemonicParsing="false" onAction="#checkBoxShowPassNewAccount" styleClass="textBox" stylesheets="@Login.css" text="Show" />

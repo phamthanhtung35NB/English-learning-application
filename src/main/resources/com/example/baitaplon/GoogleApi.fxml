@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.Search.ControllerApi">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerApi">
    <children>
       <HBox alignment="CENTER" layoutX="1.0" prefHeight="100.0" prefWidth="1000.0">
          <children>
@@ -25,7 +25,7 @@
                      <graphic>
                         <ImageView fitHeight="21.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Image/volume.png" />
+                              <Image url="@Image/volume.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
@@ -41,7 +41,7 @@
                <graphic>
                   <ImageView fitHeight="40.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Image/search.png" />
+                        <Image url="@Image/search.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -53,7 +53,7 @@
                      <graphic>
                         <ImageView fitHeight="21.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Image/volume.png" />
+                              <Image url="@Image/volume.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>

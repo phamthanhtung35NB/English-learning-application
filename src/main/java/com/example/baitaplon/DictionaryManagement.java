@@ -1,10 +1,8 @@
-package com.example.baitaplon.DataBase;
+package com.example.baitaplon;
 
-//import com.example.baitaplon.Search.ControllerTabSql;
-//import com.example.baitaplon.DataBase.SQLiteConnector;
+//import com.example.baitaplon.ControllerTabSql;
+//import com.example.baitaplon.SQLiteConnector;
 //import com.example.baitaplon.WordSQL;
-import com.example.baitaplon.*;
-import com.example.baitaplon.Search.ControllerTabSql;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -1,4 +1,4 @@
-package com.example.baitaplon.Login;
+package com.example.baitaplon;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

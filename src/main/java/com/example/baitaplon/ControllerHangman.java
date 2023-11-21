@@ -1,8 +1,5 @@
-package com.example.baitaplon.Game;
+package com.example.baitaplon;
 
-import com.example.baitaplon.*;
-import com.example.baitaplon.DataBase.DataBase;
-import com.example.baitaplon.NoteBook.ControllerSoTayCaNhan;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -19,7 +19,7 @@
    <children>
       <ImageView disable="true" fitHeight="1522.0" fitWidth="2442.0" focusTraversable="true" layoutX="-112.0" layoutY="-69.0" pickOnBounds="true" AnchorPane.bottomAnchor="-695.0" AnchorPane.leftAnchor="-112.0" AnchorPane.rightAnchor="-1008.0" AnchorPane.topAnchor="-69.0">
          <image>
-            <Image url="@../Image/nenMoi.png" />
+            <Image url="@Image/nenMoi.png" />
          </image>
          <viewport>
             <Rectangle2D minX="-50.0" minY="-50.0" />
@@ -42,7 +42,7 @@
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/home.png" />
+                                    <Image url="@Image/home.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -54,7 +54,7 @@
                            <graphic>
                               <ImageView fitHeight="39.0" fitWidth="39.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/loupe.png" />
+                                    <Image url="@Image/loupe.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -66,7 +66,7 @@
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/search.png" />
+                                    <Image url="@Image/search.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -78,7 +78,7 @@
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/game.png" />
+                                    <Image url="@Image/game.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -90,7 +90,7 @@
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/notebook.png" />
+                                    <Image url="@Image/notebook.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -102,7 +102,7 @@
                            <graphic>
                               <ImageView fitHeight="46.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../Image/feedback.png" />
+                                    <Image url="@Image/feedback.png" />
                                  </image>
                               </ImageView>
                            </graphic></Button>
@@ -123,7 +123,7 @@
                                  <graphic>
                                     <ImageView fitHeight="55.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/lock.png" />
+                                          <Image url="@Image/lock.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -142,7 +142,7 @@
                                  <graphic>
                                     <ImageView fitHeight="70.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/next.png" />
+                                          <Image url="@Image/next.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -161,7 +161,7 @@
                                  <graphic>
                                     <ImageView fitHeight="49.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/logoutAcc.png" />
+                                          <Image url="@Image/logoutAcc.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -180,7 +180,7 @@
                                  <graphic>
                                     <ImageView fitHeight="46.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../Image/logout.png" />
+                                          <Image url="@Image/logout.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -201,7 +201,7 @@
                      <graphic>
                         <ImageView fitHeight="126.0" fitWidth="151.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../Image/logo.png" />
+                              <Image url="@Image/logo.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -220,7 +220,7 @@
                      <graphic>
                         <ImageView fitHeight="46.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true" styleClass="buttonOkCancelVvv">
                            <image>
-                              <Image url="@../Image/setting.png" />
+                              <Image url="@Image/setting.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>

@@ -1,7 +1,7 @@
-package com.example.baitaplon.Search;
+package com.example.baitaplon;
 
-import com.example.baitaplon.DataBase.DataBase;
-import com.example.baitaplon.DataBase.DictionaryManagement;
+import com.example.baitaplon.DataBase;
+import com.example.baitaplon.DictionaryManagement;
 import com.example.baitaplon.HomeController;
 import com.example.baitaplon.TextToSpeech;
 import com.example.baitaplon.Word;

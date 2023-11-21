@@ -1,7 +1,4 @@
-package com.example.baitaplon.DataBase;
-
-import com.example.baitaplon.*;
-import com.example.baitaplon.NoteBook.ControllerSoTayCaNhan;
+package com.example.baitaplon;
 
 import java.sql.*;
 import java.util.Set;
