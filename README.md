@@ -1,2 +1,11 @@
 # Developing-an-English-learning-application-in-Java
-Link sơ đồ khối: https://bom.so/o5jSO4
+## Nhóm 13
+1. Nguyễn Đức Thành 
+2. Trần Anh Tú
+3. Phạm Thanh Tùng
+## Miêu tả
+## Sơ đồ UML
+![](baitaplon3.png)
+
+
+
