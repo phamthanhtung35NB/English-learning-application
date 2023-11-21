@@ -18,8 +18,8 @@ import java.io.IOException;
 import java.net.URI;
 
 public class HomeController  {
-    protected static boolean isLoadData = false;
-    protected static boolean isLoadDataOfSoTuCaNhan = false;
+    public static boolean isLoadData = false;
+    public static boolean isLoadDataOfSoTuCaNhan = false;
 
 
 
@@ -40,11 +40,11 @@ public class HomeController  {
     private VBox vboxRight;
     @FXML
     private ToggleButton isLockUnlockSetLeft;
-    @FXML
-    private ToggleButton isSettingLockUnlockSetLeft;
+//    @FXML
+//    private ToggleButton isSettingLockUnlockSetLeft;
     @FXML
     private Label title;
-    private boolean isLock = false;
+    private boolean isLeft = false;
     private boolean isSettingLock = false;
     private boolean isSetting= false;
     @FXML
@@ -73,28 +73,28 @@ public class HomeController  {
     }
     @FXML
     public void initialize() throws IOException {
-
-
         buttonHome();
         System.out.println("Home");
         centerBorderPane.setRight(null);
-        centerBorderPane.setOnMouseMoved(event -> {
-            int x = (int)event.getX();
-            int y = (int) event.getY();
-            if ((x>=0&&x < 100)&&(y>=0&&y<750)) {
-                if (centerBorderPane.getLeft() == null) {
-                    centerBorderPane.setLeft(vbox);
-                    System.out.println("show");
-                }
-            }else if ((x > 240&&x<1320)&&(y>=0&&y<750)&&(isLock==false||isSettingLock==false)){
-                if (centerBorderPane.getLeft() != null) {
-                    centerBorderPane.setLeft(null);
-                    System.out.println("hide");
-                }
-            }
-//            System.out.println("Mouse Entered - X: " + x+ " Y: " + y );
-
-        });
+        centerBorderPane.setLeft(null);
+        ////////////////////////SET UP MOUSE LEFT///////////////////////////
+//        centerBorderPane.setOnMouseMoved(event -> {
+//            int x = (int)event.getX();
+//            int y = (int) event.getY();
+//            if ((x>=0&&x < 100)&&(y>=0&&y<750)) {
+//                if (centerBorderPane.getLeft() == null) {
+//                    centerBorderPane.setLeft(vbox);
+//                    System.out.println("show");
+//                }
+//            }else if ((x > 240&&x<1320)&&(y>=0&&y<750)&&(isLock==false||isSettingLock==false)){
+//                if (centerBorderPane.getLeft() != null) {
+//                    centerBorderPane.setLeft(null);
+//                    System.out.println("hide");
+//                }
+//            }
+////            System.out.println("Mouse Entered - X: " + x+ " Y: " + y );
+//
+//        });
     }
 
     @FXML
@@ -111,9 +111,9 @@ public class HomeController  {
     protected void buttonSearch() throws IOException{
 //        System.out.println("Search");
 //        System.out.println("1");
-        AnchorPane view = FXMLLoader.load(getClass().getResource("FileSql.fxml"));
+        AnchorPane view = FXMLLoader.load(getClass().getResource("Search/FileSql.fxml"));
 //        System.out.println("2");
-        view.getStylesheets().add(getClass().getResource("FileSql.css").toExternalForm());
+        view.getStylesheets().add(getClass().getResource("Search/FileSql.css").toExternalForm());
         centerBorderPane.setCenter(view);
 //        System.out.println("3");
 //        new ControllerSearchByFile().autoLoad();
@@ -122,14 +122,14 @@ public class HomeController  {
     @FXML
     protected void buttonOnlineSearch() throws IOException{
 //        System.out.println("O Search");
-        Pane view = FXMLLoader.load(getClass().getResource("GoogleApi.fxml"));
+        Pane view = FXMLLoader.load(getClass().getResource("Search/GoogleApi.fxml"));
         centerBorderPane.setCenter(view);
         title.setText("Online Search");
     }
     @FXML
     protected void buttonGame() throws IOException {
         System.out.println("Game");
-        GridPane view = FXMLLoader.load(getClass().getResource("Hangman.fxml"));
+        GridPane view = FXMLLoader.load(getClass().getResource("Game/Hangman.fxml"));
         centerBorderPane.setCenter(view);
         title.setText("Game");
     }
@@ -137,7 +137,7 @@ public class HomeController  {
     protected void buttonButton() throws IOException {
         System.out.println("buttonButton");
         System.out.println("1");
-        AnchorPane view = FXMLLoader.load(getClass().getResource("SoTayCaNhan.fxml"));
+        AnchorPane view = FXMLLoader.load(getClass().getResource("NoteBook/SoTayCaNhan.fxml"));
         System.out.println("2");
         centerBorderPane.setCenter(view);
         System.out.println("3");
@@ -161,7 +161,7 @@ public class HomeController  {
             try {
                 isLoadData = false;
                 isLoadDataOfSoTuCaNhan = false;
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("Login/Login.fxml"));
                 Parent root = loader.load();
                 Scene scene = new Scene(root);
                 Stage HomeStage = new Stage();
@@ -188,24 +188,35 @@ public class HomeController  {
 
     }
     @FXML
-    protected void exit() throws IOException {
+    protected void exit() {
         System.exit(0);
     }
     @FXML
-    protected void buttonSettingLockUnlockSetLeft() throws IOException {
-        if (isSettingLockUnlockSetLeft.isSelected()) {
-//            centerBorderPane.setLeft(vbox);
-            System.out.println("Cửa sổ Left đã mở");
-
-            isSettingLock = true;
-            isLock = true;
-
-        } else {
-//            centerBorderPane.setLeft(null);
-            System.out.println("Cửa sổ Left đã đóng");
-            isSettingLock = false;
-            isLock = false;
+    protected void buttonSettingLockUnlockSetLeft() {
+        System.out.println("vao");
+        if (isLeft==false){
+            isLeft=true;
+            centerBorderPane.setLeft(vbox);
+            System.out.println("show");
         }
+        else {
+            isLeft=false;
+            centerBorderPane.setLeft(null);
+            System.out.println("anr");
+        }
+//        if (isSettingLockUnlockSetLeft.isSelected()) {
+////            centerBorderPane.setLeft(vbox);
+//            System.out.println("Cửa sổ Left đã mở");
+//
+//            isSettingLock = true;
+//            isLock = true;
+//
+//        } else {
+////            centerBorderPane.setLeft(null);
+//            System.out.println("Cửa sổ Left đã đóng");
+//            isSettingLock = false;
+//            isLock = false;
+//        }
     }
 
 //    @FXML
