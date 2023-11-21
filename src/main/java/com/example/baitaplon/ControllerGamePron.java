@@ -5,9 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-
-import java.awt.*;
+//import java.awt.TextField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 
 public class ControllerGamePron extends Application {
@@ -33,9 +36,9 @@ public class ControllerGamePron extends Application {
 ////        return "hello"; // Thay đổi để tạo từ ngẫu nhiên từ danh sách từ điển
 //    // khi lam xong database thi lam tiep
 ////    }
-//        private boolean checkAnsewer(String textToSpeech, String usser){
-//            return usser.equals(textToSpeech.toLowerCase());
-//        }
+        private boolean checkAnsewer(String textToSpeech, String usser){
+            return usser.equals(textToSpeech.toLowerCase().trim());
+        }
 //
 //    public static void main(String[] args) {
 //        GamePron game = new GamePron();
@@ -43,13 +46,13 @@ public class ControllerGamePron extends Application {
 //    }
 //    /////////////////////////////////////
 ////    cấu trúc nó kiểu như này nè
-//    public static String wordDeBai = "";
-//    public static String game(String word) {
-//        //phats aam word
-////        goi ham phat am
-//        //luu word de bai
-//        wordDeBai = word;
-//    }
+    public static String wordDeBai = "";
+    public static String game(String word) {
+        //phats aam word
+//        goi ham phat am
+        //luu word de bai
+        return wordDeBai = word;
+    }
 //    //button check
 //    public static String buttonCheck() {
 //        //lays du lieu da nhap
@@ -84,14 +87,29 @@ public class ControllerGamePron extends Application {
     @FXML
     private Label thongbao;
 
+
     @FXML
     public void buttonOk() {
+//        String doi = inData.getText();
         //kiểu tra đúng sai trong này
+//        while (true){
+            String a = inData.getText();
+            game("hello");
+            if (checkAnsewer(wordDeBai,a)){
+                thongbao.setText("Chính xác! Bạn đã đoán đúng từ.");
+
+            }else {
+                System.out.println("111");
+                thongbao.setText("Rất tiếc, câu trả lời không chính xác. Xin mời nhập tiếp");
+
+            }
+//        }
     }
 
     @FXML
     public void buttonLoa() {
         //gọi hàm loa
+         new TextToSpeech("hello");
     }
 
     @Override
@@ -100,6 +118,8 @@ public class ControllerGamePron extends Application {
         Parent fxml = FXMLLoader.load(getClass().getResource("GamePron.fxml"));
         Scene scene = new Scene(fxml);
         stage.setTitle("Game!");
+        thongbao = new Label("Nội dung thông báo"); // Gán một đối tượng Label mới vào trường thongbao
+
 //        scene.getStylesheets().add(getClass().getResource("Home.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
