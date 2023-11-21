@@ -41,7 +41,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
                <children>
-                  <Label fx:id="thongbao" text="tre" />
+                  <Label fx:id="thongbao" text="noi dung thong bao" />
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#buttonOk" text="ok" GridPane.rowIndex="2" />
