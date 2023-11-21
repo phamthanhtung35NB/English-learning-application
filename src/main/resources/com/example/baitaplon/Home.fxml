@@ -65,13 +65,16 @@
                         </VBox>
                         <HBox fx:id="hBoxButton" alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                             <children>
-                                <Button mnemonicParsing="false" onAction="#hangman" prefHeight="128.0" prefWidth="144.0">
+                                <Button mnemonicParsing="false" onAction="#hangman" prefHeight="128.0" prefWidth="144.0" styleClass="textR" stylesheets="@Home.css">
                                     <graphic>
                                         <VBox prefHeight="72.0" prefWidth="56.0">
                                             <children>
-                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" stylesheets="@Home.css">
                                                     <children>
-                                                        <ImageView fitHeight="129.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                                                        <ImageView fitHeight="129.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Image/unnamed.png" />
+                                             </image></ImageView>
                                                         <Label text="Hangman" />
                                                     </children>
                                                 </VBox>
@@ -80,7 +83,7 @@
                                     </graphic>
                                 </Button>
                                 <Pane prefHeight="200.0" prefWidth="200.0" />
-                                <Button mnemonicParsing="false" onAction="#pronounce" prefHeight="128.0" prefWidth="144.0">
+                                <Button mnemonicParsing="false" onAction="#pronounce" prefHeight="128.0" prefWidth="144.0" styleClass="textR" stylesheets="@Home.css">
                                     <graphic>
                                         <VBox prefHeight="72.0" prefWidth="56.0">
                                             <children>

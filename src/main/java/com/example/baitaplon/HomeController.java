@@ -153,33 +153,11 @@ public class HomeController {
     //tap game
     @FXML
     protected void buttonGame() throws IOException {
-//        try {
-//            System.out.println("Game");
-//            SplitPane  view = FXMLLoader.load(getClass().getResource("TabGame.fxml"));
-////            view.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
-//            centerBorderPane.setCenter(view);
-//            title.setText("Game");
-//        } catch (IOException e) {
-//            e.printStackTrace(); // Handle the exception appropriately, e.g., show an error message
-//        }
-//        vBoxMoTa.getChildren().clear();
-
         centerBorderPane.setCenter(vBoxGame);
         vBoxGame.getChildren().clear();
         vBoxGame.getChildren().add(hBoxButton);
-
-
     }
 
-    //    @FXML
-//    protected void buttonGame() throws IOException {
-////        ControllerGame =
-//        System.out.println("Game");
-//        GridPane view = FXMLLoader.load(getClass().getResource("TabGame.fxml"));
-//        view.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
-//        centerBorderPane.setCenter(view);
-//        title.setText("Game");
-//    }
     @FXML
     protected void buttonButton() throws IOException {
         System.out.println("buttonButton");
@@ -189,7 +167,6 @@ public class HomeController {
         centerBorderPane.setCenter(view);
         System.out.println("3");
         title.setText("Notebook");
-
     }
 
     @FXML
@@ -282,11 +259,9 @@ public class HomeController {
     @FXML
     private void hangman() throws IOException {
         System.out.println("buttonButton");
-        System.out.println("1");
-//        AnchorPane view = FXMLLoader.load(getClass().getResource("TabGameHangman.fxml"));
-//        view.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
-        System.out.println("2");
+        vBoxGame.getChildren().clear();
         vBoxGame.getChildren().add(vBoxMoTa);
+        vBoxGame.getChildren().add(hBoxButton);
     }
 
     ////////////////////////////GAME TU//////////////////////////////////////
