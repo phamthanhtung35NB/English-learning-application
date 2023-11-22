@@ -20,7 +20,7 @@ public class ControllerGamePron extends Application {
 
     public static String wordDeBai = "";
     public static String wordToGuess = "1";
-    public static String wordNghia="";
+    public static String wordNghia = "";
     public static boolean doiTu = false;
     public static int k = 0;
 
@@ -47,8 +47,10 @@ public class ControllerGamePron extends Application {
             thongbao.setText("Chính xác! Bạn đã đoán đúng từ.");
             k = 0;
         } else {
+            goiYNghia.setText(wordNghia);
             thongbao.setText("Rất tiếc, câu trả lời không chính xác. \n Xin mời nhập tiếp");
             goiytu.setText("Số chữ đã có đúng là " + GoiYsochudung(wordDeBai, tuNapvao));
+
         }
 //        }
     }
@@ -75,9 +77,8 @@ public class ControllerGamePron extends Application {
         for (Map.Entry<String, WordSQL> entry : ControllerSoTayCaNhan.dataSoTu.entrySet()) {
             if (currentIndex == randomIndex) {
                 wordToGuess = entry.getKey().toLowerCase();
-                wordNghia=entry.getValue().getWord_explain();
+                wordNghia = entry.getValue().getWord_explain();
                 System.out.printf(wordNghia);
-                goiYNghia.setText(wordNghia);
                 return "true";
             }
             currentIndex++;
