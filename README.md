@@ -1,6 +1,4 @@
-# Application to support learning English using Java
-
-## Tác giả
+#  Ứng dụng hỗ trợ học Tiếng Anh sử dụng Java.
 Group 13 - 3T
 1. Phạm Thanh Tùng - 22021128
 2. Trần Anh Tú - 22021190
