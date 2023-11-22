@@ -85,6 +85,7 @@ public class HomeController {
         centerBorderPane.setRight(null);
         centerBorderPane.setLeft(null);
         buttonHome();
+        title.setText("Hello "+ DataBase.UserName);
         ////////////////////////SET UP MOUSE LEFT///////////////////////////
 //        centerBorderPane.setOnMouseMoved(event -> {
 //            int x = (int)event.getX();
