@@ -3,6 +3,7 @@ package com.example.baitaplon;
 //import com.example.baitaplon.Game.*;
 //import javafx.scene.control.*;
 
+import animatefx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,17 +30,9 @@ public class HomeController {
     @FXML
     public Slider difficultySlider;
     public int difficultyHangman = 3;
-//    @FXML
-//    private Field tesst;
-
     // centerBorderPane laf view chinh cua BorderPane
     @FXML
     protected BorderPane centerBorderPane;
-//    @FXML
-//    private TextField textName;
-//    @FXML
-//    private PasswordField textPass;
-
     @FXML
     private VBox vbox;
     @FXML
@@ -52,17 +45,17 @@ public class HomeController {
     private HBox hBoxButton;
     @FXML
     private ToggleButton isLockUnlockSetLeft;
-    //    @FXML
-//    private ToggleButton isSettingLockUnlockSetLeft;
     @FXML
     private Label title;
     private boolean isLeft = false;
     private boolean isSettingLock = false;
     private boolean isSetting = false;
 
+    //nut ben phai
     @FXML
     public void buttonSetting() {
         if (isSetting == false) {
+            new BounceInDown(vboxRight).play();
             centerBorderPane.setRight(vboxRight);
             isSetting = true;
             System.out.println("Setting");
@@ -87,17 +80,11 @@ public class HomeController {
 
     @FXML
     public void initialize() throws IOException {
-//        buttonHome();
-//        if (ControllerLogin.isHomeController==false){
-            buttonHome();
-            ControllerLogin.isHomeController=true;
-            centerBorderPane.setRight(null);
-            centerBorderPane.setLeft(null);
+        ControllerLogin.isHomeController = true;
 
-//        }
-
-        System.out.println("Home");
-
+        centerBorderPane.setRight(null);
+        centerBorderPane.setLeft(null);
+        buttonHome();
         ////////////////////////SET UP MOUSE LEFT///////////////////////////
 //        centerBorderPane.setOnMouseMoved(event -> {
 //            int x = (int)event.getX();
@@ -123,30 +110,27 @@ public class HomeController {
 //        System.out.println("Home");
         AnchorPane view = FXMLLoader.load(getClass().getResource("TabHome.fxml"));
         view.getStylesheets().add(getClass().getResource("TabHome.css").toExternalForm());
-//        System.out.println("2");
+        new ZoomIn(view).play();
         centerBorderPane.setCenter(view);
-//        System.out.println("3");
         title.setText("Home");
     }
 
     @FXML
     protected void buttonSearch() throws IOException {
-//        System.out.println("Search");
-//        System.out.println("1");
         AnchorPane view = FXMLLoader.load(getClass().getResource("FileSql.fxml"));
-//        System.out.println("2");
+        new BounceInDown(view).play();
         view.getStylesheets().add(getClass().getResource("FileSql.css").toExternalForm());
         centerBorderPane.setCenter(view);
-//        System.out.println("3");
-//        new ControllerSearchByFile().autoLoad();
+        new BounceInLeft(title).play();
         title.setText("Search");
     }
 
     @FXML
     protected void buttonOnlineSearch() throws IOException {
-//        System.out.println("O Search");
         Pane view = FXMLLoader.load(getClass().getResource("GoogleApi.fxml"));
+        new ZoomIn(view).play();
         centerBorderPane.setCenter(view);
+        new BounceInLeft(title).play();
         title.setText("Online Search");
     }
 
@@ -155,7 +139,10 @@ public class HomeController {
     protected void buttonGame() throws IOException {
         centerBorderPane.setCenter(vBoxGame);
         vBoxGame.getChildren().clear();
+        new BounceInLeft(vBoxGame).play();
         vBoxGame.getChildren().add(hBoxButton);
+        new BounceInLeft(title).play();
+        title.setText("Game");
     }
 
     @FXML
@@ -163,16 +150,18 @@ public class HomeController {
         System.out.println("buttonButton");
         System.out.println("1");
         AnchorPane view = FXMLLoader.load(getClass().getResource("SoTayCaNhan.fxml"));
+        new FadeInDown(view).play();
         System.out.println("2");
         centerBorderPane.setCenter(view);
         System.out.println("3");
+        new BounceInLeft(title).play();
         title.setText("Notebook");
     }
 
     @FXML
     protected void buttonFeedback() {
         System.out.println("Feed Back");
-        String url = "https://www.google.com";
+        String url = "https://github.com/phamthanhtung35NB/Developing-an-English-learning-application-in-Java";
         Desktop desktop = Desktop.getDesktop();
         try {
             desktop.browse(new URI(url));
@@ -193,7 +182,6 @@ public class HomeController {
             Stage HomeStage = new Stage();
             HomeStage.setTitle("Login");
             HomeStage.setScene(scene);
-
             /**
              * Lấy Node từ sự kiện
              * Đối tượng event là sự kiện mà chúng ta đã gán cho nút đăng nhập
@@ -205,7 +193,7 @@ public class HomeController {
             Node source = (Node) event.getSource();
             Stage currentStage = (Stage) source.getScene().getWindow();
             currentStage.close();
-
+            new ZoomIn(root).play();
             HomeStage.show();
 
         } catch (IOException e) {
@@ -224,6 +212,7 @@ public class HomeController {
         System.out.println("vao");
         if (isLeft == false) {
             isLeft = true;
+            new BounceInDown(vbox).play();
             centerBorderPane.setLeft(vbox);
             System.out.println("show");
         } else {
@@ -248,20 +237,28 @@ public class HomeController {
 /////////////////////////////////////////////////////////CONTROLLER GAME///////////////////////////////////////
 
 
-
     @FXML
-    private void letGo() {
+    private void letGo() throws IOException {
         System.out.println("letGo started");
         difficultyHangman = (int) difficultySlider.getValue();
-        System.out.println(difficultyHangman);
+        GridPane view = FXMLLoader.load(getClass().getResource("Hangman.fxml"));
+        view.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
+        new ZoomIn(view).play();
+        centerBorderPane.setCenter(view);
+        new BounceInLeft(title).play();
+        title.setText("Hangman");
     }
 
     @FXML
     private void hangman() throws IOException {
         System.out.println("buttonButton");
         vBoxGame.getChildren().clear();
+        new BounceInDown(vBoxMoTa).play();
+        new BounceInDown(hBoxButton).play();
         vBoxGame.getChildren().add(vBoxMoTa);
         vBoxGame.getChildren().add(hBoxButton);
+        new BounceInLeft(title).play();
+        title.setText("Setup Hangman");
     }
 
     ////////////////////////////GAME TU//////////////////////////////////////
@@ -269,14 +266,10 @@ public class HomeController {
     private void pronounce() throws IOException {
         GridPane view = FXMLLoader.load(getClass().getResource("GamePron.fxml"));
         view.getStylesheets().add(getClass().getResource("GamePron.css").toExternalForm());
+        new ZoomIn(view).play();
         centerBorderPane.setCenter(view);
-        System.out.println("pronounce started");
+        new BounceInLeft(title).play();
+        title.setText("Pronounce");
     }
-
-//    @FXML
-//    protected void buttonButton() throws IOException {
-//        System.out.println("buttonButton");
-//
-//    }
 
 }

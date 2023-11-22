@@ -1,6 +1,7 @@
 package com.example.baitaplon;
 
 
+import animatefx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -70,6 +71,7 @@ public class ControllerLogin {
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage HomeStage = new Stage();
+            new BounceInDown(root).play();
             HomeStage.setTitle("Home");
             HomeStage.setScene(scene);
 
@@ -92,6 +94,7 @@ public class ControllerLogin {
                 DataBase.loadDataSqlOfSoTuCaNhan();
                 HomeController.isLoadDataOfSoTuCaNhan = true;
             }
+            new ZoomIn(root).play();
             HomeStage.show();
 
         } catch (IOException e) {
@@ -112,6 +115,7 @@ public class ControllerLogin {
         loader.setLocation(getClass().getResource("LoginNewAccount.fxml"));
         Parent sampleParent = loader.load();
         Scene scene = new Scene(sampleParent);
+        new ZoomIn(sampleParent).play();
         stage.setScene(scene);
     }
 
@@ -122,6 +126,7 @@ public class ControllerLogin {
         loader.setLocation(getClass().getResource("LoginChangePassword.fxml"));
         Parent sampleParent = loader.load();
         Scene scene = new Scene(sampleParent);
+        new ZoomInRight(sampleParent).play();
         stage.setScene(scene);
     }
 
@@ -216,6 +221,7 @@ public class ControllerLogin {
         loader.setLocation(getClass().getResource("Login.fxml"));
         Parent sampleParent = loader.load();
         Scene scene = new Scene(sampleParent);
+        new BounceInUp(sampleParent).play();
         stage.setScene(scene);
     }
 

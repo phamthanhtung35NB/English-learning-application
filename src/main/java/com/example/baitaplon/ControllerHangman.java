@@ -1,5 +1,7 @@
 package com.example.baitaplon;
 
+import animatefx.animation.BounceInDown;
+import animatefx.animation.BounceInLeft;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -69,6 +71,7 @@ public class ControllerHangman extends Application {
             // them nut bam vao ListButtonsSecret
             ListButtonsSecret.add(button);
             // them nut bam vao hBoxButtonsSecret
+
             hBoxButtonsSecret.getChildren().add(button);
             wordHasNotGuessed.append("-");
         }
@@ -117,6 +120,7 @@ public class ControllerHangman extends Application {
         hBoxAlphabet.getChildren().clear();
         // Thêm từng nút chữ cái từ ListAlphabetButtons vào hBoxAlphabet
         for (Button button : ListAlphabetButtons) {
+//            new BounceInDown(button).play();
             hBoxAlphabet.getChildren().add(button);
         }
     }
@@ -201,6 +205,7 @@ public class ControllerHangman extends Application {
     //update lai cac nut bam chua cac chu cai bi mat
     private void updatehBoxButtonsSecret() {
         // clear hBoxButtonsSecret
+
         hBoxButtonsSecret.getChildren().clear();
         //them tung nut bam laf cacs chu cai trong wordHasNotGuessed vao hBoxButtonsSecret
         for (int i = 0; i < wordHasNotGuessed.length(); i++) {
@@ -212,6 +217,7 @@ public class ControllerHangman extends Application {
                 button.getStyleClass().remove("button_");
                 button.getStyleClass().add("button_Done");
             }
+            new BounceInDown(button).play();
             hBoxButtonsSecret.getChildren().add(button);
         }
     }
@@ -278,6 +284,7 @@ public class ControllerHangman extends Application {
         GraphicsContext gc = hangmanCanvas.getGraphicsContext2D();
         gc.clearRect(0, 0, hangmanCanvas.getWidth(), hangmanCanvas.getHeight());
 
+                new BounceInLeft(hangmanCanvas).play();
         switch (countIncorrectGuesses) {
             case 0:
                 drawHangman(gc);
