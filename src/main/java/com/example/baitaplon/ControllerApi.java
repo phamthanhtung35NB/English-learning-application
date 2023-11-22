@@ -1,5 +1,8 @@
 package com.example.baitaplon;
 
+import com.example.baitaplon.LibrarySpeech.speechToText;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -8,6 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -21,12 +25,28 @@ public class ControllerApi implements Initializable {
     @FXML
     private Label outputLabelApiGoogle;
     @FXML
-    private TextField inputTextApiGoogle;
+    public TextField inputTextApiGoogle;
     @FXML
     private ToggleButton isRecordSpeechIn;
+//    @FXML
+//    private Label labelSpeechIn;
+
     String selectedInPut = "auto";
     String selectedOutPut = "en";
+    public static String inputThuAm = "";
+    private boolean isRecording = false;
+    private final speechToText speechToText = new speechToText();
 
+
+//    @FXML
+//    public void initialize() throws IOException {
+//        Timeline timeline = new Timeline(
+//                new KeyFrame(Duration.seconds(1), event -> updateWord())
+//        );
+//        timeline.setCycleCount(Timeline.INDEFINITE);
+//        timeline.play();
+//        System.out.println("selectsaaaaaaaaedInPut: " + selectedInPut);
+//    }
 
     //khi chon ngon ngu trong combobox
     @Override
@@ -47,6 +67,11 @@ public class ControllerApi implements Initializable {
         });
         System.out.println("selectedInPut: " + selectedInPut);
         System.out.println("selectedOutPut: " + selectedOutPut);
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(1), event -> updateWord())
+        );
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     @FXML
@@ -64,22 +89,60 @@ public class ControllerApi implements Initializable {
     @FXML
     public void buttonRecordSpeechIn() {
         if (isRecordSpeechIn.isSelected()) {
-            isRecordSpeechIn.setText("Stop");
-            try {
-//                System.out.println(new speechToText().speech(convertToLanguageCode(selectedInPut)));
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            // Bắt đầu thu âm
+            startRecording();
         } else {
-            isRecordSpeechIn.setText("Record");
+            // Dừng thu âm
+            stopRecording();
         }
     }
 
+    private void startRecording() {
+        try {
+            if (!isRecording) {
+                if (convertToLanguageCode(selectedInPut).equals("auto")) {
+                    inputThuAm = speechToText.speech("en");
+                    System.out.println("bbb" + inputThuAm);
+//                    inputTextApiGoogle.setText(inputThuAm);
+                } else {
+                    inputThuAm = speechToText.speech(convertToLanguageCode(selectedInPut));
+                    System.out.println("aaaa" + inputThuAm);
+//                    inputTextApiGoogle.setText(inputThuAm);
+                }
+                isRecording = true;
+            }
+            System.out.println("inputThuAm: " + inputThuAm);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void updateWord() {
+        if (isRecording == true) {
+            inputTextApiGoogle.setText(inputThuAm);
+            System.out.println("updateWord: " + inputThuAm);
+            translateText();
+        }
+    }
+
+    private void stopRecording() {
+        try {
+            if (isRecording) {
+                speechToText.closeMicrophone();
+                isRecording = false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
 
     /**
      * dich tu
      * input: tu can dich lay tu textfield
      */
+    @FXML
     public void translateText() {
         String input = inputTextApiGoogle.getText();
         try {

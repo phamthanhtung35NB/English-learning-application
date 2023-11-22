@@ -8,7 +8,7 @@ public class DataBase {
     //
     private static Set<Integer> numberIdCuaTuDien = new TreeSet<>();
     private static String chuoiStudying_array = "-1";
-    private static String UserName = "";
+    protected static String UserName = "";
 
 
     //main
@@ -79,15 +79,15 @@ public class DataBase {
                 String html = resultSet.getString("html");
                 String word_explain = resultSet.getString("description");
                 String pronounce = resultSet.getString("pronounce");
-                System.out.println(id + " " + word_target + " " + word_explain + " " + html + " " + pronounce);
+//                System.out.println(id + " " + word_target + " " + word_explain + " " + html + " " + pronounce);
                 WordSQL word = new WordSQL(id, word_target, word_explain, html, pronounce);
                 ControllerSoTayCaNhan.dataSoTu.put(word_target, word);
             }
-            System.out.println("dataSoTu");
+//            System.out.println("dataSoTu");
             //show dataSoTu
-            for (String key : ControllerSoTayCaNhan.dataSoTu.keySet()) {
-                System.out.println(key + " " + ControllerSoTayCaNhan.dataSoTu.get(key).getID());
-            }
+//            for (String key : ControllerSoTayCaNhan.dataSoTu.keySet()) {
+//                System.out.println(key + " " + ControllerSoTayCaNhan.dataSoTu.get(key).getID());
+//            }
             resultSet.close();
             statement.close();
             connection.close();

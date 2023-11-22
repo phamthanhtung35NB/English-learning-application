@@ -31,12 +31,12 @@ public class DictionaryManagement {
             ControllerTabSql.dataWordinSql.clear();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                System.out.println(id);
+//                System.out.println(id);
                 String word_target = resultSet.getString("word");
                 String html = resultSet.getString("html");
                 String word_explain = resultSet.getString("description");
                 String pronounce = resultSet.getString("pronounce");
-                System.out.println(id + " " + word_target + " " + word_explain + " " + html + " " + pronounce);
+//                System.out.println(id + " " + word_target + " " + word_explain + " " + html + " " + pronounce);
                 WordSQL word = new WordSQL(id, word_target, word_explain, html, pronounce);
                 ControllerTabSql.dataWordinSql.put(word_target, word);
             }

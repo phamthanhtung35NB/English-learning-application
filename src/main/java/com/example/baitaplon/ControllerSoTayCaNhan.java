@@ -1,9 +1,5 @@
 package com.example.baitaplon;
 
-import com.example.baitaplon.DataBase;
-import com.example.baitaplon.HomeController;
-import com.example.baitaplon.TextToSpeech;
-import com.example.baitaplon.WordSQL;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -37,10 +33,10 @@ public class ControllerSoTayCaNhan {
     //khoi tao tu dong
     @FXML
     public void initialize() throws IOException {
-    if (HomeController.isLoadDataOfSoTuCaNhan == false) {
-        DataBase.loadDataSqlOfSoTuCaNhan();
-        HomeController.isLoadDataOfSoTuCaNhan = true;
-    }
+        if (HomeController.isLoadDataOfSoTuCaNhan == false) {
+            DataBase.loadDataSqlOfSoTuCaNhan();
+            HomeController.isLoadDataOfSoTuCaNhan = true;
+        }
 //        listViewA = new ListView<>();
         initComponents();
         loadWordList();

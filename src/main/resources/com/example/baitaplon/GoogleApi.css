@@ -34,6 +34,36 @@
     /*-fx-font-family: url("@Nunito-Bold.ttf");*/
 
 }
+.buttonOkCancelVvv:hover {
+    -fx-text-fill: #3f2e33;
+    -fx-background-color: #ec99b4;
+    -fx-background-radius: 10 10 10 10;
+    -fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -2, 2);
+    -fx-font-weight: bold;
+    /*-fx-padding: 5 5 5 5;*/
+    -fx-font-size: 15px;
+    /*-fx-font-family: url("@Nunito-Bold.ttf");*/
+
+}
+.buttonMic {
+    -fx-text-fill: #3f2e33;
+    -fx-background-color: #ffb8d0;
+    -fx-background-radius: 10 10 10 10;
+    -fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -2, 2);
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+.buttonMic:selected {
+    -fx-text-fill: #3f2e33;
+    -fx-background-color: #7fc033;
+    -fx-background-radius: 10 10 10 10;
+    -fx-effect: dropshadow(three-pass-box, #3c3f41, 20, 0, -2, 2);
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+}
+
+
 
 .text-field {
     -fx-background-color: #ffb8d0;

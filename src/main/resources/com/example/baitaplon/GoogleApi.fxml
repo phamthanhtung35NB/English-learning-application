@@ -29,7 +29,14 @@
                         </ImageView>
                      </graphic></Button>
                   <Pane prefHeight="19.0" prefWidth="94.0" />
-                  <ToggleButton fx:id="isRecordSpeechIn" mnemonicParsing="false" onAction="#buttonRecordSpeechIn" styleClass="buttonOkCancelVvv" stylesheets="@GoogleApi.css" text="record" />
+                  <ToggleButton fx:id="isRecordSpeechIn" mnemonicParsing="false" onAction="#buttonRecordSpeechIn" styleClass="buttonMic" stylesheets="@GoogleApi.css" text="record">
+                     <graphic>
+                        <ImageView fitHeight="24.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/microphone.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></ToggleButton>
                </children>
             </VBox>
             <Pane prefHeight="100.0" prefWidth="30.0" />

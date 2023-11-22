@@ -11,6 +11,7 @@
 <!--<?xml version="1.0" encoding="UTF-8"?>-->
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -23,6 +24,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ClockController">
    <GridPane layoutX="-4.0" layoutY="17.0" prefHeight="687.0" prefWidth="866.0" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="17.0">
@@ -30,15 +32,15 @@
        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
      </columnConstraints>
      <rowConstraints>
-       <RowConstraints maxHeight="238.4" minHeight="10.0" prefHeight="238.4" vgrow="SOMETIMES" />
-         <RowConstraints maxHeight="145.60001220703126" minHeight="10.0" prefHeight="62.400000000000006" vgrow="SOMETIMES" />
-       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="258.4" minHeight="10.0" prefHeight="209.59998168945313" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="260.8000122070313" minHeight="10.0" prefHeight="195.9999877929687" vgrow="SOMETIMES" />
+       <RowConstraints maxHeight="224.80001220703127" minHeight="10.0" prefHeight="220.80001220703127" vgrow="SOMETIMES" />
        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
      </rowConstraints>
       <children>
-         <HBox alignment="CENTER" prefHeight="238.0" prefWidth="816.0">
+         <HBox alignment="CENTER" prefHeight="219.0" prefWidth="866.0">
             <children>
-               <Pane prefHeight="238.0" prefWidth="213.0">
+               <Pane prefHeight="226.0" prefWidth="207.0">
                   <children>
                   
                         <Circle fx:id="clockCircle" centerX="150" centerY="150" fill="white" layoutX="-49.0" layoutY="-31.0" radius="100" stroke="black" styleClass="clock-circle" />
@@ -54,7 +56,7 @@
                </Pane>
             </children>
          </HBox>
-         <HBox alignment="CENTER" GridPane.rowIndex="1">
+         <HBox alignment="CENTER" prefHeight="202.0" prefWidth="866.0" GridPane.rowIndex="1">
             <children>
                <VBox alignment="CENTER" prefHeight="142.0" prefWidth="334.0">
                   <children>
@@ -62,6 +64,19 @@
                      <TextField fx:id="dateField" alignment="CENTER" prefHeight="46.0" prefWidth="136.0" styleClass="date-text" />
                   </children>
                </VBox>
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="2">
+            <children>
+               <Label text="Notebook:">
+                  <font>
+                     <Font size="16.0" />
+                  </font>
+               </Label>
+               <Pane prefHeight="226.0" prefWidth="53.0" />
+               <ListView fx:id="listView" prefHeight="226.0" prefWidth="242.0" styleClass="cssListView" />
+               <Pane prefHeight="226.0" prefWidth="22.0" />
+               <Label fx:id="lableNghia" prefHeight="226.0" prefWidth="226.0" wrapText="true" />
             </children>
          </HBox>
       </children>
