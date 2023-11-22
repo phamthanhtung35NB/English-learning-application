@@ -16,7 +16,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <GridPane prefHeight="720.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerGamePron">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="392.2" minWidth="10.0" prefWidth="269.59998779296876" />
@@ -35,7 +34,7 @@
          <children>
             <VBox alignment="CENTER" prefHeight="216.0" prefWidth="349.0">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#buttonOk" prefHeight="65.0" prefWidth="119.0" styleClass="button_" stylesheets="@GamePron.css" text="ok">
+                  <Button alignment="CENTER" mnemonicParsing="false" onAction="#buttonOk" prefHeight="65.0" prefWidth="119.0" styleClass="button_" stylesheets="@GamePron.css" text="OK">
                      <graphic>
                         <ImageView fitHeight="53.0" fitWidth="82.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -43,6 +42,9 @@
                            </image>
                         </ImageView>
                      </graphic>
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>
@@ -114,17 +116,29 @@
       </BorderPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
-            <Label fx:id="Heart" alignment="CENTER" layoutX="98.0" layoutY="53.0" prefHeight="34.0" prefWidth="63.0" text="10">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Label>
-            <ImageView fx:id="tim" fitHeight="80.0" fitWidth="80.0" layoutX="34.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
-            <Label fx:id="thongbao" alignment="CENTER" layoutX="2.0" layoutY="130.0" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #FFFFCC;" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
+            <VBox alignment="TOP_CENTER" layoutX="-1.0" prefHeight="186.0" prefWidth="276.0">
+               <children>
+                  <Pane prefHeight="111.0" prefWidth="262.0">
+                     <children>
+                        <ImageView fitHeight="111.0" fitWidth="119.0" layoutX="75.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/heart.png" />
+                           </image>
+                        </ImageView>
+                        <Label fx:id="Heart" alignment="CENTER" layoutX="99.0" layoutY="27.0" prefHeight="34.0" prefWidth="63.0" text="10">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Label fx:id="thongbao" alignment="CENTER" prefHeight="50.0" prefWidth="270.0" style="-fx-background-color: #FFFFCC;" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
