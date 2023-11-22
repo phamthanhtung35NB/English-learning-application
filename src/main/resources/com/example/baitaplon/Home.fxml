@@ -52,7 +52,7 @@
                                         <Pane prefHeight="224.0" prefWidth="18.0" />
                                         <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="135.0" styleClass="button_" stylesheets="@Hangman.css" text="Level of difficult:" textAlignment="CENTER" />
                                         <Pane layoutX="65.0" layoutY="10.0" prefHeight="224.0" prefWidth="4.0" />
-                                        <Slider fx:id="difficultySlider" orientation="VERTICAL" styleClass="button_" stylesheets="@Hangman.css" />
+                                        <Slider fx:id="difficultySlider" max="7.0" min="5.0" orientation="VERTICAL" styleClass="button_" stylesheets="@Hangman.css" />
                                     </children>
                                 </HBox>
                                 <HBox alignment="CENTER" prefHeight="70.0" prefWidth="865.0">

@@ -29,7 +29,6 @@ public class HomeController {
     public SplitPane setupGame;
     @FXML
     public Slider difficultySlider;
-    public int difficultyHangman = 3;
     // centerBorderPane laf view chinh cua BorderPane
     @FXML
     protected BorderPane centerBorderPane;
@@ -241,7 +240,7 @@ public class HomeController {
     @FXML
     private void letGo() throws IOException {
         System.out.println("letGo started");
-        difficultyHangman = (int) difficultySlider.getValue();
+        ControllerHangman.difficultyHangman = (int) difficultySlider.getValue();
         GridPane view = FXMLLoader.load(getClass().getResource("Hangman.fxml"));
         view.getStylesheets().add(getClass().getResource("Hangman.css").toExternalForm());
         new ZoomIn(view).play();

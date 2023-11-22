@@ -47,6 +47,7 @@ public class ControllerHangman extends Application {
     private static int countIncorrectGuesses = 0;
     private static boolean isRandom = false;
 
+    public static int difficultyHangman = 3;
     /**
      * khoi tao game
      */
@@ -90,8 +91,8 @@ public class ControllerHangman extends Application {
             ListAlphabetButtons.add(button);
             hBoxAlphabet.getChildren().add(button);
         }
-        //random 5 chu cai
-        for (int i = 0; i < 5; i++) {
+        //random  chu cai
+        for (int i = 0; i < difficultyHangman; i++) {
             String letter = RandomKitu();
             Button button = new Button(letter);
             button.setOnAction(event -> chooseLetters(button));
