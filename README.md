@@ -17,15 +17,19 @@ CSS
 
 Tác giả:
 
-Phạm Thanh Tùng - 22021128 - K67CB
+Nhóm 13: 3T
 
-Trần Anh Tú - 22021190 - K67CB
+- Phạm Thanh Tùng - 22021128 - K67CB
 
-Nguyễn Đức Thành - 22021150 - K67CB
+- Trần Anh Tú - 22021190 - K67CB
+
+- Nguyễn Đức Thành - 22021150 - K67CB
 
 Cây kế thừa: 
 
-Link sơ đồ khối: https://bom.so/o5jSO4
+Link sơ đồ khối: 
+https://bom.so/o5jSO4
+
 ### Chi tiết và Code
 
 Chức năng
@@ -79,9 +83,5 @@ mình không chỉ tiến bộ hơn về cả kiến thức và tư duy lập tr
 Mà còn hiểu hơn về cách làm vệc nhóm trong một dự án
 Cảm ơn thầy vì đã dành thời gian để đọc, em mong nhóm 3T sẽ 
 nhận được số điểm xứng đáng cho bài tập lớn này.
-
-
-
-
 
 

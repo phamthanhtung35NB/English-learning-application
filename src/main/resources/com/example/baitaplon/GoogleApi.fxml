@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerApi">
+   <children>
+      <HBox alignment="CENTER" layoutX="1.0" prefHeight="100.0" prefWidth="1000.0">
+         <children>
+            <ComboBox fx:id="comboBoxInPut" prefWidth="150.0" styleClass="comboBox" stylesheets="@GoogleApi.css" />
+            <Pane prefHeight="100.0" prefWidth="30.0" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#speechIn" styleClass="buttonOkCancelVvv" stylesheets="@GoogleApi.css" text="speech">
+                     <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/volume.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Pane prefHeight="19.0" prefWidth="94.0" />
+                  <ToggleButton fx:id="isRecordSpeechIn" mnemonicParsing="false" onAction="#buttonRecordSpeechIn" styleClass="buttonOkCancelVvv" stylesheets="@GoogleApi.css" text="record" />
+               </children>
+            </VBox>
+            <Pane prefHeight="100.0" prefWidth="30.0" />
+            <Button onAction="#translateText" prefHeight="43.0" prefWidth="180.0" styleClass="buttonTranslate" stylesheets="@GoogleApi.css" text="Translate">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="91.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Image/search.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Pane prefHeight="100.0" prefWidth="30.0" />
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#speechOut" styleClass="buttonOkCancelVvv" stylesheets="@GoogleApi.css" text="speech">
+                     <graphic>
+                        <ImageView fitHeight="21.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Image/volume.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+               </children>
+            </VBox>
+            <Pane prefHeight="100.0" prefWidth="30.0" />
+            <ComboBox fx:id="comboBoxOutPut" nodeOrientation="RIGHT_TO_LEFT" prefWidth="150.0" styleClass="comboBox" stylesheets="@GoogleApi.css" />
+         </children>
+      </HBox>
+      <HBox layoutX="4.0" layoutY="126.0" prefHeight="475.0" prefWidth="986.0">
+         <children>
+            <VBox prefHeight="475.0" prefWidth="515.0">
+               <children>
+                  <TextField fx:id="inputTextApiGoogle" alignment="CENTER" prefHeight="483.0" prefWidth="512.0" styleClass="text-field" stylesheets="@GoogleApi.css">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </TextField>
+                  <TextArea prefHeight="465.0" prefWidth="515.0" style="-fx-background-color: black;" stylesheets="@GoogleApi.css" wrapText="true" />
+               </children>
+            </VBox>
+            <VBox prefHeight="475.0" prefWidth="459.0">
+               <children>
+                  <Label fx:id="outputLabelApiGoogle" alignment="TOP_LEFT" prefHeight="475.0" prefWidth="475.0" stylesheets="@GoogleApi.css" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</Pane>

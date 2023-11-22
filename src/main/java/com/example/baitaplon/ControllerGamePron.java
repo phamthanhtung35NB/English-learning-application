@@ -1,12 +1,10 @@
 package com.example.baitaplon;
 
-import com.example.baitaplon.NoteBook.ControllerSoTayCaNhan;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 //import java.awt.TextField;
 import javafx.scene.control.TextField;
@@ -21,9 +19,10 @@ public class ControllerGamePron extends Application {
 
 
     public static String wordDeBai = "";
-    public static String wordToGuess ="1" ;
+    public static String wordToGuess = "1";
+    public static String wordNghia="";
     public static boolean doiTu = false;
-    public static  int k = 0;
+    public static int k = 0;
 
 
     public static String game(String word) {
@@ -36,6 +35,9 @@ public class ControllerGamePron extends Application {
     private Label thongbao;
     @FXML
     private Label goiytu;
+    @FXML
+    private Label goiYNghia;
+
 
     @FXML
     public void buttonOk() {
@@ -43,7 +45,7 @@ public class ControllerGamePron extends Application {
         game(wordToGuess);
         if (checkAnsewer(wordDeBai, tuNapvao)) {
             thongbao.setText("Chính xác! Bạn đã đoán đúng từ.");
-            k =0;
+            k = 0;
         } else {
             thongbao.setText("Rất tiếc, câu trả lời không chính xác. \n Xin mời nhập tiếp");
             goiytu.setText("Số chữ đã có đúng là " + GoiYsochudung(wordDeBai, tuNapvao));
@@ -54,7 +56,7 @@ public class ControllerGamePron extends Application {
     @FXML
     public void buttonLoa() {
         //gọi hàm loa
-        if(doiTu== false && k == 0){
+        if (doiTu == false && k == 0) {
             randomWord();
             k++;
         }
@@ -62,6 +64,9 @@ public class ControllerGamePron extends Application {
     }
 
     public String randomWord() {
+        thongbao.setText("");
+        goiytu.setText("");
+        inData.setText("");
         if (ControllerSoTayCaNhan.dataSoTu.isEmpty()) {
             return "null";
         }
@@ -69,7 +74,10 @@ public class ControllerGamePron extends Application {
         int currentIndex = 0;
         for (Map.Entry<String, WordSQL> entry : ControllerSoTayCaNhan.dataSoTu.entrySet()) {
             if (currentIndex == randomIndex) {
-                wordToGuess = entry.getKey();
+                wordToGuess = entry.getKey().toLowerCase();
+                wordNghia=entry.getValue().getWord_explain();
+                System.out.printf(wordNghia);
+                goiYNghia.setText(wordNghia);
                 return "true";
             }
             currentIndex++;

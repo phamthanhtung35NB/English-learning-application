@@ -9,15 +9,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<SplitPane fx:id="setupGame" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="720.0" prefWidth="866.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.ControllerGame">
+<SplitPane fx:id="setupGame" dividerPositions="0.5" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="710.0" prefWidth="860.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.baitaplon.HomeController">
   <items>
-    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="865.0">
-         <children>
-            <ImageView fitHeight="353.0" fitWidth="870.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true" />
-         </children></AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="363.0" prefWidth="865.0" />
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="149.0" prefWidth="599.0">
          <children>
-            <HBox alignment="CENTER" layoutX="-2.0" layoutY="1.0" prefHeight="196.0" prefWidth="604.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.7999999999999545" AnchorPane.topAnchor="1.0">
+            <HBox alignment="CENTER" layoutX="-2.0" layoutY="43.0" prefHeight="310.0" prefWidth="861.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="43.0">
                <children>
                   <Button layoutX="236.0" layoutY="111.0" mnemonicParsing="false" onAction="#hangman" prefHeight="128.0" prefWidth="144.0">
                      <graphic>

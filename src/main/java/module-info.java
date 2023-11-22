@@ -26,15 +26,15 @@ module com.example.baitaplon {
 
     opens com.example.baitaplon to javafx.fxml;
     exports com.example.baitaplon;
-    exports com.example.baitaplon.Game;
-    opens com.example.baitaplon.Game to javafx.fxml;
-    exports com.example.baitaplon.DataBase;
-    opens com.example.baitaplon.DataBase to javafx.fxml;
-    exports com.example.baitaplon.Login;
-    opens com.example.baitaplon.Login to javafx.fxml;
-    opens com.example.baitaplon.Search to javafx.fxml;
-    exports com.example.baitaplon.Search;
-    exports com.example.baitaplon.NoteBook;
-    opens com.example.baitaplon.NoteBook to javafx.fxml;
+//    exports com.example.baitaplon.Game;
+//    opens com.example.baitaplon.Game to javafx.fxml;
+//    exports com.example.baitaplon.DataBase;
+//    opens com.example.baitaplon.DataBase to javafx.fxml;
+//    exports com.example.baitaplon.Login;
+//    opens com.example.baitaplon.Login to javafx.fxml;
+//    opens com.example.baitaplon.Search to javafx.fxml;
+//    exports com.example.baitaplon.Search;
+//    exports com.example.baitaplon.NoteBook;
+//    opens com.example.baitaplon.NoteBook to javafx.fxml;
 
 }
