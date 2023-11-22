@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 //import java.awt.TextField;
 import javafx.scene.control.TextField;
@@ -37,6 +38,7 @@ public class ControllerGamePron extends Application {
     private Label goiytu;
     @FXML
     private Label goiYNghia;
+    private int cnt = 0;
 
 
     @FXML
@@ -46,13 +48,17 @@ public class ControllerGamePron extends Application {
         if (checkAnsewer(wordDeBai, tuNapvao)) {
             thongbao.setText("Chính xác! Bạn đã đoán đúng từ.");
             k = 0;
+            cnt = 0;
         } else {
-            goiYNghia.setText(wordNghia);
+            cnt = cnt + 1;
             thongbao.setText("Rất tiếc, câu trả lời không chính xác. \n Xin mời nhập tiếp");
-            goiytu.setText("Số chữ đã có đúng là " + GoiYsochudung(wordDeBai, tuNapvao));
-
+            if (cnt >= 2) {
+                goiYNghia.setText(wordNghia);
+            }
+            if(cnt >= 3){
+                goiytu.setText("Số chữ đã có đúng là " + GoiYsochudung(tuNapvao, wordDeBai));
+            }
         }
-//        }
     }
 
     @FXML
@@ -92,18 +98,20 @@ public class ControllerGamePron extends Application {
 
     private int GoiYsochudung(String nhapvao, String tucantim) {
         int count = 0;
-        int chieuDai = Math.min(nhapvao.length(), tucantim.length());
+        int chieuDai = Math.max(nhapvao.length(), tucantim.length());
         HashMap<Character, Boolean> daDem = new HashMap<>();
-
-        for (int i = 0; i < chieuDai; i++) {
-            if (nhapvao.charAt(i) == tucantim.charAt(i) && !daDem.containsKey(nhapvao.charAt(i))) {
-                count++;
-                daDem.put(nhapvao.charAt(i), true);
+        if (nhapvao.isEmpty()) {
+            return count;
+        } else {
+            for (int i = 0; i < chieuDai; i++) {
+                if (nhapvao.charAt(i) == tucantim.charAt(i) && !daDem.containsKey(nhapvao.charAt(i))) {
+                    count++;
+                    daDem.put(nhapvao.charAt(i), true);
+                }
             }
+            return count;
         }
-        return count;
     }
-
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -112,8 +120,6 @@ public class ControllerGamePron extends Application {
         Scene scene = new Scene(fxml);
         stage.setTitle("Game!");
         thongbao = new Label("Nội dung thông báo");
-
-//        scene.getStylesheets().add(getClass().getResource("Home.css").toExternalForm());
         stage.setScene(scene);
         stage.show();
 

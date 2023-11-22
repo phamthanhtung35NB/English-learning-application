@@ -10,44 +10,44 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DictionaryManagement {
-//    Scanner scan = new Scanner(System.in);
+    //    Scanner scan = new Scanner(System.in);
 /////////////////////////////////////////LOAD DATA OF STUDYING ARRAY///////////////////////////////////////////////////////
 //lodata study_array in ControllerSoTuCaNhan.dataSoTu
-public static void dictionarySQLiteLoadAll() {
-    SQLiteConnector connector = new SQLiteConnector();
-    Connection connection = connector.getConnection();
-    try {
-        Statement statement = connection.createStatement();
+    public static void dictionarySQLiteLoadAll() {
+        SQLiteConnector connector = new SQLiteConnector();
+        Connection connection = connector.getConnection();
+        try {
+            Statement statement = connection.createStatement();
 
-        // lay ra chuoi string
-        String queryList = "SELECT id,word,html,description,pronounce FROM av;";
+            // lay ra chuoi string
+            String queryList = "SELECT id,word,html,description,pronounce FROM av;";
 
-        PreparedStatement preparedStatement = connection.prepareStatement(queryList);
+            PreparedStatement preparedStatement = connection.prepareStatement(queryList);
 //            preparedStatement.setString(1, chuoiStudying_array);
-        System.out.println(preparedStatement);
-        ResultSet resultSet = preparedStatement.executeQuery();
+            System.out.println(preparedStatement);
+            ResultSet resultSet = preparedStatement.executeQuery();
 //            System.out.println("r:"+resultSet);
-        //xoa dataSoTu
-        ControllerTabSql.dataWordinSql.clear();
-        while (resultSet.next()) {
-            int id = resultSet.getInt("id");
-            System.out.println(id);
-            String word_target = resultSet.getString("word");
-            String html = resultSet.getString("html");
-            String word_explain = resultSet.getString("description");
-            String pronounce = resultSet.getString("pronounce");
-            System.out.println(id + " " + word_target + " " + word_explain + " " + html + " " + pronounce);
-            WordSQL word = new WordSQL(id, word_target, word_explain, html, pronounce);
-            ControllerTabSql.dataWordinSql.put(word_target, word);
+            //xoa dataSoTu
+            ControllerTabSql.dataWordinSql.clear();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                System.out.println(id);
+                String word_target = resultSet.getString("word");
+                String html = resultSet.getString("html");
+                String word_explain = resultSet.getString("description");
+                String pronounce = resultSet.getString("pronounce");
+                System.out.println(id + " " + word_target + " " + word_explain + " " + html + " " + pronounce);
+                WordSQL word = new WordSQL(id, word_target, word_explain, html, pronounce);
+                ControllerTabSql.dataWordinSql.put(word_target, word);
+            }
+            resultSet.close();
+            statement.close();
+            connection.close();
+            connector.closeConnection();
+        } catch (Exception e) {
+            System.out.println("LỖI login :" + e.getMessage());
         }
-        resultSet.close();
-        statement.close();
-        connection.close();
-        connector.closeConnection();
-    } catch (Exception e) {
-        System.out.println("LỖI login :" + e.getMessage());
     }
-}
 
 
     /**
@@ -73,7 +73,7 @@ public static void dictionarySQLiteLoadAll() {
                 mean = resultSet.getString("description");
                 System.out.println(mean);
             }
-            if (mean==null) {
+            if (mean == null) {
                 ifNot = false;
             } else {
                 ifNot = true;
@@ -123,7 +123,7 @@ public static void dictionarySQLiteLoadAll() {
             System.out.println(id);
             //Neu chua co thi yeu cau nhap nghia
             //Neu co roi thi bao loi
-            if (id>0) {
+            if (id > 0) {
                 ifNot = false;
             } else {
                 ifNot = true;
@@ -175,6 +175,38 @@ public static void dictionarySQLiteLoadAll() {
         return "done";
     }
 
+    public static String setWordInSQLiteDB(int id, String inputWord, String inputDescription) {
+        System.out.print("SET từ: ");
+        String addWord = inputWord.toLowerCase().trim();
+        //Check whether it was in DB or not
+        SQLiteConnector connectorSQLite = new SQLiteConnector();
+        Connection connection = connectorSQLite.getConnection();
+        boolean ifNot = false;
+        String querry;
+        String description = null;
+        try {
+            querry = "UPDATE av SET word = ?, html = ? WHERE id = ?;";
+            PreparedStatement preparedStatement = connection.prepareStatement(querry);
+            preparedStatement.setString(1, addWord);
+            preparedStatement.setString(2, inputDescription);
+            preparedStatement.setInt(3, id);
+            int check = preparedStatement.executeUpdate();
+
+            if (check > 0) {
+                System.out.println("Sửa thành công từ vào CSDL");
+            } else {
+                System.out.println("LỖI: KHÔNG THỂ SỬA TỪ VÀO CSDL");
+            }
+            connection.close();
+            connectorSQLite.closeConnection();
+            preparedStatement.close();
+        } catch (Exception e) {
+            System.out.println("LỖI: " + e.getMessage());
+        }
+        connectorSQLite.closeConnection();
+        return "done";
+    }
+
     /**
      * Xóa từ bằng Cơ sở dữ liệu.
      * Gọi hàm: mở Terminal, thao tác nhập từ cần xóa
@@ -218,14 +250,14 @@ public static void dictionarySQLiteLoadAll() {
                 int check = preparedStatement.executeUpdate();
                 if (check > 0) {
                     System.out.println("Đã XÓA từ " + wordDrop + " khỏi CSDL!");
-                    retunrString="Delete Done";
+                    retunrString = "Delete Done";
                 } else {
                     System.out.println("LỖI: KHÔNG THỂ XÓA từ " + wordDrop + " khỏi CSDL!");
                 }
             } else {
                 //Khong co nua thi bao loi
                 System.out.println("LỖI: KHÔNG TÌM ĐƯỢC TỪ ĐÃ CHO");
-                retunrString="Not Found";
+                retunrString = "Not Found";
             }
 
             resultSet.close();
@@ -235,6 +267,6 @@ public static void dictionarySQLiteLoadAll() {
             System.out.println("LỖI: " + e.getMessage());
         }
         connectorSQLite.closeConnection();
-    return retunrString;
+        return retunrString;
     }
 }

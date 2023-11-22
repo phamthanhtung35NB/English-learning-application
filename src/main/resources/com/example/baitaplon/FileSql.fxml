@@ -137,6 +137,23 @@
                                                 <TextField fx:id="textWordExplainSet" prefHeight="31.0" prefWidth="326.0" promptText="ADD" styleClass="textFieldWordTargetExplain" />
                                              </children>
                                           </HBox>
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="70.0" prefWidth="396.0">
+                                             <children>
+                                                <Label styleClass="textFieldWordTargetExplain" text="Pronounce" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="200.0">
+                                             <children>
+                                                <TextField fx:id="textWordPronounceAddSet" prefHeight="31.0" prefWidth="327.0" promptText="ADD" styleClass="textFieldWordTargetExplain" />
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_LEFT" prefHeight="70.0" prefWidth="396.0">
+                                             <children>
+                                                <Label styleClass="textFieldWordTargetExplain" text="Word Type" />
+                                                <HBox alignment="CENTER" prefHeight="66.0" prefWidth="200.0" />
+                                             </children>
+                                          </HBox>
+                                          <TextField fx:id="textWordLoaiTuSet" prefHeight="31.0" prefWidth="310.0" promptText="ADD" styleClass="textFieldWordTargetExplain" />
                                           <HBox alignment="CENTER" layoutX="10.0" layoutY="110.0" prefHeight="100.0" prefWidth="200.0">
                                              <children>
                                                 <Button mnemonicParsing="false" onAction="#clickSetSet" styleClass="buttonOkCancelVvv" text="Set">
@@ -279,6 +296,8 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <Pane prefHeight="56.0" prefWidth="75.0" />
+                        <Label fx:id="thongBao" />
                      </children>
                   </HBox>
                </children>

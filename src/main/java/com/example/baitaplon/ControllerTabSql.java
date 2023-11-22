@@ -31,6 +31,8 @@ public class ControllerTabSql extends Application {
     public static TreeMap<String, WordSQL> dataWordinSql = new TreeMap<>();
     @FXML
     private ListView<String> listViewA;
+    @FXML
+    private Label thongBao;
 
     //text ,id la tu can doc/xoa/ them vao so tu ca nhan
     private String text = "";
@@ -59,6 +61,10 @@ public class ControllerTabSql extends Application {
     private TextField textWordTargetSet;
     @FXML
     private TextField textWordExplainSet;
+    @FXML
+    private TextField textWordPronounceAddSet;
+    @FXML
+    private TextField textWordLoaiTuSet;
     /**
      * tab delete.
      */
@@ -73,8 +79,9 @@ public class ControllerTabSql extends Application {
     public void buttonAddNotebook() {
         DataBase.setSQLiteStuding_array(idCanXoa);
         HomeController.isLoadDataOfSoTuCaNhan = false;
+        buttonReload();
         new BounceInDown(searchTra).play();
-        searchTra.setText("Add to notebook success");
+        thongBao.setText("Add to notebook success");
     }
 
     //doc tu
@@ -89,7 +96,6 @@ public class ControllerTabSql extends Application {
             DictionaryManagement.dictionarySQLiteLoadAll();
             HomeController.isLoadData = true;
         }
-
         listViewA.getItems().clear();
         searchTra.setText("");
         loadWordList();
@@ -294,16 +300,44 @@ public class ControllerTabSql extends Application {
 //                    "<ul><li>sự chống lại, sự trái ((xem) pro_and_con)</li></ul>"
             labelNoteDelete.setText(DictionaryManagement.addWordInSQLiteDB(word_target, html));
             HomeController.isLoadData = false;
+            thongBao.setText("Add success");
         } else {
             labelNoteDelete.setText("Không được để trống");
         }
+        buttonReload();
     }
 
     ////////////////////////////////SET WORD///////////////////////////////////////////
+    public static int stringToInt(String str) {
+        try {
+            int result = Integer.parseInt(str);
+            return result;
+        } catch (NumberFormatException e) {
+            System.out.println("Không thể chuyển đổi chuỗi thành số nguyên: " + e.getMessage());
+            return 0;
+        }
+    }
 
     @FXML
     protected void clickSetSet() {
         System.out.println("set");
+        if (textWordTargetAdd.getText().length() > 0 && textWordExplainAdd.getText().length() > 0) {
+            int id = stringToInt(textIdSet.getText());
+            String word_target = textWordTargetSet.getText();
+            String word_explain = textWordExplainSet.getText();
+            String word_pronounce = textWordPronounceAddSet.getText();
+            String word_loaiTu = textWordLoaiTuSet.getText();
+            String html = "<h1>" + word_target + "</h1>" +
+                    "<h3><i>/" + word_pronounce + "/</i></h3>" +
+                    "<h2>" + word_loaiTu + "</h2>" +
+                    "<ul><li>" + word_explain + "</li></ul>";
+            labelNoteDelete.setText(DictionaryManagement.setWordInSQLiteDB(id, word_target, html));
+            HomeController.isLoadData = false;
+            thongBao.setText("Set success");
+        } else {
+            labelNoteDelete.setText("Không được để trống");
+        }
+        buttonReload();
     }
 
     ////////////////////////////////DELETE WORD///////////////////////////////////////////
@@ -314,7 +348,10 @@ public class ControllerTabSql extends Application {
         System.out.println("delete delete");
         String word_target = textWordTargetDelete.getText();
         labelNoteDelete.setText(DictionaryManagement.dropWordInSQLiteDB(word_target));
+        thongBao.setText("Delete success");
         HomeController.isLoadData = false;
+        buttonReload();
+
     }
 
 
