@@ -21,7 +21,7 @@
    </HBox>
    <HBox fx:id="hBoxAlphabet" alignment="CENTER" prefHeight="33.0" prefWidth="195.0" GridPane.rowIndex="4" />
    <Canvas fx:id="hangmanCanvas" height="213.0" width="349.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-   <HBox prefHeight="49.0" prefWidth="851.0" styleClass="buttonChuCai" stylesheets="@Hangman.css" GridPane.rowIndex="3">
+   <HBox alignment="TOP_CENTER" prefHeight="49.0" prefWidth="851.0" styleClass="buttonChuCai" stylesheets="@Hangman.css" GridPane.rowIndex="3">
       <children>
          <Label fx:id="labelNotification" text="" />
       </children>

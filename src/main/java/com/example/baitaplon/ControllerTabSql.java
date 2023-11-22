@@ -1,11 +1,6 @@
 package com.example.baitaplon;
 
-import com.example.baitaplon.DataBase;
-import com.example.baitaplon.DictionaryManagement;
-import com.example.baitaplon.HomeController;
-import com.example.baitaplon.TextToSpeech;
-import com.example.baitaplon.Word;
-import com.example.baitaplon.WordSQL;
+import animatefx.animation.BounceInDown;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +20,7 @@ import java.util.TreeMap;
 
 public class ControllerTabSql extends Application {
     //0==add,1==set,2==delete
-    private int idTapPane=0;
+    private int idTapPane = 0;
     @FXML
     protected BorderPane borderPane;
     @FXML
@@ -38,7 +33,7 @@ public class ControllerTabSql extends Application {
     private ListView<String> listViewA;
 
     //text ,id la tu can doc/xoa/ them vao so tu ca nhan
-    private String text="";
+    private String text = "";
     private static int idCanXoa;
     @FXML
     private WebView webViewNghia;
@@ -64,7 +59,6 @@ public class ControllerTabSql extends Application {
     private TextField textWordTargetSet;
     @FXML
     private TextField textWordExplainSet;
-
     /**
      * tab delete.
      */
@@ -76,34 +70,37 @@ public class ControllerTabSql extends Application {
     private Label labelNoteDelete;
 
     @FXML
-    public  void buttonAddNotebook(){
+    public void buttonAddNotebook() {
         DataBase.setSQLiteStuding_array(idCanXoa);
-        HomeController.isLoadDataOfSoTuCaNhan=false;
+        HomeController.isLoadDataOfSoTuCaNhan = false;
+        new BounceInDown(searchTra).play();
         searchTra.setText("Add to notebook success");
     }
+
     //doc tu
     @FXML
-    public void buttonSpeeck(){
+    public void buttonSpeeck() {
         new TextToSpeech(text);
     }
+
     @FXML
-    public void buttonReload(){
-        if (HomeController.isLoadData==false){
+    public void buttonReload() {
+        if (HomeController.isLoadData == false) {
             DictionaryManagement.dictionarySQLiteLoadAll();
-            HomeController.isLoadData=true;
+            HomeController.isLoadData = true;
         }
 
         listViewA.getItems().clear();
         searchTra.setText("");
         loadWordList();
     }
+
     //khoi tao tu dong
     @FXML
     public void initialize() throws IOException {
-
-        if (HomeController.isLoadData==false){
+        if (HomeController.isLoadData == false) {
             DictionaryManagement.dictionarySQLiteLoadAll();
-            HomeController.isLoadData=true;
+            HomeController.isLoadData = true;
         }
         initComponents();
         loadWordList();
@@ -112,7 +109,7 @@ public class ControllerTabSql extends Application {
 
     @FXML
     protected void clickCheck() {
-        if (searchTra.getText().equals("Add to notebook success")){
+        if (searchTra.getText().equals("Add to notebook success")) {
             searchTra.setText("");
             listViewA.getItems().clear();
             loadWordList();
@@ -141,22 +138,25 @@ public class ControllerTabSql extends Application {
 
     }
 
-        @FXML
-    protected void showHiden()  {
-            if (isLock==false) {
-                borderPane.setRight(hBoxLeft);
-                isLock = true;
-                System.out.println("show");
-            } else {
-                borderPane.setRight(null);
-                isLock = false;
-                System.out.println("hide");
-            }
+    @FXML
+    protected void showHiden() {
+        if (isLock == false) {
+            new BounceInDown(hBoxLeft).play();
+            borderPane.setRight(hBoxLeft);
+            isLock = true;
+            System.out.println("show");
+        } else {
+            isLock = false;
+            System.out.println("hide");
+            borderPane.setRight(null);
+        }
     }
+
     public void initComponents() {
         tabPane.getSelectionModel().selectedIndexProperty().addListener((observable, oldValue, newValue) -> {
-            idTapPane=newValue.intValue();
+            idTapPane = newValue.intValue();
         });
+        //doc tu
         this.listViewA.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> {
                     text = newValue.trim();
@@ -166,6 +166,7 @@ public class ControllerTabSql extends Application {
                     //lay id cua tu can xoa neu muon xoa
                     idCanXoa = selectedWord.getID();
                     System.out.println(idCanXoa);
+                    new BounceInDown(webViewNghia).play();
                     this.webViewNghia.getEngine().loadContent(definition, "text/html");
                 }
         );
@@ -257,12 +258,12 @@ public class ControllerTabSql extends Application {
     @FXML
     protected void addToTap() {
         System.out.println(idTapPane);
-        if (idTapPane==0){
+        if (idTapPane == 0) {
             textWordTargetAdd.setText(text);
-        }else if (idTapPane==1){
+        } else if (idTapPane == 1) {
             textWordTargetSet.setText(text);
             textIdSet.setText(String.valueOf(idCanXoa));
-        }else if (idTapPane==2){
+        } else if (idTapPane == 2) {
             textWordTargetDelete.setText(text);
             textIdDelete.setText(String.valueOf(idCanXoa));
         }
@@ -277,10 +278,10 @@ public class ControllerTabSql extends Application {
             String word_explain = textWordExplainAdd.getText();
             String word_pronounce = textWordPronounceAdd.getText();
             String word_loaiTu = textWordLoaiTu.getText();
-            String html = "<h1>"+word_target+"</h1>" +
-                    "<h3><i>/"+word_pronounce+"/</i></h3>" +
-                    "<h2>"+word_loaiTu+"</h2>" +
-                    "<ul><li>"+word_explain+"</li></ul>";
+            String html = "<h1>" + word_target + "</h1>" +
+                    "<h3><i>/" + word_pronounce + "/</i></h3>" +
+                    "<h2>" + word_loaiTu + "</h2>" +
+                    "<ul><li>" + word_explain + "</li></ul>";
 
 //            "<h1>"+word_target+"</h1>" +
 //                    "<h3><i>/"+word_pronounce+"/</i></h3>" +
@@ -292,27 +293,19 @@ public class ControllerTabSql extends Application {
 //                    "<h2>danh từ</h2>" +
 //                    "<ul><li>sự chống lại, sự trái ((xem) pro_and_con)</li></ul>"
             labelNoteDelete.setText(DictionaryManagement.addWordInSQLiteDB(word_target, html));
-            HomeController.isLoadData=false;
+            HomeController.isLoadData = false;
         } else {
             labelNoteDelete.setText("Không được để trống");
         }
     }
 
-//    @FXML
-//    protected void clickDeleteAdd() {
-//        System.out.println("delete");
-//    }
     ////////////////////////////////SET WORD///////////////////////////////////////////
 
     @FXML
     protected void clickSetSet() {
         System.out.println("set");
     }
-//
-//    @FXML
-//    protected void clickDeleteSet() {
-//        System.out.println("delete set");
-//    }
+
     ////////////////////////////////DELETE WORD///////////////////////////////////////////
 
 
@@ -320,43 +313,15 @@ public class ControllerTabSql extends Application {
     protected void clickDeleteDelete() {
         System.out.println("delete delete");
         String word_target = textWordTargetDelete.getText();
-        labelNoteDelete.setText( DictionaryManagement.dropWordInSQLiteDB(word_target));
-        HomeController.isLoadData=false;
+        labelNoteDelete.setText(DictionaryManagement.dropWordInSQLiteDB(word_target));
+        HomeController.isLoadData = false;
     }
-
-//    @FXML
-//    protected void clickCancelDelete() {
-//        System.out.println("cancel delete");
-//    }
-
-
-//    public void initialize() {
-//        // Đặt nội dung HTML của WebView
-//        String htmlContent = "<I><Q>@zootomic /,zouə'tɔmik/<br />*  tính từ<br />- (thuộc) giải phẫu động vật</Q></I>";
-//        webView.getEngine().loadContent(htmlContent);
-//    }
 
 
     @FXML
     protected void clickSpeech() {
         new TextToSpeech(text);
     }
-
-
-    //ddang loi cho nay
-//    @FXML
-//    protected void clickDelete() throws IOException, SQLException {
-//        System.out.println(idCanXoa);
-//        //xoa trong SQL
-//        if (DataBase.deleteSQLiteStuding_array(idCanXoa)) {
-//            DataBase.loadDataSqlOfSoTuCaNhan();
-//            ObservableList<String> emptyList = FXCollections.observableArrayList();
-//            listViewA.setItems(emptyList);
-//            initComponents();
-//            loadWordList();
-//            System.out.println("xoa thanh cong");
-//        }
-//    }
 
 
     @Override
