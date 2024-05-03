@@ -16,7 +16,7 @@
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
     <data-source source="LOCAL" name="dict_hh" uuid="5ff6a269-5625-4b04-8cd5-7db70c581e57">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>7141ba81-9488-42b5-aefd-0f514486406f</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:E:\Data_Lap_Trinh\OOP\oasis\baiTapLon\data\dict_hh.db</jdbc-url>

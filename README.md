@@ -23,6 +23,19 @@ Group 13 - 3T
 1. Clone project từ repository
 2. Mở file project bằng IDE. Nên sử dụng Intelij
 3. Chạy project trong file Main (src > main > java > com.example.baitaplon > Main.java)
+   ### Lưu ý
+4. Để chạy được ứng dụng cần phải cài đặt thư viện JavaFX
+   - Cài đặt JavaFX cho Intelij: https://www.jetbrains.com/help/idea/javafx.html
+   - Cài đặt JavaFX cho Eclipse: https://www.eclipse.org/efxclipse/install.html
+   - Cài đặt JavaFX cho NetBeans: https://netbeans.apache.org/kb/docs/java/javafx-setup.html
+   - Cài đặt JavaFX cho Visual Studio Code: https://code.visualstudio.com/docs/languages/java
+5. Cài đặt:
+   
+   ![img_3.png](img_3.png)
+
+   ![img_2.png](img_2.png)
+
+   ![img_1.png](img_1.png)
 
 ## Chức năng và Hiệu ứng chi tiết
 1. Bảng home có đồng hồ hiển thị thời gian thực và hai cột chức năng bật/tắt linh hoạt
